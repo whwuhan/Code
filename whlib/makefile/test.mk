@@ -1,4 +1,4 @@
-include dir.mk
+include win_dir.mk
 
 
 test : 
