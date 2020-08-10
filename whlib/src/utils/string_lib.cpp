@@ -3,8 +3,8 @@
 #include <iostream>
 #include "../../include/utils/string_lib.h"
 using namespace std;
-
-std::vector<string> wh::utils::split(const string &s, const string &seperator){
+//using namespace wh::utils;  //这里还是要指定命名空间
+vector<string> wh::utils::split(const string &s, const string &seperator){
     vector<string> result;
     typedef string::size_type string_size;
     string_size i = 0;

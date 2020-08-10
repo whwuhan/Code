@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "../../include/utils/string_lib.h"
+#include "../../include/basic/point3d.h"
 int main()
 {
     std::string s = "a,b*c*d,e";
