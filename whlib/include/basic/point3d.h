@@ -8,7 +8,8 @@ namespace wh
     {   
         //三维点
         typedef struct Point3d
-        {
+        {   
+            //未来可能删除xyz
             double x;
             double y;
             double z;
@@ -21,6 +22,7 @@ namespace wh
             Point3d operator-(const Point3d& point);
             double operator[](int i);
             friend std::ostream& operator<<(std::ostream& ost, const Point3d point3d);
+            //同步方法未来可能随xyz一同删除
             void syn_xyz_to_data();//xyz和data同步
             void syn_data_to_xyz();//data和xyz同步
         } POINT3D;

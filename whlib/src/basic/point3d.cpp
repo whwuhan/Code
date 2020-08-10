@@ -19,7 +19,7 @@ Point3d wh::basic::Point3d::operator+(const Point3d& point)
 
 Point3d wh::basic::Point3d::operator-(const Point3d& point)
 {
-    return Point3d(point.data - data);
+    return Point3d(data - point.data);
 }
 
 double wh::basic::Point3d::operator[](int i)
@@ -35,13 +35,32 @@ double wh::basic::Point3d::operator[](int i)
     }
 }
 
-
-
-
-
-
+//友元重载<<
 ostream& wh::basic::operator<<(ostream& ost, const Point3d point3d)
 {
-    ost << point3d.x << " " << point3d.y << " " << point3d.z << endl;    
+    ost << point3d.data[0] << " " << point3d.data[1] << " " << point3d.data[2];    
     return ost;
+}
+
+
+//xyz和data同步
+void wh::basic::Point3d::syn_xyz_to_data()
+{
+    if(x != data[0] || y != data[1] || z != data[2])
+    {
+        data[0] = x;
+        data[1] = y;
+        data[2] = z;
+    }
+}
+
+//data和xyz同步
+void wh::basic::Point3d::syn_data_to_xyz()
+{
+    if(x != data[0] || y != data[1] || z != data[2])
+    {
+        x = data[0];
+        y = data[1];
+        z = data[2];
+    }
 }
