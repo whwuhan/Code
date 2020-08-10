@@ -8,5 +8,7 @@ using namespace Eigen;
 using namespace wh::basic;
 int main()
 {   
-    
+    POINT3D p(1,2,3);
+    cout << p.data << endl;
+    cout << p << endl;
 }

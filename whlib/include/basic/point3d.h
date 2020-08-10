@@ -13,7 +13,7 @@ namespace wh
             double x;
             double y;
             double z;
-            Eigen::Vector3d data;
+            Eigen::RowVector3d data;
             
             Point3d();
             Point3d(double x, double y, double z);

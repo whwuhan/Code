@@ -38,7 +38,7 @@ double wh::basic::Point3d::operator[](int i)
 //友元重载<<
 ostream& wh::basic::operator<<(ostream& ost, const Point3d point3d)
 {
-    ost << point3d.data[0] << " " << point3d.data[1] << " " << point3d.data[2];    
+    ost << point3d.data;
     return ost;
 }
 
