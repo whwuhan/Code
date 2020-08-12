@@ -13,11 +13,12 @@ namespace wh
             double x;
             double y;
             double z;
+            //点坐标
             Eigen::RowVector3d data;
             
             Point3d();
             Point3d(double x, double y, double z);
-            Point3d(const Eigen::Vector3d data);
+            Point3d(const Eigen::RowVector3d data);
             Point3d operator+(const Point3d& point);
             Point3d operator-(const Point3d& point);
             double operator[](int i);

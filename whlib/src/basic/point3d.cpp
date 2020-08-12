@@ -8,21 +8,21 @@ Point3d::Point3d():data(0.0,0.0,0.0),x(0.0),y(0.0),z(0.0){}
 Point3d::Point3d(double x, double y, double z)
 :data(x,y,z),x(x),y(y),z(z){}
 
-Point3d::Point3d(const Vector3d data)
+Point3d::Point3d(const RowVector3d data)
 :data(data),x(data[0]),y(data[1]),z(data[2]){}
 
 //运算符重载
-Point3d wh::basic::Point3d::operator+(const Point3d& point)
+Point3d Point3d::operator+(const Point3d& point)
 {
     return Point3d(point.data + data);
 }
 
-Point3d wh::basic::Point3d::operator-(const Point3d& point)
+Point3d Point3d::operator-(const Point3d& point)
 {
     return Point3d(data - point.data);
 }
 
-double wh::basic::Point3d::operator[](int i)
+double Point3d::operator[](int i)
 {
     if( 0 <= i && i <= 2)
     {
@@ -35,7 +35,7 @@ double wh::basic::Point3d::operator[](int i)
     }
 }
 
-//友元重载<<
+//友元重载<< 注意前面的wh::basic不能省略
 ostream& wh::basic::operator<<(ostream& ost, const Point3d point3d)
 {
     ost << point3d.data;
