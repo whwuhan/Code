@@ -9,4 +9,5 @@ int main()
 {
     Point_cloud point_cloud;
     load_point_cloud_obj("test.obj", &point_cloud);
+    cout << point_cloud << endl;
 }

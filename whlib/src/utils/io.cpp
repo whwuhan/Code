@@ -32,6 +32,5 @@ void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* 
             point_cloud_ptr->points(point_cloud_ptr->size-1, 2) = atof(line_split[3].c_str());
         }
     }
-    cout << *point_cloud_ptr << endl;
     data_source.close();
 }
