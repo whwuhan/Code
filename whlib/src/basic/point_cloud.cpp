@@ -87,3 +87,10 @@ void Point_cloud::conservative_resize(const unsigned int rows, const unsigned in
 {
         points.conservativeResize(rows, cols);
 }
+
+//获取点云几何中心
+RowVector3d Point_cloud::get_geometric_center()
+{
+    RowVector3d center = points.colwise().sum();
+    return center / size;
+}

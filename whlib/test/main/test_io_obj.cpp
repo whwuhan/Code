@@ -11,4 +11,5 @@ int main()
     load_point_cloud_obj("test.obj", &point_cloud);
     cout << point_cloud << endl;
     cout << point_cloud.size << endl;
+    cout << point_cloud.get_geometric_center() << endl;
 }
