@@ -1,4 +1,3 @@
-#	mac下目录变量定义
 CC := g++
 INCLUDE_DIR := ../../include/#头文件目录
 SRC_DIR := ../../src/#源代码目录
