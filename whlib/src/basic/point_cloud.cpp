@@ -87,3 +87,12 @@ void Point_cloud::conservative_resize(const unsigned int rows, const unsigned in
 {
         points.conservativeResize(rows, cols);
 }
+
+int main()
+{
+    Point_cloud point_cloud;
+    
+    std::cout << point_cloud.points.size() << endl;
+    std::cout << point_cloud.points.rows() << endl;
+    std::cout << point_cloud.points.cols() << endl;
+}
