@@ -46,13 +46,15 @@ void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* 
 
     while(getline(data_source, line))
     {   
-        if(line[0] == 'v')
+        switch(line[0])
         {   
-            line_split = split(line, " ");
-            point_cloud_ptr->points(count, 0) = atof(line_split[1].c_str());
-            point_cloud_ptr->points(count, 1) = atof(line_split[2].c_str());
-            point_cloud_ptr->points(count, 2) = atof(line_split[3].c_str());
-            count++;
+            case 'v':
+                line_split = split(line, " ");
+                point_cloud_ptr->points(count, 0) = atof(line_split[1].c_str());
+                point_cloud_ptr->points(count, 1) = atof(line_split[2].c_str());
+                point_cloud_ptr->points(count, 2) = atof(line_split[3].c_str());
+                count++;
+                break;
         }
     }
     data_source.close();
