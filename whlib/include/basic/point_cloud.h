@@ -36,6 +36,12 @@ namespace wh
             //获取点云几何中心
             Eigen::RowVector3d get_geometric_center();
 
+            //将点云放回原点
+            void get_centered_point_cloud();
+
+            //归一化点云
+            void get_normalized_point_cloud();
+
         } POINT_CLOUD;
         //注意这里要声明友元函数，结构体里面不是声明这个函数，而是告诉说明这个是友元函数
         std::ostream& operator<<(std::ostream& ost, const Point_cloud point_cloud);

@@ -96,3 +96,48 @@ RowVector3d Point_cloud::get_geometric_center()
     RowVector3d center = points.colwise().sum();//colwise()按照矩阵每一列的方向上排列 这里相当于每一行相加
     return center / size;
 }
+
+//将点云放回原点
+void Point_cloud::get_centered_point_cloud()
+{   
+    //获取点云几何中心
+    RowVector3d center = get_geometric_center();
+    //cout << "center_begin:" << center << endl;
+    //将点云数据放回坐标原点
+    for(int i = 0; i < size; i++)
+    {
+        points.row(i) = points.row(i) - center;
+    }
+    //center = get_geometric_center();
+    //cout << "center_end:" << center << endl;
+}
+
+//归一化点云
+void Point_cloud::get_normalized_point_cloud()
+{
+    RowVector3d max_xyz = points.colwise().maxCoeff();//xyz坐标的最大值
+    RowVector3d min_xyz = points.colwise().minCoeff();//xyz坐标的最小值
+
+    //包围盒中心
+    RowVector3d boundingbox_center = (max_xyz + min_xyz) / 2.0;
+
+    //将包围盒中心放置到坐标原点
+    for(int i = 0; i < size; i++)
+    {
+        points.row(i) = points.row(i) - boundingbox_center;
+    }
+    //boundingbox的xyz轴上的边长
+    RowVector3d boundingbox_side_length = max_xyz - min_xyz;
+
+    //获取最长边长
+    double max_side_length = boundingbox_side_length.maxCoeff();
+
+    //缩放大小
+    double scale = max_side_length / 2.0;
+
+    //将坐标归一化到[0,1]
+    for(int i = 0; i < size; i++)
+    {
+        points.row(i) = points.row(i) / scale;
+    }
+}
