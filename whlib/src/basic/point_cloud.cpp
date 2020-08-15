@@ -76,7 +76,8 @@ ostream& wh::basic::operator<<(ostream& ost, const Point_cloud point_cloud)
 
 //重新确定维度，注意如果维度改变，里面的数据也可能改变
 void Point_cloud::resize(const unsigned int rows, const unsigned int cols)
-{
+{   
+    size = rows;
     points.resize(rows, cols);
 }
 
@@ -84,8 +85,9 @@ void Point_cloud::resize(const unsigned int rows, const unsigned int cols)
 //如果维度比原有的维度小，那么数据不改变，相当于裁剪矩阵，如果扩张了维度，数据会是随机值
 //慎用！！！
 void Point_cloud::conservative_resize(const unsigned int rows, const unsigned int cols)
-{
-        points.conservativeResize(rows, cols);
+{   
+    size = rows;
+    points.conservativeResize(rows, cols);
 }
 
 //获取点云几何中心
