@@ -77,9 +77,9 @@ void wh::utils::save_point_cloud_obj(const string file_name,const struct Point_c
     data_destination << "# " << date_time;//写入存储时间
     data_destination << "o " << date_time;//以时间命名obj对象
 
+    //存入数据
     for(int i = 0; i < point_cloud_ptr->size; i++)
     {
-        cout<<setiosflags(ios::fixed)<<setprecision(2);
         data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[0];
         data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[1];
         data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[2] << endl;
