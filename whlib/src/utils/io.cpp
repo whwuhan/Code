@@ -2,12 +2,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <stdlib.h>
+#include <ctime>
+#include <iomanip>
 #include "../../include/utils/io.h"
 #include "../../include/utils/string_lib.h"
 using namespace std;
 using namespace wh::utils;
 using namespace wh::basic;
+//读取obj文件
 void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* point_cloud_ptr)
 {   
     //打开文件
@@ -58,4 +60,29 @@ void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* 
         }
     }
     data_source.close();
+}
+
+//点云存入obj文件
+void wh::utils::save_point_cloud_obj(const string file_name,const struct Point_cloud* const point_cloud_ptr)
+{
+    //打开文件
+    ofstream data_destination(file_name);
+    data_destination << "# whlib point cloud obj file" << endl;//文件头注释
+    
+    //获取当地时间
+    time_t now = time(0);
+    string date_time(ctime(&now));
+
+    //注意时间后面自带换行
+    data_destination << "# " << date_time;//写入存储时间
+    data_destination << "o " << date_time;//以时间命名obj对象
+
+    for(int i = 0; i < point_cloud_ptr->size; i++)
+    {
+        cout<<setiosflags(ios::fixed)<<setprecision(2);
+        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[0];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[1];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[2] << endl;
+    }
+    data_destination.close();
 }
