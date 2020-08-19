@@ -1,38 +1,154 @@
+/**
+ * 完全二叉树
+ * wuhan
+ * 2020.08.17
+ * 
+*/
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
-//二叉树节点
-template <typename T>
-struct Node
+#include <vector>
+namespace wh
 {
-    T data;
-    Node<T> *left_child;
-    Node<T> *right_child;
+    namespace basic
+    {
+        namespace adt
+        {
+            //=================二叉树节点=================
+            /**
+             * 只能指定具体类型的typedef
+             * 例如typedef vector<int> v
+            */
+            template <typename T>
+            struct Node
+            {
+                T data;
+                Node<T> *left_child;
+                Node<T> *right_child;
 
-    Node();
-    Node(const T data);
-};
+                Node();
+                Node(const T data);
+            };
 
-//构造函数
-template <typename T>
-Node<T>::Node():data(),left_child(nullptr),right_child(nullptr)
-{}
+            //构造函数
+            template <typename T>
+            Node<T>::Node():data(),left_child(nullptr),right_child(nullptr)
+            {}
 
-template <typename T>
-Node<T>::Node(const T data):data(data),left_child(nullptr),right_child(nullptr)
-{}
+            template <typename T>
+            Node<T>::Node(const T data):data(data),left_child(nullptr),right_child(nullptr)
+            {}
 
 
-//二叉树
-template <typename T>
-class Binary_tree
-{
-protected:
-    Node<T>* root;//根节点
-    unsigned int size;//二叉树的节点个数
-public:
-    Binary_tree();
-    
-};
+            //===================二叉树==================
+            template <typename T>
+            class Binary_tree
+            {
+            protected:
+                Node<T>* root;//根节点
+                unsigned int size;//二叉树的节点个数
+            public:
+                Binary_tree();
+                virtual ~Binary_tree();
+                unsigned int get_size();
+                Node<T>* get_root();
+                //创建完全的二叉树（不是二叉排序树）
+                void create_binary_tree(std::vector<T>& vector_t);
+                void create_binary_tree(std::vector< Node<T> >& vector_node_t);
+                //按顺序插入
+                void insert(T& t);
+                void insert(Node<T>& t);
+            };
 
+            //无参构造函数
+            template <typename T>
+            Binary_tree<T>::Binary_tree():root(nullptr),size(0)
+            {}
+
+            //获取节点个数
+            template <typename T>
+            unsigned int Binary_tree<T>::get_size()
+            {
+                return size;
+            }
+
+            //获取根节点
+            template <typename T>
+            Node<T>* Binary_tree<T>::get_root()
+            {
+                return root;
+            }
+
+            //创建链式二叉树
+            template <typename T>
+            void Binary_tree<T>::create_binary_tree(std::vector<T>& vector_t)
+            {
+                size = vector_t.size();//获取节点个数
+                std::vector< Node<T>* > vector_node_t_ptr(size);//存放所有节点的指针
+
+                if(size != 0)
+                {
+                    //构造所有节点的指针
+                    for(int i = 0; i < size; i++)
+                    {
+                        vector_node_t_ptr[i] = new Node<T>(vector_t[i]);
+                    }
+                    root = vector_node_t_ptr[0];//初始化根节点指针
+                    //开始构造完全二叉树
+                    for(int i = 0; i < size; i++)
+                    {
+                        //添加左孩子
+                        if((2 * i + 1) < size)
+                        {
+                            vector_node_t_ptr[i]->left_child = vector_node_t_ptr[2 * i + 1];
+                        }
+                        else
+                        {
+                            //Node<T>的构造函数已经将左右孩子初始化为空指针了
+                            return;
+                        }
+                        
+                        //添加右孩子
+                        if( (2 * (i + 1)) < size )
+                        {
+                            vector_node_t_ptr[i]->right_child = vector_node_t_ptr[2 * (i + 1)];
+                        }
+                        else
+                        {
+                            //Node<T>的构造函数已经将左右孩子初始化为空指针了
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            template <typename T>
+            void Binary_tree<T>::create_binary_tree(std::vector< Node<T> >& vector_node_t)
+            {
+
+            }
+
+            //插入
+            template <typename T>
+            void Binary_tree<T>::insert(T& t)
+            {
+
+            }
+
+            template <typename T>
+            void Binary_tree<T>::insert(Node<T>& t)
+            {
+                
+            }
+            //析构
+            template <typename T>
+            Binary_tree<T>::~Binary_tree()
+            {}
+        }
+    }
+}
 
 #endif
