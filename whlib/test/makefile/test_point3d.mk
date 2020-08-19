@@ -1,4 +1,4 @@
-include config/config.mk
+include config/*.mk
 
 
 test : 
