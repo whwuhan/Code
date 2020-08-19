@@ -6,15 +6,36 @@ using namespace wh::basic::adt;
 int main()
 {
     Binary_tree<int> bt;
-    vector<int> vec ={0,1,2,3,4,5};
-    bt.create_binary_tree(vec);
+    vector<int> vec ={0,1,2,3,4,5,6,7,8};
+    bt.create_tree(vec);
     auto root = bt.get_root();
-    cout << bt.get_size() << endl;
-    cout << root->data << endl;
-    cout << root->left_child->data << endl; 
-    cout << root->right_child->data << endl; 
-    cout << root->left_child->left_child->data << endl; 
-    cout << root->left_child->right_child->data << endl; 
-    cout << root->right_child->left_child->data << endl; 
-    cout << (root->right_child->right_child == nullptr) << endl;
+    // cout << bt.get_size() << endl;
+    // cout << root->data << endl;
+    // cout << root->left_child->data << endl; 
+    // cout << root->right_child->data << endl; 
+    // cout << root->left_child->left_child->data << endl; 
+    // cout << root->left_child->right_child->data << endl; 
+    // cout << root->right_child->left_child->data << endl; 
+
+    vector< Node<int>* > res;
+    bt.pre_order_traverse(bt.get_root(),res);
+    for(auto it : res)
+    {
+        cout << it->data << endl;
+    }
+    cout << "--------------" <<endl;
+    res.clear();
+    bt.in_order_traverse(bt.get_root(),res);
+    for(auto it : res)
+    {
+        cout << it->data << endl;
+    }
+    cout << "--------------" <<endl;
+    res.clear();
+    bt.post_order_traverse(bt.get_root(),res);
+    for(auto it : res)
+    {
+        cout << it->data << endl;
+    }
+
 }

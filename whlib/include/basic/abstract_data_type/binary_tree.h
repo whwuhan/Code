@@ -52,11 +52,15 @@ namespace wh
                 unsigned int get_size();
                 Node<T>* get_root();
                 //创建完全的二叉树（不是二叉排序树）
-                void create_binary_tree(std::vector<T>& vector_t);
-                void create_binary_tree(std::vector< Node<T> >& vector_node_t);
+                void create_tree(std::vector<T>& vector_t);
+                void create_tree(std::vector< Node<T> >& vector_node_t);
                 //按顺序插入
                 void insert(T& t);
                 void insert(Node<T>& t);
+                //三种遍历递归实现
+                void pre_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//先序遍历，结果存放在res中，存放的是节点的指针
+                void in_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//中序遍历，结果存放在res中
+                void post_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//后序遍历，结果存放在res中
             };
 
             //无参构造函数
@@ -78,9 +82,9 @@ namespace wh
                 return root;
             }
 
-            //创建链式二叉树
+            //创建链式结构存储的完全二叉树
             template <typename T>
-            void Binary_tree<T>::create_binary_tree(std::vector<T>& vector_t)
+            void Binary_tree<T>::create_tree(std::vector<T>& vector_t)
             {
                 size = vector_t.size();//获取节点个数
                 std::vector< Node<T>* > vector_node_t_ptr(size);//存放所有节点的指针
@@ -126,7 +130,7 @@ namespace wh
             }
 
             template <typename T>
-            void Binary_tree<T>::create_binary_tree(std::vector< Node<T> >& vector_node_t)
+            void Binary_tree<T>::create_tree(std::vector< Node<T> >& vector_node_t)
             {
 
             }
@@ -143,6 +147,47 @@ namespace wh
             {
                 
             }
+
+            //三种遍历递归实现
+            //先序
+            template <typename T>
+            void Binary_tree<T>::pre_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res)
+            {
+                if(node_ptr)
+                {
+                    res.push_back(node_ptr);
+                    pre_order_traverse(node_ptr->left_child,res);
+                    pre_order_traverse(node_ptr->right_child,res);
+                }
+                return ;
+            }
+
+            //中序
+            template <typename T>
+            void Binary_tree<T>::in_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res)
+            {
+                if(node_ptr)
+                {
+                    in_order_traverse(node_ptr->left_child,res);
+                    res.push_back(node_ptr);
+                    in_order_traverse(node_ptr->right_child,res);
+                }
+                return ;
+            }
+
+            //后序
+            template <typename T>
+            void Binary_tree<T>::post_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res)
+            {
+                if(node_ptr)
+                {
+                    post_order_traverse(node_ptr->left_child,res);
+                    post_order_traverse(node_ptr->right_child,res);
+                    res.push_back(node_ptr);
+                }
+                return ;
+            }
+
             //析构
             template <typename T>
             Binary_tree<T>::~Binary_tree()
