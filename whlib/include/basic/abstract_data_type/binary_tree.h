@@ -48,9 +48,8 @@ namespace wh
                 unsigned int size;//二叉树的节点个数
             public:
                 Binary_tree();
-                virtual ~Binary_tree();
                 unsigned int get_size();
-                Node<T>* get_root();
+                Node<T>*& get_root();//注意这里返回的是原有指针的引用，目的是为了能够改变对象中root的指向
                 //创建完全的二叉树（不是二叉排序树）
                 void create_tree(std::vector<T>& vector_t);
                 void create_tree(std::vector< Node<T> >& vector_node_t);
@@ -61,6 +60,9 @@ namespace wh
                 void pre_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//先序遍历，结果存放在res中，存放的是节点的指针
                 void in_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//中序遍历，结果存放在res中
                 void post_order_traverse(Node<T>* node_ptr,std::vector< Node<T>* >& res);//后序遍历，结果存放在res中
+                //释放所有空间(析构函数调用)
+                void delete_tree(Node<T>*& node_ptr);//注意这里参数传递的是指针的引用，不是指针的副本
+                virtual ~Binary_tree();
             };
 
             //无参构造函数
@@ -77,7 +79,7 @@ namespace wh
 
             //获取根节点
             template <typename T>
-            Node<T>* Binary_tree<T>::get_root()
+            Node<T>*& Binary_tree<T>::get_root()
             {
                 return root;
             }
@@ -187,11 +189,28 @@ namespace wh
                 }
                 return ;
             }
+            
+            //释放树内存
+            template <typename T>
+            void Binary_tree<T>::delete_tree(Node<T>*& node_ptr)
+            {
+                if(node_ptr)
+                {
+                    delete_tree(node_ptr->left_child);
+                    delete_tree(node_ptr->right_child);
+                    delete node_ptr;
+                    node_ptr = nullptr;
+                }
+                return ;
+            }
 
             //析构
             template <typename T>
             Binary_tree<T>::~Binary_tree()
-            {}
+            {
+                delete_tree(root);
+                size = 0;
+            }
         }
     }
 }
