@@ -209,7 +209,6 @@ namespace wh
             Binary_tree<T>::~Binary_tree()
             {
                 delete_tree(root);
-                size = 0;
             }
         }
     }

@@ -41,7 +41,9 @@ int main()
 
 
     //测试析构
+    cout << bt.get_size() << endl;
     bt.delete_tree(root);
+    cout << bt.get_size() << endl;
     //cout << (root == nullptr) << endl;
     cout << (bt.get_root()==nullptr) << endl;
     //cout << root->data << endl;
