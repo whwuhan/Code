@@ -4,13 +4,13 @@
 #include <vector>
 #include <ctime>
 #include <iomanip>
-#include "../../include/utils/io.h"
-#include "../../include/utils/string_lib.h"
+#include "../../../include/utils/io/io_obj.h"
+#include "../../../include/utils/string_lib.h"
 using namespace std;
-using namespace wh::utils;
+using namespace wh::utils::io;
 using namespace wh::basic;
-//读取obj文件
-void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* point_cloud_ptr)
+//读取obj点云文件
+void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_cloud* point_cloud_ptr)
 {   
     //打开文件
     ifstream data_source(file_name);
@@ -63,7 +63,7 @@ void wh::utils::load_point_cloud_obj(const string file_name,struct Point_cloud* 
 }
 
 //点云存入obj文件
-void wh::utils::save_point_cloud_obj(const string file_name,const struct Point_cloud* const point_cloud_ptr)
+void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Point_cloud* const point_cloud_ptr)
 {
     //打开文件
     ofstream data_destination(file_name);
