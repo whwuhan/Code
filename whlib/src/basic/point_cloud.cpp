@@ -141,3 +141,14 @@ void Point_cloud::get_normalized_point_cloud()
         points.row(i) = points.row(i) / scale;
     }
 }
+
+//点云转化为vector存储
+vector<Point3d> Point_cloud::points_to_vector()
+{
+    vector<Point3d> res(size);
+    for(int i = 0; i < size; i++)
+    {
+        res[i] = Point3d(points.row(i));
+    }
+    return res;
+}
