@@ -1,6 +1,7 @@
 #ifndef POINT_CLOUD_H
 #define POINT_CLOUD_H
 #include <iostream>
+#include <vector>
 #include "../../deps/eigen-3.3.7/Eigen/Dense"
 #include "point3d.h"
 namespace wh
@@ -42,8 +43,11 @@ namespace wh
             //归一化点云
             void get_normalized_point_cloud();
 
+            //点云转化为vector存储
+            std::vector<Point3d> points_to_vector();
+
         } POINT_CLOUD;
-        //注意这里要声明友元函数，结构体里面不是声明这个函数，而是告诉说明这个是友元函数
+        //注意这里要声明友元函数，结构体里面不是声明这个函数，而是说明这个是友元函数
         std::ostream& operator<<(std::ostream& ost, const Point_cloud point_cloud);
     }
 }
