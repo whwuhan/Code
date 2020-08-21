@@ -14,8 +14,10 @@ namespace wh
             void load_point_cloud_obj(const std::string file_name,struct wh::basic::Point_cloud* const point_cloud_ptr);
             void save_point_cloud_obj(const std::string file_name,const struct wh::basic::Point_cloud* const point_cloud_ptr);
             //obj图文件的读入
-            //void load_graph_obj(const std::string file_name,wh::basic::adt::Graph* const graph_ptr);
-            //void save_graph_obj(const std::string file_name,const wh::basic::adt::Graph* const graph_ptr);
+            template <typename T>
+            void load_graph_obj(const std::string file_name,wh::basic::adt::Graph<T>* const graph_ptr);
+            template <typename T>
+            void save_graph_obj(const std::string file_name,const wh::basic::adt::Graph<T>* const graph_ptr);
             
 
 

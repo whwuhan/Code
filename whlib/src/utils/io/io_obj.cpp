@@ -29,7 +29,7 @@ void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_clo
     {   
         if(line[0] == 'v')
         {   
-            line_split = split(line, " ");
+            //line_split = split(line, " ");
             count++;
             //cout << count << endl;
             /** resize()效率太低，改成先遍历点的个数，再resize()一次
@@ -80,9 +80,9 @@ void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Poi
     //存入数据
     for(int i = 0; i < point_cloud_ptr->size; i++)
     {
-        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[0];
-        data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[1];
-        data_destination << " " << setiosflags(ios::fixed) << setprecision(6) << point_cloud_ptr->points.row(i)[2] << endl;
+        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[0];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[1];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[2] << endl;
     }
     data_destination.close();
 }
