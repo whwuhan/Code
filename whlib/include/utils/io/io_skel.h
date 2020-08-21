@@ -12,10 +12,12 @@ namespace wh
         namespace io
         {
             //======声明======
+            //读取skel文件中的骨架线
             template <typename T>
             void load_curves_skel(const std::string file_name, std::vector< wh::basic::adt::Curve<T> >* curves_ptr);
 
             //=====实现=======
+            //读取skel文件中的骨架线
             template <typename T>
             void load_curves_skel(const std::string file_name, std::vector< wh::basic::adt::Curve<T> >* curves_ptr)
             {
