@@ -80,9 +80,9 @@ void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Poi
     //存入数据
     for(int i = 0; i < point_cloud_ptr->size; i++)
     {
-        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[0];
-        data_destination << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[1];
-        data_destination << " " << setiosflags(ios::fixed) << setprecision(7) << point_cloud_ptr->points.row(i)[2] << endl;
+        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[0];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[1];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[2] << endl;
     }
     data_destination.close();
 }

@@ -1,5 +1,5 @@
 include config/*.mk
 
-SRC :=  $(POINT3D_SRC) $(TEST_MAIN_DIR)/test_curve.cpp $(STRING_LIB_SRC)
+SRC := $(TEST_MAIN_DIR)/test_curve.cpp $(STRING_LIB_SRC) $(IO_OBJ_SRC) $(POINT3D_SRC) $(POINT_CLOUD_SRC)
 test_curve:
 	$(CC) -o $(TEST_DES_DIR)/$@  $(SRC)

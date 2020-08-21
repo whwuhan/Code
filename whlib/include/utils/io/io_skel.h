@@ -70,6 +70,7 @@ namespace wh
                         (*curves_ptr)[curves_count++] = wh::basic::adt::Curve<T>(curve); 
                     }
                 }
+                data_source.close();
             }
         }
     }
