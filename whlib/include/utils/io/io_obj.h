@@ -36,7 +36,7 @@ namespace wh
             {
                 //打开文件
                 std::ofstream data_destination(file_name);
-                data_destination << "# whlib point cloud obj file" << std::endl;//文件头注释
+                data_destination << "# whlib skeleton obj file" << std::endl;//文件头注释
                 
                 //获取当地时间
                 time_t now = time(0);
