@@ -11,4 +11,6 @@ int main()
     POINT3D p(1,2,3);
     cout << p.data << endl;
     cout << p << endl;
+    cout << p * 3 << endl;
+    cout << 3.1 * p << endl;
 }

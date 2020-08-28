@@ -23,13 +23,16 @@ namespace wh
             Point3d operator-(const Point3d& point);
             double operator[](int i);
             friend std::ostream& operator<<(std::ostream& ost, const Point3d point3d);
+            friend Point3d operator*(Point3d& point3d, double coefficient);
+            friend Point3d operator*(double coefficient, Point3d& point3d);
             //同步方法未来可能随xyz一同删除
             void syn_xyz_to_data();//xyz和data同步
             void syn_data_to_xyz();//data和xyz同步
         } POINT3D;
         //注意这里要声明友元函数，结构体里面不是声明这个函数，而是告诉说明这个是友元函数
         std::ostream& operator<<(std::ostream& ost, const Point3d point3d);
+        Point3d operator*(Point3d& point3d, double coefficient);
+        Point3d operator*(double coefficient, Point3d& point3d);
     }
 }
-
 #endif

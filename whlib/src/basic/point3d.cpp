@@ -42,6 +42,16 @@ ostream& wh::basic::operator<<(ostream& ost, const Point3d point3d)
     return ost;
 }
 
+//重载*运算符
+Point3d wh::basic::operator*(Point3d& point3d, double coefficient)
+{
+    return Point3d(point3d.data * coefficient);
+}
+
+Point3d wh::basic::operator*(double coefficient, Point3d& point3d)
+{
+    return Point3d(point3d.data * coefficient);
+}
 
 //xyz和data同步
 void wh::basic::Point3d::syn_xyz_to_data()
