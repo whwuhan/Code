@@ -6,7 +6,8 @@
 namespace wh
 {
     namespace alg
-    {
+    {   
+        //==============声明===============
         /**
          * Cardinal样条插值函数
          * points:初始点
@@ -17,6 +18,8 @@ namespace wh
         std::vector<T> cardinal(std::vector<T> points, int inter_amount = 1, double tightness = -0.5);
 
 
+
+        //==============算法实现===============
         template <typename T>
         std::vector<T> cardinal(std::vector<T> points, int inter_amount, double tightness)
         {

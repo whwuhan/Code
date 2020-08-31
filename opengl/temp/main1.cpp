@@ -1,5 +1,5 @@
-    #include "../include/glad/glad.h"
-    #include "../include/glfw/glfw3.h"
+    #include "../dep/glad/glad.h"
+    #include "../dep/GLFW/glfw3.h"
     #include <iostream>
     // settings
     const unsigned int SCR_WIDTH = 800;
