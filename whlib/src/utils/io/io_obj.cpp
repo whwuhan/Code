@@ -75,7 +75,11 @@ void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Poi
 
     //注意时间后面自带换行
     data_destination << "# " << date_time;//写入存储时间
-    data_destination << "o " << date_time;//以时间命名obj对象
+
+    //存储对象名
+    std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
+    int file_name_index = file_name_split.size() - 2;
+    data_destination << "o " << file_name_split[file_name_index];//obj对象
 
     //存入数据
     for(int i = 0; i < point_cloud_ptr->size; i++)
