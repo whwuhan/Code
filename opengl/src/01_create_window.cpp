@@ -1,5 +1,8 @@
-#include "../dep/glad/glad.h"
-#include "../dep/GLFW/glfw3.h"
+/**
+ * 初始化窗口
+*/
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -14,8 +17,9 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //设置主版本
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //设置次版本
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //设置使用核心模式
+    #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //mac用户需要设置，初始化才能有效
-    
+    #endif
     //创建一个窗口对象
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
     //参数依次是长，宽，名称，后两个参数忽略
@@ -49,10 +53,10 @@ int main()
         
         // 渲染
         // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);//设置清除颜色（背景颜色）
+        // glClearColor(0.2f, 0.3f, 0.3f, 1.0f);//设置清除颜色（背景颜色）
         glClear(GL_COLOR_BUFFER_BIT);//清除缓存
         
-        //交换颜色缓冲，它存储着GLFW中每一个像素颜色值的大缓冲，
+        //交换颜色缓冲，它存储着GLFW中每一个像素颜色值的缓冲，
         glfwSwapBuffers(window);
         //检查有没有触发什么事件，比如键盘输入，鼠标移动等
         glfwPollEvents();

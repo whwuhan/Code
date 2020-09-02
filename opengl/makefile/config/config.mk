@@ -17,6 +17,8 @@ MAKEFILE_DIR := ./
 DES_WIN_DIR := ../bin/win#win目标文件夹
 DES_MAC_DIR := ../bin/mac#mac目标文件夹
 DEP_DIR := ../dep
+SHADER_DIR := ../shader
+UTILS_DIR := ../utils
 
 # 静态库文件配置
 LIB_MAC_GLAD_A := $(LIB_MAC_DIR)/glad

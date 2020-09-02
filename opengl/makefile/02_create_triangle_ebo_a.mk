@@ -1,8 +1,9 @@
 # glfw静态库编译
 include config/*.mk
-create_window : 
+EXC_NAME := 02_create_triangle_ebo
+$(EXC_NAME) : 
 	$(CC) $(CXX_FLAGS) \
-	$(SRC_DIR)/create_window.cpp \
+	$(SRC_DIR)/$(EXC_NAME).cpp \
 	-I$(DEP_DIR) \
 	-L$(LIB_MAC_DIR) -lglad -lglfw3 \
 	-framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo \
