@@ -148,6 +148,7 @@ int main()
 
     // tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
     // -------------------------------------------------------------------------------------------
+    // 告诉OpenGL采样器对应的纹理单元
     ourShader.use(); 
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
@@ -167,14 +168,19 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         // bind textures on corresponding texture units
+        // 绑定纹理到对应的纹理单元
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture2);
 
         // create transformations
+        // 创建变换矩阵
+        // 先创建一个单位阵
         glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        // 生成平移矩阵
         transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+        // 生成旋转矩阵
         transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
         // get matrix's uniform location and set matrix
