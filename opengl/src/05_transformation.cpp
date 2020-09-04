@@ -178,14 +178,25 @@ int main()
         // 创建变换矩阵
         // 先创建一个单位阵
         glm::mat4 transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-        // 生成平移矩阵
+        //构造缩放矩阵 第二个参数表示缩放程度
+        transform = glm::scale(transform, glm::vec3(0.5, 0.5, 0.5));
+        //构造位移矩阵 后面这个参数表示位移距离
         transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
-        // 生成旋转矩阵
+        //构建旋转矩阵 
+        //参数：1变化矩阵  2旋转角度（弧度制）3绕哪个轴旋转 
+        //glm::vec3(0.0f, 0.0f, 1.0f)表示绕z轴旋转
         transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 
         // get matrix's uniform location and set matrix
         ourShader.use();
+        // 获取uniform变量的位置
         unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        // 将最后的变换矩阵传递给顶点着色器 
+        // 参数：
+        //1uniform变量的位置 
+        //2发送多少个矩阵 
+        //3是否交换行列 
+        //4矩阵的真正数据
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
         // render container
