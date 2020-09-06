@@ -48,49 +48,95 @@ int main()
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
-
     // 创建着色器程序
     std::string vertex_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.1.coordinate_system_vs.glsl";
+    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_vs.glsl";
     std::string fragment_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.1.coordinate_system_fs.glsl";
+    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
-    // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
-    // 点坐标和纹理坐标
+    //开始配置全局opengl
+    //glEnable和glDisable函数允许我们启用或禁用某个OpenGL功能。
+    //这个功能会一直保持启用/禁用状态，直到另一个调用来禁用/启用它。
+    glEnable(GL_DEPTH_TEST);//开启深度测试，保证在后面被遮挡的物体不会显示到前面
+    
+    //坐标信息，绘制一个立方体要36顶点
     float vertices[] = {
-        // positions          // texture coords
-         0.5f,  0.5f, 0.0f,   1.0f, 1.0f, // top right
-         0.5f, -0.5f, 0.0f,   1.0f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f,   0.0f, 1.0f  // top left 
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    };
+    // world space positions of our cubes
+    //模型矩阵，将物体摆放到世界坐标系中的合适位置
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
     };
 
-    // 索引
-    unsigned int indices[] = {
-        0, 1, 3, // first triangle
-        1, 2, 3  // second triangle
-    };
-
-    unsigned int VBO, VAO, EBO;
+    //VAO VBO
+    unsigned int VBO, VAO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-    //绑定VAO
+
     glBindVertexArray(VAO);
-    //绑定VAO和VBO
-    //传递数据
+
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    //启动顶点属性指针
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,5*sizeof(float),(void*)0);
-    glEnableVertexAttribArray(0);//0是着色器中的location
+
+    // position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    // texture coord attribute
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 
+    //纹理
     //创建加载纹理
     unsigned int texture1,texture2;
     //生成纹理对象
@@ -168,22 +214,26 @@ int main()
     }
     //释放图像资源
     stbi_image_free(data);
-
-    //激活着色器程序
+    
+    //使用着色器
+    // tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
+    // -------------------------------------------------------------------------------------------
     ourShader.use();
-    //告诉采样器对应的纹理
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
 
-    //渲染循环
-    while(!glfwWindowShouldClose(window))
-    {   
-        //处理键盘鼠标输入
+    //开始渲染
+    while (!glfwWindowShouldClose(window))
+    {
+        //处理输入
         processInput(window);
-        //设置背景颜色
+        
+        //设置清空颜色
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        //绑定纹理到对应的纹理单元
+        //清空缓存，注意这里也要清空每一帧的深度信息
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // also clear the depth buffer now!
+        
+        //激活纹理单元，绑定纹理
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture1);
         glActiveTexture(GL_TEXTURE1);
@@ -193,46 +243,40 @@ int main()
         ourShader.use();
 
         //创建变换矩阵
-        //模型矩阵
-        glm::mat4 model(1.0f);
-        model = glm::rotate(model,glm::radians(-55.0f),glm::vec3(1.0f, 0.0f, 0.0f));
-        //观察矩阵
-        glm::mat4 view(1.0f);
+        glm::mat4 view(1.0f);//相机矩阵
+        glm::mat4 projection(1.0f);//投影矩阵
+        //translate生成位移矩阵
         view = glm::translate(view,glm::vec3(0.0f,0.0f,-3.0f));
-        //投影矩阵
-        glm::mat4 projection(1.0f);
-        //参数
-        //1 视角FOV(Field of View)
-        //2 宽高比
-        //3 近平面
-        //4 远平面
-        projection = 
-        glm::perspective(glm::radians(45.0f), 
-        (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        //获取着色器中矩阵uniform的位置
-        unsigned int modelLoc = glGetUniformLocation(ourShader.ID,"model");
-        unsigned int viewLoc = glGetUniformLocation(ourShader.ID,"view");
-        unsigned int projectionLoc = glGetUniformLocation(ourShader.ID,"projection");
-        //传递矩阵值给着色器（三种方法）
-        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
-        // note: currently we set the projection matrix each frame, 
-        //but since the projection matrix rarely changes 
-        //it's often best practice to set it outside the main loop only once.
-        //一般在渲染循环外面设置投影矩阵，因为一般它不会改变
-        ourShader.setMat4("projection", projection);
+        //透视投影矩阵，一般不会改变，应在渲染循环外设置
+        projection = glm::perspective(glm::radians(45.0f),
+        (float)SCR_WIDTH / (float)SCR_HEIGHT,1.0f,100.0f);
+        //获取变换矩阵在着色器中的位置，设置变换矩阵
+        ourShader.setMat4("view",view);
+        ourShader.setMat4("projection",projection);
         
-        //绘制图像
+        //渲染箱子
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        //交换缓存
+        for(unsigned int i = 0; i < 10; i++)
+        {
+            //模型矩阵
+            glm::mat4 model(1.0f);
+            //位移，改变箱子的位置
+            model = glm::translate(model,cubePositions[i]);
+            float angle = 20.0f * i;
+            //旋转
+            model = glm::rotate(model,glm::radians(angle),glm::vec3(1.0f,0.3f,0.5f));
+            //获取变换矩阵在着色器中的位置，设置变换矩阵
+            ourShader.setMat4("model",model);
+            //绘制图像
+            glDrawArrays(GL_TRIANGLES,0,36);
+        }
         glfwSwapBuffers(window);
-        //轮询io事件
         glfwPollEvents();
     }
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
+    // glfw: terminate, clearing all previously allocated GLFW resources.
+    // ------------------------------------------------------------------
     glfwTerminate();
     return 0;
 }
@@ -249,7 +293,7 @@ void processInput(GLFWwindow *window)
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and 
+    // make sure the viewport matches the nw window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
