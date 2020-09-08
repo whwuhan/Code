@@ -50,12 +50,12 @@ int main()
     }
     // 创建着色器程序
     std::string vertex_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_vs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.1.camera.vs.glsl";
     std::string fragment_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_fs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.1.camera.fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
-    //开始配置全局opengl
+     //开始配置全局opengl
     //glEnable和glDisable函数允许我们启用或禁用某个OpenGL功能。
     //这个功能会一直保持启用/禁用状态，直到另一个调用来禁用/启用它。
     glEnable(GL_DEPTH_TEST); //开启深度测试，保证在后面被遮挡的物体不会显示到前面
@@ -220,6 +220,12 @@ int main()
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
 
+    //透视投影矩阵，一般不会改变，在渲染循环外设置
+    glm::mat4 projection(1.0f); //投影矩阵
+    projection = glm::perspective(glm::radians(45.0f),
+                        (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    ourShader.setMat4("projection", projection);
+
     //开始渲染
     while (!glfwWindowShouldClose(window))
     {
@@ -240,17 +246,16 @@ int main()
         //激活着色器
         ourShader.use();
 
-        //创建变换矩阵
-        glm::mat4 view(1.0f);       //相机矩阵
-        glm::mat4 projection(1.0f); //投影矩阵
-        //translate生成位移矩阵
-        view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-        //透视投影矩阵，一般不会改变，应在渲染循环外设置
-        projection = glm::perspective(glm::radians(45.0f),
-                                      (float)SCR_WIDTH / (float)SCR_HEIGHT, 1.0f, 100.0f);
-        //获取变换矩阵在着色器中的位置，设置变换矩阵
+        //相机矩阵
+        glm::mat4 view(1.0f);
+        float radius = 10.0f;//环绕的半径
+        //相机的XZ坐标，
+        float camX = sin(glfwGetTime()) * radius;
+        float camZ = cos(glfwGetTime()) * radius;
+        //参数：1位置，2目标，3向上向量
+        view = glm::lookAt(glm::vec3(camX,0.0f,camZ),glm::vec3(0.0f,0.0f,0.0f),glm::vec3(0.0f,1.0f,0.0f));
+        //设置shader中的view矩阵
         ourShader.setMat4("view", view);
-        ourShader.setMat4("projection", projection);
 
         //渲染箱子
         glBindVertexArray(VAO);
