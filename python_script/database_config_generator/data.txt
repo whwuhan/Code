@@ -1,0 +1,1937 @@
+<body>
+<div id="wrapper">
+    <!-- START PAGE SIDEBAR -->
+    <!-- START PAGE SIDEBAR -->
+<nav class="navbar-default navbar-static-side" role="navigation">
+<div class="sidebar-collapse">
+	<!-- START X-NAVIGATION -->
+	<ul class="nav metismenu" id="side-menu">
+		 <li class="nav-header">
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="../inspinia/img/fangle.jpg">
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">SMART PARKING</strong>
+                             </span> </span> </a>
+                </div>
+                <div class="logo-element">
+                    FANGLE
+                </div>
+            </li>
+
+
+		<li class="special_link">
+							                <a href="../system/userHomePage.fgl?clientKey=1599191436156"><span class="fa fa-home" style="font-size:28px;"></span> <span class="xn-text">首页</span></a>
+                <a href="../map/staticPage.fgl?clientKey=1599191436156"><span class="fa fa-map-marker" style="font-size:28px;"></span>
+					<span class="xn-text">可视化</span></a>
+					</li>
+
+			 			 			  
+			   			                        			      <li id="1000" value="1000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-cog"></i>
+					
+					<span class="nav-label">设置管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/systemdeviceParameters.do?operation=1&amp;clientKey=1599191436156&amp;openId=1001&amp;relation=1000">参数设置</a></li>
+			  			 			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">费率管理<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/billingmethods.do?operation=6&amp;clientKey=1599191436156&amp;openId=1012&amp;relation=1002">计费方式设置</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/ratecategory.do?operation=6&amp;clientKey=1599191436156&amp;openId=1013&amp;relation=1002">费率类别设置</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/billingtype.do?operation=6&amp;clientKey=1599191436156&amp;openId=1014&amp;relation=1002">计费类型设置</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/holidays.do?operation=6&amp;clientKey=1599191436156&amp;openId=1015&amp;relation=1002">节假日设置</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/yinchuanrate.do?operation=101&amp;clientKey=1599191436156&amp;openId=1019&amp;relation=1002">银川特殊费率</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			  													    <li><a href="../rightPages/regional.do?operation=6&amp;clientKey=1599191436156&amp;openId=1004&amp;relation=1000">区域管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/parkinglevel.do?operation=6&amp;clientKey=1599191436156&amp;openId=1005&amp;relation=1000">车位等级设置</a></li>
+			  			 			  
+			  													    <li><a href="../deviceManage/parkingInfo.do?src=1&amp;operation=6&amp;clientKey=1599191436156&amp;openId=1006&amp;relation=1000">车位管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/position.do?operation=6&amp;clientKey=1599191436156&amp;openId=1007&amp;relation=1000">岗位管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/managerLevel.do?operation=6&amp;clientKey=1599191436156&amp;openId=1008&amp;relation=1000">管理层级设置</a></li>
+			  			 			  
+			  													    <li><a href="../systemParameters/mainMeterUpgrade.do?operation=6&amp;clientKey=1599191436156&amp;openId=1010&amp;relation=1000">远程升级设置</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/organization.do?operation=6&amp;clientKey=1599191436156&amp;openId=1011&amp;relation=1000">组织架构</a></li>
+			  			 			  
+			  													    <li><a href="../task/taskConfig.do?operation=6&amp;clientKey=1599191436156&amp;openId=1020&amp;relation=1000">导出任务管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/device900m_c.do?operation=3&amp;clientKey=1599191436156&amp;openId=1024&amp;relation=1000">LORA参数管理</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/queryAd.fgl?operation=3&amp;clientKey=1599191436156&amp;openId=1025&amp;relation=1000">APP广告设置</a></li>
+			  			 			  
+			  													    <li><a href="../discountset/gotodiscountset.fgl?operation=3&amp;clientKey=1599191436156&amp;openId=1026&amp;relation=1000">优惠设置</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="2000" value="2000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-wrench"></i>
+					
+					<span class="nav-label">设备管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">地锁管理<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../lock/queryLockedeviceinfo.fgl?operation=3&amp;clientKey=1599191436156&amp;openId=1031&amp;relation=1021">地锁设备管理</a></li>
+			  			 			  
+			  													    <li><a href="../lock/queryLockArea.fgl?operation=3&amp;clientKey=1599191436156&amp;openId=1032&amp;relation=1021">地锁区域管理</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">引导屏<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/bootArea.do?operation=6&amp;clientKey=1599191436156&amp;openId=2008&amp;relation=1998">引导区域设置</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">详细记录<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/device_value_charge.do?operation=6&amp;clientKey=1599191436156&amp;openId=2006&amp;relation=1999">车检器上报值</a></li>
+			  			 			  
+			  													    <li><a href="../deviceVersion/queryDeviceVersion.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=2007&amp;relation=1999">版本更新记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			  													    <li><a href="../rightPages/mainMeter.do?operation=6&amp;mainMeterState=-1&amp;clientKey=1599191436156&amp;openId=2001&amp;relation=2000">基站管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/subMeter.do?operation=6&amp;clientKey=1599191436156&amp;openId=2002&amp;relation=2000">车检器管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/handset.do?operation=6&amp;clientKey=1599191436156&amp;openId=2003&amp;relation=2000">手持机管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/bootscreen.do?operation=6&amp;clientKey=1599191436156&amp;openId=2004&amp;relation=2000">引导屏管理</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="3000" value="3000" class=" active "><a href="javascript:void(0)">
+					                        <i class="fa fa-user"></i>
+					
+					<span class="nav-label">人员管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse in">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/maintenance.do?operation=6&amp;clientKey=1599191436156&amp;openId=3001&amp;relation=3000">维护员管理</a></li>
+			  			 			  
+			  													    <li class="active"><a href="../rightPages/tollcollectors.do?operation=6&amp;clientKey=1599191436156&amp;openId=3002&amp;relation=3000">收费员管理</a></li>
+			  			 			  
+			  													    <li><a href="../personnel/salesman.do?operation=6&amp;clientKey=1599191436156&amp;openId=3003&amp;relation=3000">销售员</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/inspector.do?operation=6&amp;clientKey=1599191436156&amp;openId=3004&amp;relation=3000">巡查员管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/equipMaintainer.do?operation=6&amp;clientKey=1599191436156&amp;openId=3006&amp;relation=3000">设备维护人员</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/showMap.do?operation=6&amp;clientKey=1599191436156&amp;openId=3007&amp;relation=3000">人员地图定位</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/queryAppUserList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=3008&amp;relation=3000">车主用户</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="4000" value="4000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-university"></i>
+					
+					<span class="nav-label">营业厅管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/pointsale.do?operation=6&amp;clientKey=1599191436156&amp;openId=4001&amp;relation=4000">营业厅管理</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="5000" value="5000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-credit-card"></i>
+					
+					<span class="nav-label">IC卡管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../iccard/iCCard.do?operation=6&amp;clientKey=1599191436156&amp;openId=5001&amp;relation=5000">卡信息登记</a></li>
+			  			 			  
+			  													    <li><a href="../iccard/iccardDeals.do?operation=6&amp;clientKey=1599191436156&amp;openId=5002&amp;relation=5000">卡优惠等级设置</a></li>
+			  			 			  
+			  													    <li><a href="../iccard/iccardsalesparameter.do?operation=3&amp;clientKey=1599191436156&amp;openId=5003&amp;relation=5000">卡销售参数设置</a></li>
+			  			 			  
+			  													    <li><a href="../iccard/iccardRecharge.do?operation=6&amp;clientKey=1599191436156&amp;openId=5004&amp;relation=5000">卡充值套餐设置</a></li>
+			  			 			  
+			  													    <li><a href="../iccard/iccardType.do?operation=6&amp;clientKey=1599191436156&amp;openId=5005&amp;relation=5000">卡优惠类型设置</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="6000" value="6000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-cc"></i>
+					
+					<span class="nav-label">标签管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/labels.do?operation=6&amp;clientKey=1599191436156&amp;openId=6001&amp;relation=6000">标签信息管理</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/labelLevel.do?operation=6&amp;clientKey=1599191436156&amp;openId=6002&amp;relation=6000">标签等级设置</a></li>
+			  			 			  
+			  													    <li><a href="../labels/labelDealsSettings.do?operation=6&amp;clientKey=1599191436156&amp;openId=6003&amp;relation=6000">标签优惠类型</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/labelsalesparameter.do?operation=3&amp;clientKey=1599191436156&amp;openId=6004&amp;relation=6000">标签销售参数</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/labelrechargepackage.do?operation=6&amp;clientKey=1599191436156&amp;openId=6005&amp;relation=6000">标签充值套餐</a></li>
+			  			 			  
+			  													    <li><a href="../labels/packageDay.do?operation=6&amp;clientKey=1599191436156&amp;openId=6006&amp;relation=6000">标签包天优惠设置</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="7000" value="7000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-exclamation"></i>
+					
+					<span class="nav-label">告警管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../warning/equipmentFailure.do?operation=6&amp;clientKey=1599191436156&amp;openId=7001&amp;relation=7000">设备故障查询</a></li>
+			  			 			  
+			  													    <li><a href="../warning/businessAlarm.do?operation=6&amp;clientKey=1599191436156&amp;openId=7002&amp;relation=7000">业务告警查询</a></li>
+			  			 			  
+			  													    <li><a href="../warning/suspectedFailure.do?operation=6&amp;clientKey=1599191436156&amp;openId=7003&amp;relation=7000">疑似故障查询</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="8000" value="8000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-jpy"></i>
+					
+					<span class="nav-label">对账管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../reconciliation/postReconciliation.do?operation=6&amp;src=1&amp;clientKey=1599191436156&amp;openId=8001&amp;relation=8000">路段对账</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="8100" value="8100" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-tty"></i>
+					
+					<span class="nav-label">车位预定管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/parkingScheduled.do?operation=6&amp;clientKey=1599191436156&amp;openId=8101&amp;relation=8100">车位预定</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="8200" value="8200" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-ambulance"></i>
+					
+					<span class="nav-label">标签车辆通知 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/tagCarNotice.do?operation=6&amp;clientKey=1599191436156&amp;openId=8201&amp;relation=8200">标签车辆通知</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="8300" value="8300" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-taxi"></i>
+					
+					<span class="nav-label">异常车辆通知 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/abnormalCarNotice.do?operation=6&amp;clientKey=1599191436156&amp;openId=8301&amp;relation=8300">异常车辆通知</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="9000" value="9000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-list-ul"></i>
+					
+					<span class="nav-label">结算管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../settlement/pointOfSaleSettlement.do?operation=1&amp;clientKey=1599191436156&amp;openId=9001&amp;relation=9000">营业厅结算</a></li>
+			  			 			  
+			  													    <li><a href="../settlement/pointOfSaleSettlement.do?operation=14&amp;clientKey=1599191436156&amp;openId=9002&amp;relation=9000">营业厅结算查询</a></li>
+			  			 			  
+			  													    <li><a href="../settlement/tollSettlement.do?operation=6&amp;clientKey=1599191436156&amp;openId=9003&amp;relation=9000">收费员结算</a></li>
+			  			 			  
+			  													    <li><a href="../settlement/tollSettlement.do?operation=15&amp;clientKey=1599191436156&amp;openId=9004&amp;relation=9000">收费员结算记录查询</a></li>
+			  			 			  
+			  													    <li><a href="../settlement/positionSettlement.do?operation=22&amp;clientKey=1599191436156&amp;openId=9009&amp;relation=9000">岗位结算</a></li>
+			  			 			  
+			  													    <li><a href="../settlement/positionSettlement.do?operation=6&amp;clientKey=1599191436156&amp;openId=9010&amp;relation=9000">岗位结算记录查询</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="9100" value="9100" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-motorcycle"></i>
+					
+					<span class="nav-label">特殊车辆管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../rightPages/regional.do?operation=34&amp;clientKey=1599191436156&amp;openId=1016&amp;relation=9100">路段包月限制</a></li>
+			  			 			  
+			  													    <li><a href="../record/vehicleCharge.do?operation=7&amp;clientKey=1599191436156&amp;openId=9101&amp;relation=9100">路段收费设置</a></li>
+			  			 			  
+			  													    <li><a href="../record/PayedVehicle.do?operation=6&amp;clientKey=1599191436156&amp;openId=9102&amp;relation=9100">包年月辆查询</a></li>
+			  			 			  
+			  													    <li><a href="../record/FreeVehicle.do?operation=6&amp;clientKey=1599191436156&amp;openId=9103&amp;relation=9100">免费车辆查询</a></li>
+			  			 			  
+			  													    <li><a href="../record/PayedVehicle.do?operation=20&amp;clientKey=1599191436156&amp;openId=9104&amp;relation=9100">续费车辆记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/PayedVehicle.do?operation=21&amp;clientKey=1599191436156&amp;openId=9105&amp;relation=9100">车辆删除记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/PayedVehicle.do?operation=24&amp;clientKey=1599191436156&amp;openId=9106&amp;relation=9100">车辆停用记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="10000" value="10000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-bolt"></i>
+					
+					<span class="nav-label">实时车位查询 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../realTimeQuery/regionalQuery.do?operation=6&amp;clientKey=1599191436156&amp;openId=10001&amp;relation=10000">按区域查询</a></li>
+			  			 			  
+			  													    <li><a href="../realTimeQuery/positionQuery.do?operation=6&amp;clientKey=1599191436156&amp;openId=10002&amp;relation=10000">按岗位查询</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/position.do?operation=210&amp;clientKey=1599191436156&amp;openId=10003&amp;relation=10000">收费岗位实时</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/managerLevel.do?operation=201&amp;clientKey=1599191436156&amp;openId=10004&amp;relation=10000">管理岗位实时</a></li>
+			  			 			  
+			  													    <li><a href="../realTimeQuery/regionalQuery.do?operation=101&amp;carType=0&amp;clientKey=1599191436156&amp;openId=10005&amp;relation=10000">汽车车位使用率</a></li>
+			  			 			  
+			  													    <li><a href="../realTimeQuery/regionalQuery.do?operation=101&amp;carType=1&amp;clientKey=1599191436156&amp;openId=10006&amp;relation=10000">摩托车车位使用率</a></li>
+			  			 			  
+			  													    <li><a href="../realTimeQuery/realTimeMonin.do?operation=100&amp;clientKey=1599191436156&amp;openId=10008&amp;relation=10000">车位实时监听</a></li>
+			  			 			  
+			  													    <li><a href="../realTimeQuery/regionalQuery.do?operation=7&amp;clientKey=1599191436156&amp;openId=10010&amp;relation=10000">按停车场查询</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="11000" value="11000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-file-text"></i>
+					
+					<span class="nav-label">详细记录查询 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/parkingRecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11010&amp;relation=11000">车位探测记录</a></li>
+			  			 			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">人工记录<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/boughtChargeRecord.do?operation=6&amp;statusType=0&amp;clientKey=1599191436156&amp;openId=11021&amp;relation=11020">买时消费记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/artificialrecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11022&amp;relation=11020">人工收费记录查询</a></li>
+			  			 			  
+			  													    <li><a href="../record/tollReconciliation.do?operation=6&amp;clientKey=1599191436156&amp;openId=11023&amp;relation=11020">收费员在岗记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/tollReconciliation.do?operation=6&amp;userType=1&amp;clientKey=1599191436156&amp;openId=11024&amp;relation=11020">巡查员在岗记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/recoveredrecord.do?operation=103&amp;clientKey=1599191436156&amp;openId=11025&amp;relation=11020">追缴记录查询</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">标签记录<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/labelrecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11031&amp;relation=11030">消费记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/vendingBackcardRecord.do?operation=6&amp;type=1&amp;clientKey=1599191436156&amp;openId=11032&amp;relation=11030">销售记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/labelChargeRecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11033&amp;relation=11030">充值记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/vendingBackcardRecord.do?operation=6&amp;type=2&amp;clientKey=1599191436156&amp;openId=11034&amp;relation=11030">退还记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/reportLossRecord.do?operation=6&amp;softwareType=0&amp;opertype=0&amp;clientKey=1599191436156&amp;openId=11035&amp;relation=11030">挂失记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/labelPackageRecord.do?operation=16&amp;clientKey=1599191436156&amp;openId=11036&amp;relation=11030">套餐更换记录</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/labelpackageRenewals.do?operation=16&amp;clientKey=1599191436156&amp;openId=11037&amp;relation=11030">套餐续费记录</a></li>
+			  			 			  
+			  													    <li><a href="../rightPages/labelModify.do?operation=16&amp;clientKey=1599191436156&amp;openId=11038&amp;relation=11030">信息修改记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/suppleReplace.do?operation=16&amp;clientKey=1599191436156&amp;openId=11039&amp;relation=11030">补办更换记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/labelsRefundRecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11040&amp;relation=11030">退款记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">IC记录<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/iccardsaledRecord.do?operation=11&amp;clientKey=1599191436156&amp;openId=11052&amp;relation=11050">IC卡销售记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/iccardRechargeRecord.do?operation=12&amp;clientKey=1599191436156&amp;openId=11053&amp;relation=11050">IC卡充值记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/iccardBackRecord.do?operation=13&amp;clientKey=1599191436156&amp;openId=11054&amp;relation=11050">IC卡退卡记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/iccarddeduct.do?operation=6&amp;clientKey=1599191436156&amp;openId=11055&amp;relation=11050">IC卡交易记录</a></li>
+			  			 			  
+			  													    <li><a href="../iccard/iccardLoss.do?operation=6&amp;clientKey=1599191436156&amp;openId=11056&amp;relation=11050">IC卡挂失转卡记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">APP车主记录<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../appMng/parkingRecordList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11061&amp;relation=11060">自主停车记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/queryParkingorderList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11062&amp;relation=11060">停车申请记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/queryWalletRecordList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11064&amp;relation=11060">钱包交易明细</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/walletRechargeOrderList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11065&amp;relation=11060">在线支付记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/bookingList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11066&amp;relation=11060">预订订单记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/complaintsAdviceList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11067&amp;relation=11060">投诉建议记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/queryCarInfoList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11068&amp;relation=11060">车辆绑定记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/bookingList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11069&amp;relation=11060">预订订单记录</a></li>
+			  			 			  
+			  													    <li><a href="../appMng/depositList.fgl?operation=6&amp;clientKey=1599191436156&amp;openId=11070&amp;relation=11060">保证金记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			  													    <li><a href="../record/blacklistrecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11092&amp;relation=11000">黑名单记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/historyRecordQuery.do?operation=6&amp;clientKey=1599191436156&amp;openId=11093&amp;relation=11000">历史消费记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/susMaliciousRecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11095&amp;relation=11000">异常记录查询</a></li>
+			  			 			  
+			  													    <li><a href="../record/punishrecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=11096&amp;relation=11000">行政处罚记录</a></li>
+			  			 			  
+			  													    <li><a href="../record/illegallyparked.do?operation=6&amp;clientKey=1599191436156&amp;openId=11097&amp;relation=11000">违停记录查询</a></li>
+			  			 			  
+			  													    <li><a href="../record/parkFeeQuery.do?operation=6&amp;clientKey=1599191436156&amp;openId=13233&amp;relation=11000">停车场收费记录</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="12000" value="12000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-bar-chart"></i>
+					
+					<span class="nav-label">报表管理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/reportLayout.do?operation=6&amp;clientKey=1599191436156&amp;openId=12010&amp;relation=12000">报表配置</a></li>
+			  			 			  
+			  													    <li><a href="../report/totalIncomeStatementReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12020&amp;relation=12000">收入总报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/totalIncomeEnclosedParkingReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12021&amp;relation=12000">封闭式停车场报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/consumerScaleReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12030&amp;relation=12000">消费比例报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/operatingIncomeControlReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12035&amp;relation=12000">营收类型对照报表</a></li>
+			  			 			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">车位报表<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/parkingEmployReport.do?operation=20&amp;clientKey=1599191436156&amp;openId=12041&amp;relation=12040">车位使用情况报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/parkingUtilizationRepor.do?operation=6&amp;clientKey=1599191436156&amp;openId=12042&amp;relation=12040">汽车车位使用率报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/parkingUtilizationRepor.do?operation=7&amp;clientKey=1599191436156&amp;openId=12043&amp;relation=12040">摩托车位使用率报表</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">人工收费报表<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/prepaymentReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12051&amp;relation=12050">买时收费统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/artificialChargeReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12052&amp;relation=12050">人工收费统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/collectorChargeReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12053&amp;relation=12050">收费员工作统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/collectorSituationReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12054&amp;relation=12050">收费员收费情况统计</a></li>
+			  			 			  
+			  													    <li><a href="../report/tollperformanceReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12055&amp;relation=12050">收费员业绩统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/tollSignReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12056&amp;relation=12050">收费员考勤报表</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">标签报表<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/labelConsumerReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12061&amp;relation=12060">标签消费统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/salesmanReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12062&amp;relation=12060">标签销售充值统计报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/labelDetailReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12063&amp;relation=12060">智能车载标签明细报表</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">IC卡报表<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/iccarddeductReport.do?operation=10&amp;clientKey=1599191436156&amp;openId=12071&amp;relation=12070">IC卡交易统计表</a></li>
+			  			 			  
+			  													    <li><a href="../report/iccardsaledReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12073&amp;relation=12070">IC卡销售统计报表</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			     									 			      <li class=""><a href="javascript:void(0)">告警报表<span class="fa arrow"></span></a><ul class="nav nav-third-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../report/equipmentFailureReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12081&amp;relation=12080">设备故障报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/inspectorWarning.do?operation=6&amp;clientKey=1599191436156&amp;openId=12082&amp;relation=12080">告警处理统计</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			  													    <li><a href="../report/equipmentReport.do?operation=6&amp;clientKey=1599191436156&amp;openId=12090&amp;relation=12000">设备报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/EwalletConsumptionStatisticsAction.do?operation=6&amp;clientKey=1599191436156&amp;openId=13237&amp;relation=12000">车主电子钱包消费报表</a></li>
+			  			 			  
+			  													    <li><a href="../report/querySyParkRecord.do?operation=6&amp;clientKey=1599191436156&amp;openId=13238&amp;relation=12000">收入汇总报表</a></li>
+			  			 			         			      					</ul></li>
+								    			  
+			   			                        			      <li id="13000" value="13000" class=""><a href="javascript:void(0)">
+					                        <i class="fa fa-user"></i>
+					
+					<span class="nav-label">客服处理 </span><span class="fa arrow"></span></a><ul class="nav nav-second-level collapse">
+			    			  			 			         			    			  
+			  													    <li><a href="../record/customerComplaintQuery.do?operation=6&amp;clientKey=1599191436156&amp;openId=13001&amp;relation=13000">退款</a></li>
+			  			 			  
+			  													    <li><a href="../record/deviceException.do?operation=6&amp;clientKey=1599191436156&amp;openId=13002&amp;relation=13000">异常走车</a></li>
+			  			 			 			 				 </ul></li>
+				 </ul>
+			 		<li><a href="#"><span></span></a></li>
+	
+	<!-- END X-NAVIGATION -->
+</div>
+</nav>
+<!-- END PAGE SIDEBAR -->    <!-- END PAGE SIDEBAR -->
+    <div id="page-wrapper" class="gray-bg dashbard-1" style="min-height: 1430px;">
+        <div class="row border-bottom">
+            
+<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+	<div class="navbar-header">
+		<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+	</div>
+
+	<ul class="nav navbar-top-links navbar-right">
+		<li class="dropdown"><a href="#" onclick="userInfo('1')"> <i class="fa fa-user"></i></a></li>
+		
+		<li class="dropdown"><a class="mb-control" data-box="#mb-version"> <i class="fa fa-book"></i></a></li>
+		
+		<li><a class="mb-control" data-box="#mb-signout"> <i class="fa fa-sign-out"></i></a></li>
+		
+	</ul>
+</nav>
+
+<script>
+	function userInfo(userType){
+		if(userType=='1'){
+						window.open("../system/userInfo.fgl?clientKey=1599191436156","frmright")
+		}else if(userType=='0'){
+						window.open("../system/userInfo.fgl?clientKey=1599191436156","frmright")
+		}else if(userType=='2'){
+						window.open("../framework/userBaxi.do?type=1&operation=10&clientKey=1599191436156","frmright")
+		}else if(userType=='3'){
+						window.open("../framework/userBaxi.do?type=2&operation=10&clientKey=1599191436156","frmright")
+		}else if(userType=='4'){
+						window.open("../framework/userLabel.do?operation=15&clientKey=1599191436156","frmright")
+		}else{
+			window.open("../system/userInfo.fgl?clientKey=1599191436156","frmright")
+		}
+	}
+</script>
+<!-- END X-NAVIGATION VERTICAL -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- 内容 -->
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                                        
+                    <li class="active">收费员管理</li>
+                </ul>
+                <!-- END BREADCRUMB -->                       
+                
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">
+                    <div class="row">
+                        <div class="col-md-12">
+		                        <div class="panel-heading ui-draggable-handle">
+		                            
+		                        </div>
+		                        <form action="tollcollectors.do" name="form" id="form" method="post">
+			                        <input type="hidden" name="clientKey" value="1599191436156">
+			                        <input type="hidden" id="operation" name="operation" value="6">
+			                        <input type="hidden" id="windowType" name="windowType" value="shrink">
+			                        <input type="hidden" id="personnelId" name="personnelId" value="">
+			                        <input type="hidden" id="personnelPass" name="personnelPass" value="">
+			                        <input type="hidden" id="personnelType" name="personnelType" value="0">
+			                        <input type="hidden" id="personId1" name="personId1" value="">
+			                        <input type="hidden" id="personNum1" name="personNum1" value="">
+			                        <input type="hidden" id="servicePass" name="servicePass" value="">
+			                        <input type="hidden" id="operationType" name="operationType" value="">
+                                    <div style="width: 100%;height: 1200px;overflow: auto;">
+	                        			<table class="table table-bordered table-striped col-md-12">
+	                        			<tbody><tr>
+	                        				<td style="text-align: right;width:10%">收费员编号:</td>
+	                        				<td>
+	                        				<input type="text" maxlength="5" id="personnelNumber" name="personnelNumber" value="" onblur="buquan('personnelNumber',5)" onkeyup="if(/\D/.test(this.value)){AlertMsg('只能输入数字');this.value='';}" onkeydown="if(event.keyCode==13){search();}"></td>
+	                        			</tr>
+	                        			<tr>
+	                        				<td style="text-align: right;width:10%">收费员名称:</td>
+	                        				<td> <input type="text" maxlength="50" id="personnelName" name="personnelName" value="" onkeydown="if(event.keyCode==13){search();}"></td>
+	                        			</tr>
+	                        			<tr>
+	                        				<td colspan="2">
+	                        					<button type="button" onclick="search()"><span class="icon_find">查询</span></button>
+	                        					<button type="button" onclick="importExcel()"><span class="icon_xls">导出</span></button> 
+	                        					<button type="button" onclick="addTollcollectors()"><span class="icon_add">新增</span></button> 
+	                        					<button type="button" onclick="clearForm()"><span class="icon_empty">清空</span></button> 
+	                        					<button type="button" onclick="forcedOffline('../rightPages/tollcollectors.do?operation=121&amp;pageNo=1&amp;pageSize=50&amp;clientKey=1599191436156&amp;manId=')"><span class="icon_reload">强制离线</span></button> 
+	                        						                        				</td>
+	                        			</tr>
+	                        		</tbody></table>
+		                        		<table class="table table-bordered table-striped col-md-12">
+		                        		<tbody><tr>
+		                        			<th></th>
+		                        			<th>收费员编号</th>
+		                        			<th>收费员名称</th>
+		                        					                        			<th>联系电话</th>
+		                        					                        					                        					                        			<th>权限</th>
+		                        			<th>处理状态</th>
+		                        			<th>人员性质</th>
+		                        			<th>交票时间</th>
+		                        			<th>结算时间</th>
+		                        			<th>操作</th>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="1">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(1,0)" class="linkColor">00001</a></td>
+		                        			<td><span title="王新">王新</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-10-23 11:31:18</td>
+		                        			<td>2018-10-23 11:31:18</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('1',',00001');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('1');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="2">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(2,1)" class="linkColor">00002</a></td>
+		                        			<td><span title="刘达英">刘达英</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-06-01 07:10:55</td>
+		                        			<td>2018-06-01 07:10:55</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('2',',00002');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('2');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="3">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(3,0)" class="linkColor">00003</a></td>
+		                        			<td><span title="陈仁智">陈仁智</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-05-18 11:14:29</td>
+		                        			<td>2018-05-18 11:14:29</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('3',',00003');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('3');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="4">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(4,0)" class="linkColor">00004</a></td>
+		                        			<td><span title="邱理方">邱理方</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-12-21 19:37:54</td>
+		                        			<td>2019-12-21 19:37:54</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('4',',00004');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('4');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="5">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(5,0)" class="linkColor">00005</a></td>
+		                        			<td><span title="易科燕">易科燕</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-06-01 07:08:48</td>
+		                        			<td>2018-06-01 07:08:48</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('5',',00005');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('5');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="6">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(6,0)" class="linkColor">00006</a></td>
+		                        			<td><span title="胡才春">胡才春</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-05-18 07:20:23</td>
+		                        			<td>2018-05-18 07:20:23</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('6',',00006');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('6');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="7">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(7,0)" class="linkColor">00007</a></td>
+		                        			<td><span title="杨志洪">杨志洪</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-12-26 11:22:44</td>
+		                        			<td>2019-12-26 11:22:44</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('7',',00007');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('7');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="8">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(8,0)" class="linkColor">00008</a></td>
+		                        			<td><span title="曾太国">曾太国</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-04-17 12:54:33</td>
+		                        			<td>2018-04-17 12:54:33</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('8',',00008');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('8');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="9">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(9,1)" class="linkColor">00009</a></td>
+		                        			<td><span title="谢广燕">谢广燕</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-04-17 12:54:06</td>
+		                        			<td>2018-04-17 12:54:06</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('9',',00009');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('9');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="10">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(10,1)" class="linkColor">00010</a></td>
+		                        			<td><span title="赖召英">赖召英</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-04-06 09:56:58</td>
+		                        			<td>2018-04-06 09:56:58</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('10',',00010');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('10');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="11">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(11,1)" class="linkColor">00011</a></td>
+		                        			<td><span title="陈勇">陈勇</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-04-03 08:59:09</td>
+		                        			<td>2018-04-03 08:59:09</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('11',',00011');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('11');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="12">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(12,0)" class="linkColor">00012</a></td>
+		                        			<td><span title="杨友叔">杨友叔</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-05-29 08:07:48</td>
+		                        			<td>2018-05-29 08:07:48</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('12',',00012');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('12');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="13">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(13,1)" class="linkColor">00013</a></td>
+		                        			<td><span title="姜云胜">姜云胜</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-12-05 12:25:36</td>
+		                        			<td>2019-12-05 12:25:36</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('13',',00013');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('13');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="14">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(14,1)" class="linkColor">00014</a></td>
+		                        			<td><span title="陈登友">陈登友</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-30 16:40:10</td>
+		                        			<td>2018-03-30 16:40:10</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('14',',00014');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('14');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="15">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(15,0)" class="linkColor">00015</a></td>
+		                        			<td><span title="吕群">吕群</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-06-27 15:05:21</td>
+		                        			<td>2019-06-27 15:05:21</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('15',',00015');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('15');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="16">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(16,1)" class="linkColor">00016</a></td>
+		                        			<td><span title="唐正梅">唐正梅</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-30 16:39:39</td>
+		                        			<td>2018-03-30 16:39:39</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('16',',00016');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('16');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="17">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(17,1)" class="linkColor">00017</a></td>
+		                        			<td><span title="杨启秀">杨启秀</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-05-15 22:49:05</td>
+		                        			<td>2020-05-15 22:49:05</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('17',',00017');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('17');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="18">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(18,0)" class="linkColor">00018</a></td>
+		                        			<td><span title="唐贵芳">唐贵芳</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-11-23 10:28:08</td>
+		                        			<td>2018-11-23 10:28:08</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('18',',00018');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('18');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="19">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(19,1)" class="linkColor">00019</a></td>
+		                        			<td><span title="胡华强">胡华强</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-20 08:47:46</td>
+		                        			<td>2018-03-20 08:47:46</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('19',',00019');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('19');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="20">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(20,1)" class="linkColor">00020</a></td>
+		                        			<td><span title="吴红">吴红</span></td>
+		                        					                        			<td>15023711188</td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-02-08 14:56:40</td>
+		                        			<td>2018-02-08 14:56:40</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('20',',00020');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('20');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="21">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(21,1)" class="linkColor">00021</a></td>
+		                        			<td><span title="唐家凤">唐家凤</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-12-01 01:13:49</td>
+		                        			<td>2019-12-01 01:13:49</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('21',',00021');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('21');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="22">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(22,1)" class="linkColor">00022</a></td>
+		                        			<td><span title="胡仲建">胡仲建</span></td>
+		                        					                        			<td>13883285437</td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-02-08 14:59:03</td>
+		                        			<td>2018-02-08 14:59:03</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('22',',00022');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('22');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="23">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(23,1)" class="linkColor">00023</a></td>
+		                        			<td><span title="兰观艳">兰观艳</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-02-28 16:51:51</td>
+		                        			<td>2019-02-28 16:51:51</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('23',',00023');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('23');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="24">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(24,1)" class="linkColor">00024</a></td>
+		                        			<td><span title="陆正芬">陆正芬</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-15 10:11:15</td>
+		                        			<td>2018-03-15 10:11:15</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('24',',00024');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('24');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="25">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(25,1)" class="linkColor">00025</a></td>
+		                        			<td><span title="马选碧">马选碧</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-06-05 07:51:15</td>
+		                        			<td>2020-06-05 07:51:15</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('25',',00025');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('25');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="26">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(26,1)" class="linkColor">00026</a></td>
+		                        			<td><span title="唐万彬">唐万彬</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-06-08 22:37:06</td>
+		                        			<td>2020-06-08 22:37:06</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('26',',00026');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('26');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="27">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(27,0)" class="linkColor">00027</a></td>
+		                        			<td><span title="罗代品">罗代品</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-07-01 07:23:40</td>
+		                        			<td>2020-07-01 07:23:40</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('27',',00027');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('27');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="28">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(28,0)" class="linkColor">00028</a></td>
+		                        			<td><span title="唐春秀">唐春秀</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-07-29 10:33:47</td>
+		                        			<td>2020-07-29 10:33:47</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('28',',00028');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('28');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="29">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(29,1)" class="linkColor">00029</a></td>
+		                        			<td><span title="石里坤">石里坤</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-15 09:59:21</td>
+		                        			<td>2018-03-15 09:59:21</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('29',',00029');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('29');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="30">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(30,0)" class="linkColor">00030</a></td>
+		                        			<td><span title="吴家录">吴家录</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-09-16 10:57:42</td>
+		                        			<td>2018-09-16 10:57:42</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('30',',00030');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('30');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="31">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(31,1)" class="linkColor">00031</a></td>
+		                        			<td><span title="苏和平">苏和平</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-09-10 22:40:16</td>
+		                        			<td>2018-09-10 22:40:16</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('31',',00031');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('31');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="32">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(32,0)" class="linkColor">00032</a></td>
+		                        			<td><span title="罗素群">罗素群</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-12-31 18:40:20</td>
+		                        			<td>2019-12-31 18:40:20</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('32',',00032');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('32');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="33">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(33,1)" class="linkColor">00033</a></td>
+		                        			<td><span title="姜明蓝">姜明蓝</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-11-30 14:57:54</td>
+		                        			<td>2018-11-30 14:57:54</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('33',',00033');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('33');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="34">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(34,0)" class="linkColor">00034</a></td>
+		                        			<td><span title="何汉燕">何汉燕</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-07-29 10:34:27</td>
+		                        			<td>2020-07-29 10:34:27</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('34',',00034');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('34');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="35">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(35,0)" class="linkColor">00035</a></td>
+		                        			<td><span title="粟朝卿">粟朝卿</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-15 10:01:31</td>
+		                        			<td>2018-03-15 10:01:31</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('35',',00035');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('35');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="36">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(36,0)" class="linkColor">00036</a></td>
+		                        			<td><span title="尹红霞">尹红霞</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-09-10 17:32:05</td>
+		                        			<td>2018-09-10 17:32:05</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('36',',00036');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('36');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="37">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(37,1)" class="linkColor">00037</a></td>
+		                        			<td><span title="张若淑">张若淑</span></td>
+		                        					                        			<td>13883773032</td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-02-08 19:23:04</td>
+		                        			<td>2018-02-08 19:23:04</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('37',',00037');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('37');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="38">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(38,1)" class="linkColor">00038</a></td>
+		                        			<td><span title="代贤玉">代贤玉</span></td>
+		                        					                        			<td>18523082132</td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-02-08 19:24:27</td>
+		                        			<td>2018-02-08 19:24:27</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('38',',00038');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('38');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="39">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(39,1)" class="linkColor">00039</a></td>
+		                        			<td><span title="李井莲">李井莲</span></td>
+		                        					                        			<td>15825937013</td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-02-08 19:27:46</td>
+		                        			<td>2018-02-08 19:27:46</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('39',',00039');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('39');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="40">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(40,1)" class="linkColor">00040</a></td>
+		                        			<td><span title="陈永仙">陈永仙</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-07-29 10:35:09</td>
+		                        			<td>2020-07-29 10:35:09</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('40',',00040');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('40');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="41">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(41,0)" class="linkColor">00041</a></td>
+		                        			<td><span title="胡贵方">胡贵方</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-09-02 08:03:25</td>
+		                        			<td>2020-09-02 08:03:25</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('41',',00041');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('41');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="42">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(42,1)" class="linkColor">00042</a></td>
+		                        			<td><span title="杨文琼">杨文琼</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-10-11 19:58:57</td>
+		                        			<td>2018-10-11 19:58:57</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('42',',00042');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('42');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="43">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(43,1)" class="linkColor">00043</a></td>
+		                        			<td><span title="高平">高平</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2019-06-27 15:04:53</td>
+		                        			<td>2019-06-27 15:04:53</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('43',',00043');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('43');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="44">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(44,0)" class="linkColor">00044</a></td>
+		                        			<td><span title="谢荣秀">谢荣秀</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-12-14 15:03:49</td>
+		                        			<td>2018-12-14 15:03:49</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('44',',00044');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('44');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="45">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(45,1)" class="linkColor">00045</a></td>
+		                        			<td><span title="谭先梅">谭先梅</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-16 14:43:23</td>
+		                        			<td>2018-03-16 14:43:23</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('45',',00045');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('45');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="46">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(46,0)" class="linkColor">00046</a></td>
+		                        			<td><span title="童玲丽">童玲丽</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-16 14:44:09</td>
+		                        			<td>2018-03-16 14:44:09</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('46',',00046');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('46');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="47">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(47,0)" class="linkColor">00047</a></td>
+		                        			<td><span title="余昌芳">余昌芳</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					离线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2020-08-30 07:45:35</td>
+		                        			<td>2020-08-30 07:45:35</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('47',',00047');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('47');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="48">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(48,1)" class="linkColor">00048</a></td>
+		                        			<td><span title="吴玉兰">吴玉兰</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-05-07 19:33:01</td>
+		                        			<td>2018-05-07 19:33:01</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('48',',00048');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('48');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="49">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(49,1)" class="linkColor">00049</a></td>
+		                        			<td><span title="谢吉华">谢吉华</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-16 15:15:05</td>
+		                        			<td>2018-03-16 15:15:05</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('49',',00049');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('49');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr>
+		                        			<td align="center">
+		                        				<input type="radio" name="keyId" id="keyId" value="50">
+		                        			</td>
+		                        			<td>
+		                        				<a href="#" onclick="updateTollcollectors(50,1)" class="linkColor">00050</a></td>
+		                        			<td><span title="石庆方">石庆方</span></td>
+		                        					                        			<td></td>
+		                        					                        					                        					                        			<td><span title="停车收费">停车收费</span></td>
+		                        			<td>
+		                        						                        					在线
+		                        						                        			</td>
+		                        			<td>
+		                        				正式人员
+		                        			</td>
+		                        			<td>2018-03-19 09:43:53</td>
+		                        			<td>2018-03-19 09:43:53</td>
+		                        			<td>
+			                        			<span class="glyphicon glyphicon-remove hand" title="删除" onclick="onDelete('50',',00050');"></span>
+			                        			<span style="margin:0 5px 0 0"></span>
+			                        			<span class="glyphicon glyphicon-refresh hand" title="密码重置" onclick="resetPass('50');"></span>
+		                        			</td>
+		                        		</tr>
+		                        				                        		<tr class="tr_page">
+		                        	        <td colspan="10" style="text-align: right">
+		                        				<div style="align:right;padding-right:15px"> 		共149条记录
+ 		第1/3页&nbsp;&nbsp;每页
+        <select id="pageSize" name="pageSize" autowidth="true" style="width:50px" onchange="beforeBtnQuery(true)">
+          <option value="20">20</option>
+          <option value="50" selected="">50</option>
+          <option value="100">100</option>
+        </select>行
+		<a href="#" title="首页" class="firstpage"></a>
+		<a href="#" title="上一页" class="prepage"></a>&nbsp;
+		<input type="text" id="pageNo" name="pageNo" value="1" style="width:30px">
+ <a href="#" title="go" id="pagego" onclick=" try{ p=parseInt(document.forms[0].pageNo.value); if(p<1) {document.forms[0].pageNo.value=1;} else if(p>3) {document.forms[0].pageNo.value=3;} else if(isNaN(p)){document.forms[0].pageNo.value=1;} }catch(e){document.forms[0].pageNo.value=1;} beforeBtnQuery(false);" class="gopage"><img src="../icons/go.jpg" align="center" alt="go"></a>&nbsp;
+		<a href="#" title="下一页" class="nextpage" onclick="document.forms[0].pageNo.value=2; beforeBtnQuery(false);"></a>
+		<a href="#" title="末页" class="lastpage" onclick="document.forms[0].pageNo.value=3; beforeBtnQuery(false);"></a>
+</div>
+		                        		    </td>
+		                            	</tr> 
+		                        	</tbody></table>
+									</div>
+								</form>
+							</div>
+                		</div>
+        			</div>
+                <!-- END PAGE CONTENT WRAPPER -->   
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- START SCRIPTS -->
+        <!-- MESSAGE BOX-->
+	<!-- END MESSAGE BOX-->
+	<link href="../inspinia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../inspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../inspinia/css/animate.css" rel="stylesheet">
+    <link href="../inspinia/css/style.css" rel="stylesheet">
+	<script src="../inspinia/js/jquery-2.1.1.js"></script>
+	<script src="../inspinia/js/bootstrap.min.js"></script>
+	<script src="../inspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="../inspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../inspinia/js/plugins/peity/jquery.peity.min.js"></script>
+	<script src="../inspinia/js/demo/peity-demo.js"></script>
+	<script src="../inspinia/js/inspinia.js"></script>
+	<script src="../inspinia/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+  	<script src="../inspinia/js/plugins/flot/jquery.flot.js"></script>
+    <script src="../inspinia/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="../inspinia/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="../inspinia/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="../inspinia/js/plugins/flot/jquery.flot.pie.js"></script>
+    
+        <!-- 
+        <script type="text/javascript" src="../js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/jquery/jquery-ui.min.js"></script>
+        -->
+        <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/plugins/bootstrap/bootstrap-treeview.js"></script>
+
+        <!-- START THIS PAGE PLUGINS-->        
+        <script type="text/javascript" src="../js/plugins/icheck/icheck.min.js"></script>        
+        <script type="text/javascript" src="../js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        
+        <script type="text/javascript" src="../js/plugins/morris/raphael-min.js"></script>
+        <script type="text/javascript" src="../js/plugins/morris/morris.min.js"></script>       
+        <script type="text/javascript" src="../js/plugins/rickshaw/d3.v3.js"></script>
+        <script type="text/javascript" src="../js/plugins/nvd3/nv.d3.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/rickshaw/rickshaw.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>                
+        <script type="text/javascript" src="../js/plugins/bootstrap/bootstrap-datepicker.js"></script>                
+        <script type="text/javascript" src="../js/plugins/owl/owl.carousel.min.js"></script>                 
+        <!-- END THIS PAGE PLUGINS-->        
+
+        <!-- START TEMPLATE -->
+        <script type="text/javascript" src="../js/plugins.js"></script>        
+        <script type="text/javascript" src="../js/actions.js"></script>
+        <script type="text/javascript" src="../js/plugins/moment.min.js"></script>
+        <script type="text/javascript" src="../js/plugins/fullcalendar/fullcalendar.min.js"></script>  
+        <script type="text/javascript" src="../js/plugins/fullcalendar/lang/zh-cn.js"></script>  
+        <script type="text/javascript" src="../js/plugins/daterangepicker/daterangepicker.js"></script>
+        
+        <!-- <script type="text/javascript" src="../js/demo_dashboard2.js"></script> -->
+        <!-- END TEMPLATE -->
+
+        <script src="../js/bootbox.min.js"></script>  
+          
+		
+		<link rel="stylesheet" href="../css/zTreeStyle/zTreeStyle.css" type="text/css">
+        <!--框架必需end-->
+        <!--截取文字start--> 
+        <script type="text/javascript" src="../js/text/text-overflow.js"></script>
+        <script type="text/javascript" src="../js/jquery.ztree.core-3.0.js"></script>
+        <!--截取文字end-->
+        
+        <script type="text/javascript" src="../js/attention/zDialog/zDrag.js"></script>
+				
+		<script type="text/javascript" src="../js/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript" src="../js/beforeDate.js"></script>
+		<!--<script type="text/javascript" src="../js/plugins/scrolltotop/scrolltopcontrol.js"></script>-->
+		<link href="../css/import_basic.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" id="skin">
+		
+		<script type="text/javascript" src="../js/attention/zDialog/zDialog.js"></script>
+		<script type="text/javascript" src="../js/paging.js"></script>
+		<script type="text/javascript" src="../js/checkout.js"></script>
+		
+		<script src="../js/userMsg.cn.js"></script>
+    <!-- END SCRIPTS -->   
+    
+	    <!-- MESSAGE BOX-->
+		<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+			<div class="mb-container">
+				<div class="mb-middle">
+					<div class="mb-title">
+						<span class="fa fa-sign-out"></span><strong>确定要退出吗？</strong>
+					</div>
+					<div class="mb-content"></div>
+					<div class="mb-footer">
+						<div class="pull-right">
+																							<a href="../system/logout.fgl?clientKey=1599191436156" class="btn btn-success btn-lg">确定</a>
+														<button class="btn btn-default btn-lg mb-control-close">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- END MESSAGE BOX-->		<div class="message-box animated fadeIn" data-sound="alert" id="mb-version">
+	<div class="mb-container">
+		<div class="mb-middle">
+<p>Version    : F5000_FANGLE_V5.9.21_20200617_DIST</p>
+<p>Build Time : 2020-06-17 17:27:40</p>
+			<p>Basic platform: URPCSF0009.0</p>
+		</div>
+		<div class="mb-footer">
+			<div class="pull-right">
+				<button class="btn btn-default btn-lg mb-control-close">关闭</button>
+        </div>
+		</div>
+	</div>
+</div>		<script type="text/javascript" src="../js/checkboxselected.js"></script>
+		  <script type="text/javascript" src="../js/paging.js"></script> 
+    <!-- END SCRIPTS -->   
+	<script>
+	readyPage();
+	function readyPage(){
+		if(1=='0')
+			AlertMsg("强制离线成功！");
+		else if(1=='2')
+			AlertMsg("服务密码不正确，强制离线失败！");
+		else if(1=='3')
+			AlertMsg("删除成功!");
+		else if(1=='4')
+			AlertMsg("信息已被引用,不能删除!");
+		else if(1=='5')
+			AlertMsg("密码错误！");
+	}
+	
+    function addTollcollectors(){
+    	location.href="../rightPages/tollcollectors.do?searchCondition="+searchCondition()+"&src=1&operation=2&clientKey=1599191436156"
+    }
+    function updateTollcollectors(personnelId,login_State){
+    	if(false&&login_State==1){
+    		AlertMsg("人员在线禁止修改");
+    	}else{
+    		location.href="../rightPages/tollcollectors.do?searchCondition="+searchCondition()+"&src=1&operation=4&personnelId="+personnelId+"&clientKey=1599191436156"
+    	}
+    }
+
+    function clearForm(){
+        $("#personnelNumber").val("");
+        $("#personnelName").val(""); 
+    }
+    
+    function onDelete(personnelId,personnelNumber){
+    	$("#personId1").val(personnelId);
+        $("#personNum1").val(personnelNumber);
+        var url = "../rightPages/tollcollectorDelAlert.vm?clientKey=1599191436156";
+		top.Dialog.open({URL:url,Title:"",Width:350,Height:150});
+    }
+    
+    function resetPass(personnelId){
+		bootbox.confirm({
+		    title: "",
+		    message: "重置后的密码为111111，确定密码重置?",
+		    buttons: {cancel: {label: '<i class="fa fa-times"></i> 取消'},confirm: {label: '<i class="fa fa-check"></i> 确定'}},
+		    callback: function (result) {
+		    	if(result){
+		    		jQuery.getJSON("../rightPages/tollcollectors.do",{"operation":"120","personnelId":personnelId,"clientKey":"1599191436156"},
+        			      function(data){
+        			      	if(data==1){
+        			      		AlertMsg("密码重置成功!");
+        			      	}else{
+        			      		AlertMsg("密码重置失败");
+        			      	}
+        			 });
+		    	}
+		    }
+		});
+    }
+    function search(){
+    	$("#operation").val(6);
+        document.form.submit();
+    }
+    
+    function searchCondition(){
+        var personnelNumber=$("#personnelNumber").val(); 
+        var personnelName=$("#personnelName").val();
+        var condition="&personnelNumber="+personnelNumber+"&personnelName="+personnelName;
+        return condition;
+    }
+    
+    function forcedOffline(url)
+    {
+    	if(!isSelected()){
+	        AlertMsg("请选择人员再进行操作！");
+			return false;
+		}
+		var personnelId="0";
+		var items = document.getElementsByName("keyId");
+		for(var i=0;i<items.length;i++){ 
+		    if(items[i].checked){personnelId=items[i].value;}
+		}
+		document.getElementById('personnelId').value=personnelId;
+		url=url+personnelId;
+		top.Dialog.open({URL:url,Title:"强制离线",Width:400,Height:150});
+    }
+    function helpInfo(){
+		var openUrl= "../helpInfo.jsp?helpictureName=tollcollectors6.jpg";
+		top.Dialog.open({URL:openUrl,Title:"帮助信息 ",Width:800,Height:600});
+	}
+	function importExcel(){
+		$("#operation").val(101);
+		$("#operationType").val(1);
+		document.form.submit();
+	}
+	function updateOperation(){
+		$("#operation").val(6);
+		$("#operationType").val("");
+	}
+</script>
+    
+<div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 186px; height: 198px;" src="http://222.179.7.42:55511/URPCSF0008.0/js/My97DatePicker/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe></div></body>

@@ -1,0 +1,19 @@
+maintainerManagement 维护员管理 8
+维护员编号 maintainerId
+维护员名称 maintainerName
+人员性质 personnelNature
+联系电话 contactNumber
+联系地址 contactAddress
+邮箱 mailbox
+处理状态 processingStatus
+操作 operating
+tollCollectorManagement 收费员管理 9
+收费员编号 tollCollectorNumber
+收费员名称 nameOfTollCollector
+联系电话 contactNumber
+权限 authority
+处理状态 processingStatus
+人员性质 personnelNature
+交票时间 ticketDeliveryTime
+结算时间 settlementTime
+操作 operating
