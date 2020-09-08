@@ -1,0 +1,846 @@
+[
+    {
+        "name": "areaManagement",
+        "title": "区域管理",
+        "tableName": "area",
+        "queryTitle": "区域名称名称",
+        "queryName": "name",
+        "addFormTitle": "区域",
+        "editFormTitle": "修改区域",
+        "titles": [
+            "区域名称",
+            "城市编号"
+        ],
+        "keys": [
+            "name",
+            "cityId"
+        ],
+        "form": {
+            "name": "area",
+            "props": [
+                "name",
+                "cityId"
+            ],
+            "labels": [
+                "区域名称",
+                "城市编号"
+            ]
+        }
+    },
+    {
+        "name": "basicPricingRuleManagement",
+        "title": "基本计费方式参数管理",
+        "tableName": "basicPricingRule",
+        "queryTitle": "计费方式名称名称",
+        "queryName": "name",
+        "addFormTitle": "基本计费方式参数",
+        "editFormTitle": "修改基本计费方式参数",
+        "titles": [
+            "计费方式名称",
+            "免费停车时长",
+            "最高限额",
+            "限制时长",
+            "单位时长",
+            "单位费率",
+            "描述"
+        ],
+        "keys": [
+            "name",
+            "freePeriod",
+            "maxPrice",
+            "limitPeriod",
+            "timeUnit",
+            "priceUnit",
+            "description"
+        ],
+        "form": {
+            "name": "basicPricingRule",
+            "props": [
+                "name",
+                "freePeriod",
+                "maxPrice",
+                "limitPeriod",
+                "timeUnit",
+                "priceUnit",
+                "description"
+            ],
+            "labels": [
+                "计费方式名称",
+                "免费停车时长",
+                "最高限额",
+                "限制时长",
+                "单位时长",
+                "单位费率",
+                "描述"
+            ]
+        }
+    },
+    {
+        "name": "carManagement",
+        "title": "车辆管理",
+        "tableName": "car",
+        "queryTitle": "车牌号名称",
+        "queryName": "numberPlate",
+        "addFormTitle": "车辆",
+        "editFormTitle": "修改车辆",
+        "titles": [
+            "车牌号"
+        ],
+        "keys": [
+            "numberPlate"
+        ],
+        "form": {
+            "name": "car",
+            "props": [
+                "numberPlate"
+            ],
+            "labels": [
+                "车牌号"
+            ]
+        }
+    },
+    {
+        "name": "carOwnerManagement",
+        "title": "车主管理",
+        "tableName": "carOwner",
+        "queryTitle": "车主姓名名称",
+        "queryName": "name",
+        "addFormTitle": "车主",
+        "editFormTitle": "修改车主",
+        "titles": [
+            "车主姓名",
+            "电话",
+            "注册时间"
+        ],
+        "keys": [
+            "name",
+            "tel",
+            "registerTime"
+        ],
+        "form": {
+            "name": "carOwner",
+            "props": [
+                "name",
+                "tel",
+                "registerTime"
+            ],
+            "labels": [
+                "车主姓名",
+                "电话",
+                "注册时间"
+            ]
+        }
+    },
+    {
+        "name": "cityManagement",
+        "title": "城市（县市）管理",
+        "tableName": "city",
+        "queryTitle": "城市（县市）名名称",
+        "queryName": "name",
+        "addFormTitle": "城市（县市）",
+        "editFormTitle": "修改城市（县市）",
+        "titles": [
+            "城市（县市）名"
+        ],
+        "keys": [
+            "name"
+        ],
+        "form": {
+            "name": "city",
+            "props": [
+                "name"
+            ],
+            "labels": [
+                "城市（县市）名"
+            ]
+        }
+    },
+    {
+        "name": "configManagement",
+        "title": "设置管理",
+        "tableName": "config",
+        "queryTitle": "设置编号名称",
+        "queryName": "id",
+        "addFormTitle": "设置",
+        "editFormTitle": "修改设置",
+        "titles": [
+            "设置编号",
+            "设置名",
+            "设置内容"
+        ],
+        "keys": [
+            "id",
+            "configName",
+            "configJson"
+        ],
+        "form": {
+            "name": "config",
+            "props": [
+                "id",
+                "configName",
+                "configJson"
+            ],
+            "labels": [
+                "设置编号",
+                "设置名",
+                "设置内容"
+            ]
+        }
+    },
+    {
+        "name": "dailyPricingRuleManagement",
+        "title": "每日费率设置管理",
+        "tableName": "dailyPricingRule",
+        "queryTitle": "费率类别名称名称",
+        "queryName": "name",
+        "addFormTitle": "每日费率设置",
+        "editFormTitle": "修改每日费率设置",
+        "titles": [
+            "费率类别名称",
+            "是否首尾相连",
+            "描述"
+        ],
+        "keys": [
+            "name",
+            "sequential",
+            "description"
+        ],
+        "form": {
+            "name": "dailyPricingRule",
+            "props": [
+                "name",
+                "sequential",
+                "description"
+            ],
+            "labels": [
+                "费率类别名称",
+                "是否首尾相连",
+                "描述"
+            ]
+        }
+    },
+    {
+        "name": "dailyPricingRuleParameterManagement",
+        "title": "每日费率类别设置映射管理",
+        "tableName": "dailyPricingRuleParameter",
+        "queryTitle": "费率类别名称名称",
+        "queryName": "dailyRuleName",
+        "addFormTitle": "每日费率类别设置映射",
+        "editFormTitle": "修改每日费率类别设置映射",
+        "titles": [
+            "费率类别名称",
+            "计费方式名称",
+            "起始时间",
+            "截止时间"
+        ],
+        "keys": [
+            "dailyRuleName",
+            "basicRulename",
+            "startTime",
+            "endTime"
+        ],
+        "form": {
+            "name": "dailyPricingRuleParameter",
+            "props": [
+                "dailyRuleName",
+                "basicRulename",
+                "startTime",
+                "endTime"
+            ],
+            "labels": [
+                "费率类别名称",
+                "计费方式名称",
+                "起始时间",
+                "截止时间"
+            ]
+        }
+    },
+    {
+        "name": "employeeManagement",
+        "title": "员工管理",
+        "tableName": "employee",
+        "queryTitle": "员工编号名称",
+        "queryName": "sn",
+        "addFormTitle": "员工",
+        "editFormTitle": "修改员工",
+        "titles": [
+            "员工编号",
+            "姓名",
+            "手机号",
+            "状态",
+            "0"
+        ],
+        "keys": [
+            "sn",
+            "name",
+            "tel",
+            "status",
+            "deleted"
+        ],
+        "form": {
+            "name": "employee",
+            "props": [
+                "sn",
+                "name",
+                "tel",
+                "status",
+                "deleted"
+            ],
+            "labels": [
+                "员工编号",
+                "姓名",
+                "手机号",
+                "状态",
+                "0"
+            ]
+        }
+    },
+    {
+        "name": "holidayManagement",
+        "title": "节假日管理",
+        "tableName": "holiday",
+        "queryTitle": "节假日名称名称",
+        "queryName": "name",
+        "addFormTitle": "节假日",
+        "editFormTitle": "修改节假日",
+        "titles": [
+            "节假日名称",
+            "节假日起始日期",
+            "节假日结束日期"
+        ],
+        "keys": [
+            "name",
+            "startDate",
+            "endDate"
+        ],
+        "form": {
+            "name": "holiday",
+            "props": [
+                "name",
+                "startDate",
+                "endDate"
+            ],
+            "labels": [
+                "节假日名称",
+                "节假日起始日期",
+                "节假日结束日期"
+            ]
+        }
+    },
+    {
+        "name": "parkingLotManagement",
+        "title": "停车场管理",
+        "tableName": "parkingLot",
+        "queryTitle": "停车场ID名称",
+        "queryName": "id",
+        "addFormTitle": "停车场",
+        "editFormTitle": "修改停车场",
+        "titles": [
+            "停车场ID",
+            "停车场编号",
+            "停车场名称",
+            "停车场位置纬度",
+            "停车场位置经度"
+        ],
+        "keys": [
+            "id",
+            "sn",
+            "name",
+            "latitude",
+            "longitude"
+        ],
+        "form": {
+            "name": "parkingLot",
+            "props": [
+                "id",
+                "sn",
+                "name",
+                "latitude",
+                "longitude"
+            ],
+            "labels": [
+                "停车场ID",
+                "停车场编号",
+                "停车场名称",
+                "停车场位置纬度",
+                "停车场位置经度"
+            ]
+        }
+    },
+    {
+        "name": "parkingRecordManagement",
+        "title": "停车记录管理",
+        "tableName": "parkingRecord",
+        "queryTitle": "停车记录ID名称",
+        "queryName": "id",
+        "addFormTitle": "停车记录",
+        "editFormTitle": "修改停车记录",
+        "titles": [
+            "停车记录ID",
+            "停车位ID",
+            "车牌号",
+            "入场时间",
+            "离场时间",
+            "入场照片路径",
+            "离场照片路径",
+            "停车金额",
+            "支付时间"
+        ],
+        "keys": [
+            "id",
+            "parkingSpaceId",
+            "numberPlate",
+            "arriveTime",
+            "leaveTime",
+            "arrivePic",
+            "leavePic",
+            "fee",
+            "payTime"
+        ],
+        "form": {
+            "name": "parkingRecord",
+            "props": [
+                "id",
+                "parkingSpaceId",
+                "numberPlate",
+                "arriveTime",
+                "leaveTime",
+                "arrivePic",
+                "leavePic",
+                "fee",
+                "payTime"
+            ],
+            "labels": [
+                "停车记录ID",
+                "停车位ID",
+                "车牌号",
+                "入场时间",
+                "离场时间",
+                "入场照片路径",
+                "离场照片路径",
+                "停车金额",
+                "支付时间"
+            ]
+        }
+    },
+    {
+        "name": "parkingSpaceManagement",
+        "title": "停车位管理",
+        "tableName": "parkingSpace",
+        "queryTitle": "停车位ID名称",
+        "queryName": "id",
+        "addFormTitle": "停车位",
+        "editFormTitle": "修改停车位",
+        "titles": [
+            "停车位ID",
+            "停车位编号",
+            "停车场ID",
+            "计费规则名称"
+        ],
+        "keys": [
+            "id",
+            "sn",
+            "parkingLotId",
+            "pricingRuleName"
+        ],
+        "form": {
+            "name": "parkingSpace",
+            "props": [
+                "id",
+                "sn",
+                "parkingLotId",
+                "pricingRuleName"
+            ],
+            "labels": [
+                "停车位ID",
+                "停车位编号",
+                "停车场ID",
+                "计费规则名称"
+            ]
+        }
+    },
+    {
+        "name": "paymentManagement",
+        "title": "支付订单管理",
+        "tableName": "payment",
+        "queryTitle": "微信订单号名称",
+        "queryName": "wechatSN",
+        "addFormTitle": "支付订单",
+        "editFormTitle": "修改支付订单",
+        "titles": [
+            "微信订单号",
+            "支付状态",
+            "创建时间",
+            "支付完成时间",
+            "删除标记",
+            "支付费用",
+            "停留时间",
+            "到达时间",
+            "传感器编号",
+            "车牌号",
+            "到达照片"
+        ],
+        "keys": [
+            "wechatSN",
+            "status",
+            "createdTime",
+            "payTime",
+            "deleted",
+            "fee",
+            "stayTime",
+            "arriveTime",
+            "sensorSn",
+            "numberPlate",
+            "arrivePic"
+        ],
+        "form": {
+            "name": "payment",
+            "props": [
+                "wechatSN",
+                "status",
+                "createdTime",
+                "payTime",
+                "deleted",
+                "fee",
+                "stayTime",
+                "arriveTime",
+                "sensorSn",
+                "numberPlate",
+                "arrivePic"
+            ],
+            "labels": [
+                "微信订单号",
+                "支付状态",
+                "创建时间",
+                "支付完成时间",
+                "删除标记",
+                "支付费用",
+                "停留时间",
+                "到达时间",
+                "传感器编号",
+                "车牌号",
+                "到达照片"
+            ]
+        }
+    },
+    {
+        "name": "photoRecordManagement",
+        "title": "拍照记录管理",
+        "tableName": "photoRecord",
+        "queryTitle": "图片存储路径名称",
+        "queryName": "path",
+        "addFormTitle": "拍照记录",
+        "editFormTitle": "修改拍照记录",
+        "titles": [
+            "图片存储路径",
+            "识别的车牌号",
+            "拍摄时间"
+        ],
+        "keys": [
+            "path",
+            "numberPlate",
+            "shootTime"
+        ],
+        "form": {
+            "name": "photoRecord",
+            "props": [
+                "path",
+                "numberPlate",
+                "shootTime"
+            ],
+            "labels": [
+                "图片存储路径",
+                "识别的车牌号",
+                "拍摄时间"
+            ]
+        }
+    },
+    {
+        "name": "positionManagement",
+        "title": "岗位管理",
+        "tableName": "position",
+        "queryTitle": "岗位名名称",
+        "queryName": "name",
+        "addFormTitle": "岗位",
+        "editFormTitle": "修改岗位",
+        "titles": [
+            "岗位名"
+        ],
+        "keys": [
+            "name"
+        ],
+        "form": {
+            "name": "position",
+            "props": [
+                "name"
+            ],
+            "labels": [
+                "岗位名"
+            ]
+        }
+    },
+    {
+        "name": "pricingRuleManagement",
+        "title": "每周计费类型设置管理",
+        "tableName": "pricingRule",
+        "queryTitle": "每周计费类型名称名称",
+        "queryName": "name",
+        "addFormTitle": "每周计费类型设置",
+        "editFormTitle": "修改每周计费类型设置",
+        "titles": [
+            "每周计费类型名称",
+            "假期费率类别名称",
+            "是否合并收费",
+            "每日最高收费",
+            "单位时长",
+            "修正时间",
+            "新能源车折扣",
+            "生效日期",
+            "温馨提示"
+        ],
+        "keys": [
+            "name",
+            "holiday",
+            "combineFees",
+            "maxFee",
+            "periodUnit",
+            "fixedPeriod",
+            "discount",
+            "effectiveDate",
+            "description"
+        ],
+        "form": {
+            "name": "pricingRule",
+            "props": [
+                "name",
+                "holiday",
+                "combineFees",
+                "maxFee",
+                "periodUnit",
+                "fixedPeriod",
+                "discount",
+                "effectiveDate",
+                "description"
+            ],
+            "labels": [
+                "每周计费类型名称",
+                "假期费率类别名称",
+                "是否合并收费",
+                "每日最高收费",
+                "单位时长",
+                "修正时间",
+                "新能源车折扣",
+                "生效日期",
+                "温馨提示"
+            ]
+        }
+    },
+    {
+        "name": "requestLogManagement",
+        "title": "请求日志管理",
+        "tableName": "requestLog",
+        "queryTitle": "请求uuid名称",
+        "queryName": "requestUid",
+        "addFormTitle": "请求日志",
+        "editFormTitle": "修改请求日志",
+        "titles": [
+            "请求uuid",
+            "请求类型",
+            "请求内容",
+            "请求时间"
+        ],
+        "keys": [
+            "requestUid",
+            "requestType",
+            "requestJson",
+            "requestTime"
+        ],
+        "form": {
+            "name": "requestLog",
+            "props": [
+                "requestUid",
+                "requestType",
+                "requestJson",
+                "requestTime"
+            ],
+            "labels": [
+                "请求uuid",
+                "请求类型",
+                "请求内容",
+                "请求时间"
+            ]
+        }
+    },
+    {
+        "name": "sectionManagement",
+        "title": "路段管理",
+        "tableName": "section",
+        "queryTitle": "路段名称名称",
+        "queryName": "name",
+        "addFormTitle": "路段",
+        "editFormTitle": "修改路段",
+        "titles": [
+            "路段名称"
+        ],
+        "keys": [
+            "name"
+        ],
+        "form": {
+            "name": "section",
+            "props": [
+                "name"
+            ],
+            "labels": [
+                "路段名称"
+            ]
+        }
+    },
+    {
+        "name": "sensorManagement",
+        "title": "传感器设备管理",
+        "tableName": "sensor",
+        "queryTitle": "传感器设备ID名称",
+        "queryName": "id",
+        "addFormTitle": "传感器设备",
+        "editFormTitle": "修改传感器设备",
+        "titles": [
+            "传感器设备ID",
+            "传感器SN码",
+            "设备状态",
+            "停车位ID",
+            "初始电量",
+            "真实电量",
+            "设备类型"
+        ],
+        "keys": [
+            "id",
+            "sn",
+            "status",
+            "parkingSpaceId",
+            "initialPower",
+            "realPower",
+            "sensorType"
+        ],
+        "form": {
+            "name": "sensor",
+            "props": [
+                "id",
+                "sn",
+                "status",
+                "parkingSpaceId",
+                "initialPower",
+                "realPower",
+                "sensorType"
+            ],
+            "labels": [
+                "传感器设备ID",
+                "传感器SN码",
+                "设备状态",
+                "停车位ID",
+                "初始电量",
+                "真实电量",
+                "设备类型"
+            ]
+        }
+    },
+    {
+        "name": "sensorAlarmRecordManagement",
+        "title": "设备报警记录管理",
+        "tableName": "sensorAlarmRecord",
+        "queryTitle": "传感器设备ID名称",
+        "queryName": "sensorId",
+        "addFormTitle": "设备报警记录",
+        "editFormTitle": "修改设备报警记录",
+        "titles": [
+            "传感器设备ID",
+            "报警类型"
+        ],
+        "keys": [
+            "sensorId",
+            "alarmType"
+        ],
+        "form": {
+            "name": "sensorAlarmRecord",
+            "props": [
+                "sensorId",
+                "alarmType"
+            ],
+            "labels": [
+                "传感器设备ID",
+                "报警类型"
+            ]
+        }
+    },
+    {
+        "name": "streetManagement",
+        "title": "街道管理",
+        "tableName": "street",
+        "queryTitle": "街道名名称",
+        "queryName": "name",
+        "addFormTitle": "街道",
+        "editFormTitle": "修改街道",
+        "titles": [
+            "街道名"
+        ],
+        "keys": [
+            "name"
+        ],
+        "form": {
+            "name": "street",
+            "props": [
+                "name"
+            ],
+            "labels": [
+                "街道名"
+            ]
+        }
+    },
+    {
+        "name": "userManagement",
+        "title": "平台管理员管理",
+        "tableName": "user",
+        "queryTitle": "平台管理员ID名称",
+        "queryName": "id",
+        "addFormTitle": "平台管理员",
+        "editFormTitle": "修改平台管理员",
+        "titles": [
+            "平台管理员ID",
+            "登录账号",
+            "登录密码",
+            "联系电话",
+            "姓名",
+            "用户角色",
+            "所属停车场ID"
+        ],
+        "keys": [
+            "id",
+            "account",
+            "password",
+            "tel",
+            "name",
+            "roles",
+            "parkingLotId"
+        ],
+        "form": {
+            "name": "user",
+            "props": [
+                "id",
+                "account",
+                "password",
+                "tel",
+                "name",
+                "roles",
+                "parkingLotId"
+            ],
+            "labels": [
+                "平台管理员ID",
+                "登录账号",
+                "登录密码",
+                "联系电话",
+                "姓名",
+                "用户角色",
+                "所属停车场ID"
+            ]
+        }
+    }
+]
