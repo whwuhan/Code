@@ -1,0 +1,221 @@
+<template>
+  <div class="content">
+    <!--模态窗口定义开始-->
+    <!--放在这里，并隐藏起来-->
+    <!-- 新增表单 -->
+    <Modal v-model="showAddForm" title="{{addFormTitle}}">
+      <{{form.name}}Form ref="addForm"></{{form.name}}Form>
+      <div slot="footer">
+        <Button type="primary" size="large" @click="add">保存</Button>
+        <Button type="text" size="large" @click="showAddForm=false">取消</Button>
+      </div>
+    </Modal>
+    <!-- 修改表单 -->
+    <Modal v-model="showEditForm" title="{{editFormTitle}}">
+      <{{form.name}}Form ref="editForm"></{{form.name}}Form>
+      <div slot="footer">
+        <Button type="primary" size="large" @click="edit">保存</Button>
+        <Button type="text" size="large" @click="showEditForm=false">取消</Button>
+      </div>
+    </Modal>
+    <!--模态窗口定义结束-->
+    <!-- 页面标题 -->
+    <div class="title">{{title}}</div>
+
+    <!-- 页面功能按键 -->
+    <div class="toolbar">
+      <!-- 详细信息查询框 -->
+      <div class="input-area">
+        <Input
+          search
+          enter-button
+          v-model="{{queryName}}"
+          placeholder="{{queryTitle}}..."
+          @change.native="search"
+        />
+      </div>
+
+      <!-- 新增按钮 -->
+      <div class="add-area">
+        <!-- 点击按钮设置showAddForm=true显示新增表单 -->
+        <Button type="primary" @click="showAddForm = true">新增</Button>
+      </div>
+    </div>
+
+    <!-- 数据显示区域 -->
+    <Table border :columns="tableColumn" :data="tableData">
+      <!--slot action -->
+      <template slot-scope="{ row, index }" slot="action">
+        <!-- 点击按钮显示修改表单 -->
+        <Button type="primary" size="small" style="margin-right: 5px" @click="showEdit(index)">修改</Button>
+        <Button type="error" size="small" @click="remove(index)">删除</Button>
+      </template>
+    </Table>
+  </div>
+</template>
+<script>
+import {{form.name}}Form from "./forms/{{form.name}}Form.vue";
+export default {
+  data() {
+    return {
+      tableColumn: [
+      {% for title in titles%}
+        {
+          title: "{{title}}",
+          key: "{{keys[loop.index-1]}}",
+          align: "center"
+        },
+       {% endfor %}
+        {
+          title: "操作",
+          slot: "action",
+          width: 150,
+          align: "center",
+        },
+      ],
+      tableData: [],
+      showAddForm: false, // 添加表单
+      showEditForm: false, //修改表单
+      showRemove: false, //删除提示框
+      {{queryName}}: "", //查询输入
+    };
+  },
+  mounted() {
+    //页面开始时加载
+    this.reloadTable();
+  },
+  methods: {
+    reloadTable() {
+      var self = this;
+      self.$ajax
+        .findAll("{{tableName}}", {
+          {{queryName}}: self.{{queryName}},
+        })
+        .then((data) => {
+          self.tableData = data;
+        });
+    },
+    remove(index) {
+      var self = this;
+      this.$Modal.confirm({
+        title: "警告",
+        content: "<p>该操作将导致基础数据无法恢复，请谨慎操作！</p>",
+        onOk: () => {
+          var data = self.tableData[index];
+          self.$ajax
+            .delete("{{tableName}}", {
+              id: data.id,
+            })
+            .then((data) => {
+                self.$Message.success("删除成功!");
+                self.showRemove = false;
+                self.reloadTable();
+            });
+        },
+        onCancel: () => {},
+      });
+    },
+
+    // 新增对话框
+    add() {
+      var self = this;
+      self.$refs["addForm"].validateForm(function (valid) {
+        if (valid) {
+          //调用服务接口添加用户
+          var data = self.$refs["addForm"].getFormData();
+          self.$ajax
+            .insert("{{tableName}}", {
+              {% for p in form.props%}
+                {{p}}:data.{{p}},
+              {% endfor %}
+            })
+            .then((data) => {
+                self.$Message.success("提交成功!");
+                self.$refs["addForm"].resetFields();
+                self.showAddForm = false;
+                self.reloadTable();
+            });
+        } else {
+          self.$Message.error("提交失败，请检查填写数据!");
+        }
+      });
+      return false;
+    },
+    showEdit(index) {
+      var self = this;
+      var data = self.tableData[index];
+      //设置表单数据
+      self.$refs["editForm"].setFormData({
+        {% for p in form.props%}
+            {{p}}:data.{{p}},
+        {% endfor %}
+        id: data.id
+      });
+      //显示表单
+      self.showEditForm = true;
+    },
+    edit() {
+      var self = this;
+      self.$refs["editForm"].validateForm(function (valid) {
+        if (valid) {
+          //调用服务接口修改
+          var data = self.$refs["editForm"].getFormData();
+          self.$ajax
+            .update("{{tableName}}", {
+              {% for p in form.props%}
+                {{p}}:data.{{p}},
+              {% endfor %}
+              id: data.id,
+            })
+            .then((data) => {
+                self.$Message.success("提交成功!");
+                self.$refs["editForm"].resetFields();
+                self.showEditForm = false;
+                self.reloadTable();
+            });
+        } else {
+          self.$Message.error("提交失败，请检查填写数据!");
+        }
+      });
+      return false;
+    },
+    search() {
+      this.reloadTable();
+    }
+  },
+  components: {
+    {{form.name}}Form,
+  },
+};
+</script>
+<style scoped>
+.content {
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+  font-size: 16pt;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+* {
+  vertical-align: top;
+}
+.toolbar {
+  margin-bottom: 10px;
+}
+.select-area {
+  margin-top: 0px;
+  display: inline-block;
+}
+.input-area {
+  margin-left: 20px;
+  margin-top: 0px;
+  display: inline-block;
+}
+.add-area {
+  margin-left: 20px;
+  margin-top: 0px;
+  display: inline-block;
+}
+</style>

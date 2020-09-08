@@ -1,0 +1,25 @@
+[
+    {
+        "name": "City",
+        "props": [
+            "name"
+        ],
+        "labels": [
+            "名称"
+        ],
+        "submitURL": "/city/update"
+    },
+    {
+        "name": "Area",
+        "props": [
+            "cityId",
+            "name"
+           
+        ],
+        "labels": [
+            "城市",
+            "名称"
+        ],
+        "submitURL": "/area/update"
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "titles": [
+            "App广告设置id",
+            "广告图片",
+            "轮播间隔",
+            "描述",
+            "图片链接",
+            "处理状态"
+        ],
+        "keys": [
+            "id",
+            "Pic",
+            "second",
+            "description",
+            "Link",
+            "status"
+        ],
+        "form": {
+            "props": [
+                "id",
+                "Pic",
+                "second",
+                "description",
+                "Link",
+                "status"
+            ],
+            "labels": [
+                "App广告设置id",
+                "广告图片",
+                "轮播间隔",
+                "描述",
+                "图片链接",
+                "处理状态"
+            ],
+            "name": "App_ad_config"
+        },
+        "name": "App_ad_configManagement",
+        "tableName": "app_ad_config",
+        "title": "App广告设置管理",
+        "queryTitle": "App广告设置的广告图片",
+        "queryName": "广告图片",
+        "addFormTitle": "添加App广告设置",
+        "editFormTitle": "修改App广告设置"
+    },
+    {
+        "titles": [
+            "App广告设置id",
+            "广告图片",
+            "轮播间隔",
+            "描述",
+            "图片链接",
+            "处理状态"
+        ],
+        "keys": [
+            "id",
+            "Pic",
+            "second",
+            "description",
+            "Link",
+            "status"
+        ],
+        "form": {
+            "props": [
+                "id",
+                "Pic",
+                "second",
+                "description",
+                "Link",
+                "status"
+            ],
+            "labels": [
+                "App广告设置id",
+                "广告图片",
+                "轮播间隔",
+                "描述",
+                "图片链接",
+                "处理状态"
+            ],
+            "name": "App_ad_config"
+        },
+        "name": "App_ad_configManagement1",
+        "tableName": "app_ad_config",
+        "title": "App广告设置管理",
+        "queryTitle": "App广告设置的广告图片",
+        "queryName": "广告图片",
+        "addFormTitle": "添加App广告设置",
+        "editFormTitle": "修改App广告设置"
+    }
+]

@@ -1,0 +1,99 @@
+<template>
+  <Form ref="formRef" :model="formData" :rules="ruleValidate" :label-width="100">
+  <!--隐藏的id属性，不需要可以删除，一般没啥影响-->
+    <FormItem v-show="false" prop="id">
+      <Input  v-model="formData.id" />
+    </FormItem> 
+  <!--id属性定义结束-->
+
+  <!--其他表单项定义开始-->
+  {% for p in props  %}
+    <FormItem label="{{labels[loop.index-1]}}" prop="{{p}}">
+      <Input v-model="formData.{{p}}" placeholder="{{labels[loop.index-1]}}"/>
+    </FormItem>
+   {%endfor%}
+  <!--其他表单项定义结束-->
+  {% if submitURL %}
+  <!--提交按键-->
+    <FormItem>
+      <Button type="primary" size="large" @click="submit">提交</Button>
+    </FormItem>
+  <!--提交按键结束-->
+  {% endif%}
+  </Form>
+</template>
+<script>
+
+export default {
+  data() {
+    return {
+      //表单属性（数据）
+      formData: {
+        id:"",
+        {% for p in props  %}
+        {{p}}:"",
+        {%endfor%}
+      },
+      //表单属性验证规则
+      ruleValidate: {
+      {% for p in props  %}
+        {{p}}: [
+          { required: true, message: "必须填写{{labels[loop.index-1]}}", trigger: "blur" },
+        ],
+       {%endfor%} 
+      },
+    };
+  },
+  mounted() {
+    //加载运行
+  },
+  methods:{
+    //表单通用方法定义开始
+    //获取表单数据
+    getFormData(){
+      return this.formData;
+    },
+    //设置表单数据
+    setFormData(data)
+    {
+      this.formData=data;
+    },
+    //验证表单
+    validateForm(callback)
+    {
+      this.$refs["formRef"].validate(callback);
+    },
+    //重置表单
+    resetFields()
+    {
+      this.$refs["formRef"].resetFields();
+    },
+    {% if submitURL %}
+    //表单提交
+    submit()
+    {
+      var self = this;
+      self.validateForm(function (valid) {
+        if (valid) {
+          //调用服务接口
+          var data = self.getFormData();  
+          self.$ajax
+            .POST('{{submitURL}}', {
+              id:data.id,
+              {% for p in props  %}
+              {{p}}:data.{{p}},
+              {%endfor%}
+            })
+            .then((data) => {
+                self.$Message.success("提交成功！");
+                self.resetFields();                
+            });
+        } else {
+          self.$Message.error("提交失败，请检查填写数据!");
+        }
+      });
+    }
+    {% endif %}
+  }
+};
+</script>

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "ParkingSpaceManagement",
+        "title": "停车位管理",
+        "tableName": "parkingSpace",
+        "queryTitle": "停车场名称",
+        "queryName": "name",
+        "addFormTitle": "停车位",
+        "editFormTitle": "修改停车位",
+        "titles": [
+            "停车场编号",
+            "停车场名称",
+            "停车位编号",
+            "是否空闲",
+            "绑定设备编号"
+        ],
+        "keys": [
+            "parkingLotSn",
+            "parkingLotName",
+            "sn",
+            "free",
+            "sensorSn"
+        ],
+        "form": {
+            "name": "ParkingSpace",
+            "props": [
+                "sn",
+                "parkingLotId",
+                "abcd"
+            ],
+            "labels": [
+                "停车位编号",
+                "停车场",
+                "abddddd"
+            ]
+        }
+    }
+]

@@ -1,0 +1,51 @@
+<template>
+  <div style="margin:0 auto">
+    <div style="text-align:center;font-size:16pt;margin-top:10px;margin-bottom:20px">{{title}}</div>
+    <div>
+      <div style="margin-left:10px;display: inline-block; float:left">
+        <Input  search enter-button  placeholder="{{query}}..."/>
+      </div>
+      {%for b in buttons%}
+      <i-button type="primary" style="margin-left:10px">{{b}}</i-button>
+      {%endfor%}
+    </div>
+    <i-table :columns="columns" :data="data"></i-table>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      columns: [
+        {%for i in columns%}
+        {
+          title:"{{i}}",
+          key: "p{{loop.index}}"
+        },
+        {%endfor%}
+        {
+          title: "操作",
+          key: "action",
+          render: () => {
+                            return (
+                                <div class="cell-button-container">
+                                    <i-button type="primary" size="small">设置</i-button>
+                                </div>
+                            );
+                        }
+        },
+      ],
+      data: [
+      {%for i in data%}
+        {
+          {%for j in i%}
+            p{{loop.index}}: "{{j}}",
+          {%endfor%}
+          action: "",
+        },
+      {%endfor%}
+      ],
+    };
+  },
+};
+</script>
