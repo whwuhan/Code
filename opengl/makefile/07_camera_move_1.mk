@@ -1,6 +1,6 @@
 # glfw静态库编译
 include config/*.mk
-EXC_NAME := 05_transformation
+EXC_NAME := 07_camera_move_1
 $(EXC_NAME) : 
 	$(CC) $(CXX_FLAGS) \
 	$(SRC_DIR)/$(EXC_NAME).cpp \

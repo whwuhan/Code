@@ -1,3 +1,6 @@
+/**
+ * 使用封装好的相机类改变视角
+*/
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
@@ -6,27 +9,39 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <shader.h>
+#include <Camera.h>
 #include <iostream>
 #include <string>
+#include <iostream>
+
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 void processInput(GLFWwindow *window);
+//新增鼠标和鼠标滚轮回调函数
+void mouse_callback(GLFWwindow *window, double xpos, double ypos);// xpos,ypos当前鼠标的xy坐标位置
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);// xoffset,yoffset
 
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-// 相机参数
-glm::vec3 cameraPos(0.0f,0.0f,3.0f);//相机位置
-glm::vec3 cameraFront(0.0f,0.0f,-1.0f);//相机前方
-glm::vec3 cameraUp(0.0f,1.0f,0.0f);//相机上方
+// 新增相机类
+Camera camera(glm::vec3(0.0f,0.0f,3.0f));
 
+//初始化上一次的鼠标位置
+float lastX = SCR_WIDTH / 2.0f;
+float lastY = SCR_HEIGHT / 2.0f;
+bool firstMouse = true;//鼠标是否是第一次进入window
 //时间差
 float deltaTime = 0.0f;//lastFrame和currentFrame的时间间隔
 float lastFrame = 0.0f;//上一帧
 
+
 int main()
-{
+{   
+    std::cout << "new camera" << std::endl;
+    Camera newCamera(glm::vec3(0.0f,0.0f,3.0f));
+
     // glfw: initialize and configure
     // ------------------------------
     glfwInit();
@@ -49,6 +64,11 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    //新增监听鼠标和鼠标滚轮事件
+    glfwSetCursorPosCallback(window,mouse_callback);
+    glfwSetScrollCallback(window,scroll_callback);
+    //告诉GLFW选中窗口不显示鼠标
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -59,9 +79,9 @@ int main()
     }
     // 创建着色器程序
     std::string vertex_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.2.camera.vs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.vs.glsl";
     std::string fragment_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.2.camera.fs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
      //开始配置全局opengl
@@ -230,10 +250,11 @@ int main()
     ourShader.setInt("texture2", 1);
 
     //透视投影矩阵，一般不会改变，在渲染循环外设置
-    glm::mat4 projection(1.0f); //投影矩阵
-    projection = glm::perspective(glm::radians(45.0f),
-                        (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    ourShader.setMat4("projection", projection);
+    // 但是在如果需要按照滚轮进行缩放，需要在渲染循环中设置投影矩阵
+    // glm::mat4 projection(1.0f); //投影矩阵
+    // projection = glm::perspective(glm::radians(45.0f),
+    //                     (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    // ourShader.setMat4("projection", projection);
 
     //开始渲染
     while (!glfwWindowShouldClose(window))
@@ -260,12 +281,11 @@ int main()
         //激活着色器
         ourShader.use();
 
-        //lookAt矩阵
-        //参数
-        //1相机位置
-        //2目标
-        //3向上向量
-        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        //因为要缩放，所以在渲染循环中设置投影矩阵，调整fov
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        ourShader.setMat4("projection", projection);
+        //获取lookAt矩阵
+        glm::mat4 view = camera.GetViewMatrix();
         ourShader.setMat4("view",view);
 
         //渲染箱子
@@ -305,29 +325,27 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
     }
 
-    //获取摄像机的移动速度
-    float cameraSpeed = 10 * deltaTime;
-
+    //相机移动封装到了camera中
     //移动相机
     if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS)
     {
         //向前移动
-        cameraPos += cameraFront * cameraSpeed;
+        camera.ProcessKeyboard(FORWARD,deltaTime);
     }
     if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS)
     {
         //向后移动
-        cameraPos -= cameraFront * cameraSpeed;
+        camera.ProcessKeyboard(BACKWARD,deltaTime);
     }
     if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS)
     {
-        //向左移动，叉乘获取相机左向向量（注意最好归一化）
-        cameraPos -= glm::normalize(glm::cross(cameraFront,cameraUp)) * cameraSpeed;
+        //向左移动
+        camera.ProcessKeyboard(LEFT,deltaTime);
     }
     if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS)
     {
-        //向右移动，叉乘获取相机左向向量（注意最好归一化）
-        cameraPos += glm::normalize(glm::cross(cameraFront,cameraUp)) * cameraSpeed;
+        //向右移动
+        camera.ProcessKeyboard(RIGHT,deltaTime);
     }
         
 }
@@ -339,4 +357,31 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
+}
+
+//鼠标回调函数
+void mouse_callback(GLFWwindow *window, double xpos, double ypos)
+{
+    //判断鼠标是否是第一次进入窗口
+    if(firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    //计算鼠标偏移量
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos;//之所以是反过来是因为俯仰角正向是往y轴负向
+    lastX = xpos;
+    lastY = ypos;
+
+    //视角的变换封装到了Camera类里面
+    camera.ProcessMouseMovement(xoffset,yoffset);
+}
+
+//鼠标滚轮回调函数
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(yoffset);
 }

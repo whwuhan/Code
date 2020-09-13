@@ -19,7 +19,9 @@ DES_MAC_DIR := ../bin/mac#mac目标文件夹
 DEP_DIR := ../dep
 SHADER_DIR := ../shader
 UTILS_DIR := ../utils
-
+UTILS_INCLUDE_DIR := ../utils/include
+UTILS_LIB_MAC_DIR := ../utils/lib/mac
+UTILS_LIB_WIN_DIR := ../utils/lib/win
 # 静态库文件配置
 LIB_MAC_GLAD_A := $(LIB_MAC_DIR)/glad
 LIB_MAC_GLFW3_A := $(LIB_MAC_DIR)/glfw3

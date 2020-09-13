@@ -1,3 +1,8 @@
+/**
+ * 新增鼠标转动视角
+ * 新增鼠标滚轮缩放
+ * 注意要实现滚轮缩放视角，需要在渲染循环里面设置投影矩阵
+*/
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #define STB_IMAGE_IMPLEMENTATION
@@ -25,6 +30,19 @@ glm::vec3 cameraUp(0.0f,1.0f,0.0f);//相机上方
 float deltaTime = 0.0f;//lastFrame和currentFrame的时间间隔
 float lastFrame = 0.0f;//上一帧
 
+//新增鼠标和鼠标滚轮回调函数
+void mouse_callback(GLFWwindow *window, double xpos, double ypos);// xpos,ypos当前鼠标的xy坐标位置
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset);// xoffset,yoffset
+
+//新增全局参数
+bool firstMouse =true;//鼠标是否是第一次进入window
+float yaw = -90.0f;//偏航角，因为x轴正向是0度，向左转90度镜头才是正向xy平面的
+float pitch = 0.0f;//俯仰角
+//初始化上一次的鼠标位置
+float lastX = SCR_WIDTH / 2.0f;
+float lastY = SCR_HEIGHT / 2.0f;
+float fov = 45.0f;//视锥的角度
+
 int main()
 {
     // glfw: initialize and configure
@@ -49,6 +67,11 @@ int main()
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    //新增监听鼠标和鼠标滚轮事件
+    glfwSetCursorPosCallback(window,mouse_callback);
+    glfwSetScrollCallback(window,scroll_callback);
+    //告诉GLFW选中窗口不显示鼠标
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -59,9 +82,9 @@ int main()
     }
     // 创建着色器程序
     std::string vertex_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.2.camera.vs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.vs.glsl";
     std::string fragment_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.2.camera.fs.glsl";
+        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
      //开始配置全局opengl
@@ -230,10 +253,11 @@ int main()
     ourShader.setInt("texture2", 1);
 
     //透视投影矩阵，一般不会改变，在渲染循环外设置
-    glm::mat4 projection(1.0f); //投影矩阵
-    projection = glm::perspective(glm::radians(45.0f),
-                        (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    ourShader.setMat4("projection", projection);
+    // 但是在如果需要按照滚轮进行缩放，需要在渲染循环中设置投影矩阵
+    // glm::mat4 projection(1.0f); //投影矩阵
+    // projection = glm::perspective(glm::radians(45.0f),
+    //                     (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+    // ourShader.setMat4("projection", projection);
 
     //开始渲染
     while (!glfwWindowShouldClose(window))
@@ -260,6 +284,9 @@ int main()
         //激活着色器
         ourShader.use();
 
+        //因为要缩放，所以在渲染循环中设置投影矩阵，调整fov
+        glm::mat4 projection = glm::perspective(glm::radians(fov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        ourShader.setMat4("projection", projection);
         //lookAt矩阵
         //参数
         //1相机位置
@@ -339,4 +366,64 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
+}
+
+//鼠标回调函数
+void mouse_callback(GLFWwindow *window, double xpos, double ypos)
+{
+    //判断鼠标是否是第一次进入窗口
+    if(firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    //计算鼠标偏移量
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos;//之所以是反过来是因为俯仰角正向是往y轴负向
+    lastX = xpos;
+    lastY = ypos;
+
+    //鼠标灵敏度
+    float sensitivity = 0.1f;
+
+    //计算真实的偏移量
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    //计算新的俯仰角和偏航角
+    pitch += yoffset;
+    yaw += xoffset;
+
+    //限制俯仰角
+    if(pitch > 89.0f)
+    {
+        pitch = 89.0f;
+    }
+    if(pitch < -89.0f)
+    {
+        pitch = -89.0f;
+    }
+
+    //改变相机前向（也就是观察向量的相反向量）
+    glm::vec3 front;
+    front.x = cos(glm::radians(pitch)) * cos(glm::radians(yaw));
+    front.y = sin(glm::radians(pitch));
+    front.z = cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+    cameraFront = glm::normalize(front);
+}
+
+//鼠标滚轮回调函数
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
+{
+    fov -= (float)yoffset;
+    if(fov < 1.0f)
+    {
+        fov = 1.0f;
+    }
+    if(fov > 45.0f)
+    {
+        fov = 45.0f;
+    }
 }

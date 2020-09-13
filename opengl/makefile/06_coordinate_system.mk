@@ -5,7 +5,7 @@ $(EXC_NAME) :
 	$(CC) $(CXX_FLAGS) \
 	$(SRC_DIR)/$(EXC_NAME).cpp \
 	-I$(DEP_DIR) \
-	-I$(UTILS_DIR) \
+	-I$(UTILS_INCLUDE_DIR) \
 	-L$(LIB_MAC_DIR) -lglad -lglfw3 \
 	-framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo \
 	-o $(DES_MAC_DIR)/$@ 
