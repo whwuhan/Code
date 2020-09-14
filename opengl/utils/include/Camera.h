@@ -66,8 +66,11 @@ public:
     void ProcessMouseMovement(float xoffset,float yoffset,GLboolean constrainPitch=true);
     //响应鼠标滚轮
     void ProcessMouseScroll(float yoffset);
+    //显示Camera信息
+    void showInf();
 private:
     //计算前向向量
     void updateCameraVectors();
+
 };
 #endif

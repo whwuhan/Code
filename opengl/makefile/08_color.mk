@@ -1,6 +1,7 @@
 # glfw静态库编译
+# 颜色
 include config/*.mk
-EXC_NAME := 07_camera_move_camera
+EXC_NAME := 08_color
 $(EXC_NAME) : 
 	$(CC) $(CXX_FLAGS) \
 	$(SRC_DIR)/$(EXC_NAME).cpp \

@@ -1,6 +1,7 @@
 # glfw静态库编译
+# 基础光照
 include config/*.mk
-EXC_NAME := 07_camera_move_camera
+EXC_NAME := 09_basic_lighting
 $(EXC_NAME) : 
 	$(CC) $(CXX_FLAGS) \
 	$(SRC_DIR)/$(EXC_NAME).cpp \

@@ -158,7 +158,14 @@ int main()
     //GL_STATIC_DRAW：数据几乎不变 GL_DYNAMIC_DRAW：数据会改变很多 GL_STREAM_DRAW：数据每次绘制都会改变
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
-    //顶点属性指针，告诉OpenGL怎么解析VBO所管理的显存，并存储到当前绑定的VAO中 参数：1要配置的顶点属性（顶点着色器中指的是 layout(location = 0) ）  2顶点属性的大小 顶点属性是vec3类型有3个值，所以是3   3指定顶点坐标的类型  4否希望数据被标准化(Normalize)   5步长（顶点有多长）  6这个顶点属性相对起始位置的偏移量，注意是一个void*类型
+    //顶点属性指针，告诉OpenGL怎么解析VBO所管理的显存，并存储到当前绑定的VAO中 
+    //参数：
+    //1要配置的顶点属性（顶点着色器中指的是 layout(location = 0) ） 
+    //2顶点属性的大小 顶点的位置属性是vec3类型有3个值，所以是3   
+    //3指定顶点坐标的类型
+    //4否希望数据被标准化(Normalize)   
+    //5步长（顶点有多长）  
+    //6这个顶点属性相对起始位置的偏移量，注意是一个void*类型
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     //启用顶点数组对象 参数：顶点属性的位置（在顶点着色器中 顶点着色器中指的是 layout(location = 0) 所以这里是0）
     glEnableVertexAttribArray(0);
