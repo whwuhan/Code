@@ -14,7 +14,8 @@ enum Camera_Movement
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT
+    RIGHT,
+    UPWARD
 };
 
 //默认照相机数值

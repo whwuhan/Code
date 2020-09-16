@@ -65,6 +65,10 @@ void Camera::ProcessKeyboard(Camera_Movement direction,float deltaTime){
     if(direction == RIGHT){
         Position += Right * velocity;
     }
+    //向上（世界上方，不是相机上方）
+    if(direction == UPWARD){
+        Position += WorldUp * velocity;
+    }
 }
 
 //响应鼠标

@@ -186,9 +186,9 @@ int main(){
 
     //着色器配置
     lightingShader.use();                               //激活
-    //告诉每个采样器的opengl它属于哪个纹理单元
+    //给纹理采样器分配位置值
     lightingShader.setInt("material.diffuse", 0);
-    lightingShader.setInt("material.specular", 1);
+    lightingShader.setInt("material.specular", 2);
 
 
     //渲染循环
@@ -230,7 +230,7 @@ int main(){
         glActiveTexture(GL_TEXTURE0);               //激活贴图单元
         glBindTexture(GL_TEXTURE_2D, diffuseMap);   //绑定贴图
         //绑定镜面反射贴图
-        glActiveTexture(GL_TEXTURE1);
+        glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, specularMap);
 
 
@@ -277,21 +277,25 @@ void processInput(GLFWwindow *window){
 
     //相机移动封装到了camera中
     //移动相机
-    if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
         //向前移动
         camera.ProcessKeyboard(FORWARD,deltaTime);
     }
-    if(glfwGetKey(window,GLFW_KEY_S) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS){
         //向后移动
         camera.ProcessKeyboard(BACKWARD,deltaTime);
     }
-    if(glfwGetKey(window,GLFW_KEY_A) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS){
         //向左移动
         camera.ProcessKeyboard(LEFT,deltaTime);
     }
-    if(glfwGetKey(window,GLFW_KEY_D) == GLFW_PRESS){
+    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS){
         //向右移动
         camera.ProcessKeyboard(RIGHT,deltaTime);
+    }
+    if(glfwGetKey(window, GLFW_KEY_SPACE)){
+        //向上移动
+        camera.ProcessKeyboard(UPWARD,deltaTime);
     }
         
 }
