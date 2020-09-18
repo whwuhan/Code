@@ -187,8 +187,12 @@ int main(){
     //着色器配置
     lightingShader.use();                               //激活
     //给纹理采样器分配位置值
+    //对应后面的
+    // glActiveTexture(GL_TEXTURE0);               //激活贴图单元
+    // glBindTexture(GL_TEXTURE_2D, diffuseMap);   //绑定贴图
     lightingShader.setInt("material.diffuse", 0);
-    lightingShader.setInt("material.specular", 2);
+    lightingShader.setInt("material.specular", 1);
+
 
 
     //渲染循环
@@ -230,7 +234,7 @@ int main(){
         glActiveTexture(GL_TEXTURE0);               //激活贴图单元
         glBindTexture(GL_TEXTURE_2D, diffuseMap);   //绑定贴图
         //绑定镜面反射贴图
-        glActiveTexture(GL_TEXTURE2);
+        glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, specularMap);
 
 
