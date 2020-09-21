@@ -14,7 +14,7 @@
 #include <Camera.h>
 #include <iostream>
 #include <string>
-#include <iostream>
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);

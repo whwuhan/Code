@@ -5,6 +5,7 @@
  * 镜面高光
  * 新增材质（主要是在着色器中添加材质信息）
  * 新增光照贴图（新增贴图加载函数）
+ * 投光物（点光源，衰减attenuation）
 */
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -17,7 +18,6 @@
 #include <Camera.h>
 #include <iostream>
 #include <string>
-
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -85,15 +85,15 @@ int main(){
     //着色器路径
     //光照场景物体着色器
     std::string colors_vertex_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/12/12.lighting_maps.vs.glsl";
+    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/14/14.light_casters.vs.glsl";
     std::string colors_fragment_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/12/12.lighting_maps.fs.glsl";
+    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/14/14.light_casters.fs.glsl";
 
     //光源着色器
     std::string light_cube_vertex_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/12/12.light_cube.vs.glsl";
+    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/14/14.light_cube.vs.glsl";
     std::string light_cube_fragment_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/12/12.light_cube.fs.glsl";
+    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/14/14.light_cube.fs.glsl";
 
     Shader lightingShader(colors_vertex_path.c_str(),colors_fragment_path.c_str());
     Shader lightCubeShader(light_cube_vertex_path.c_str(),light_cube_fragment_path.c_str());
@@ -144,6 +144,21 @@ int main(){
         -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
         -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
     };
+
+    // 立方体位置
+    glm::vec3 cubePositions[] = {
+        glm::vec3( 0.0f,  0.0f,  0.0f),
+        glm::vec3( 2.0f,  5.0f, -15.0f),
+        glm::vec3(-1.5f, -2.2f, -2.5f),
+        glm::vec3(-3.8f, -2.0f, -12.3f),
+        glm::vec3( 2.4f, -0.4f, -3.5f),
+        glm::vec3(-1.7f,  3.0f, -7.5f),
+        glm::vec3( 1.3f, -2.0f, -2.5f),
+        glm::vec3( 1.5f,  2.0f, -2.5f),
+        glm::vec3( 1.5f,  0.2f, -1.5f),
+        glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+
     //VAO VBO
     //设置物体
     unsigned int VBO,cubeVAO;
@@ -187,7 +202,7 @@ int main(){
     //着色器配置
     lightingShader.use();                               //激活
     //给纹理采样器分配位置值
-    //对应后面的
+    // 对应后面的
     // glActiveTexture(GL_TEXTURE0);               //激活贴图单元
     // glBindTexture(GL_TEXTURE_2D, diffuseMap);   //绑定贴图
     lightingShader.setInt("material.diffuse", 0);
@@ -212,14 +227,22 @@ int main(){
 
         //激活物体着色器
         lightingShader.use();
-        lightingShader.setVec3("light.position", lightPos);     //物体的光照来源
-        lightingShader.setVec3("viewPos", camera.Position);     //设置相机位置
+        lightingShader.setVec3("light.position", lightPos);               //物体的光照来源
+        //是点光源（衰减），所以需要是点光源的位置，而不是平行光的方向信息
+        //lightingShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);     //平行光的方向
+        lightingShader.setVec3("viewPos", camera.Position);                 //设置相机位置
         //设置光照信息（现在光照信息不是写在发光物体着色器上的，而是显示物体着色器上）
         lightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
         lightingShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
         lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        //设置光照衰减的参数（由经验和查表所得）
+        lightingShader.setFloat("light.constant", 1.0f);        //衰减常数项
+        lightingShader.setFloat("light.linear", 0.09f);         //衰减一次项
+        lightingShader.setFloat("light.quadratic", 0.032f);     //衰减二次项
+
+
         //设置材质信息
-        lightingShader.setFloat("material.shininess", 64.0f);   //反光度
+        lightingShader.setFloat("material.shininess", 32.0f);   //反光度
 
         //观察矩阵、投影矩阵
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -241,8 +264,21 @@ int main(){
 
         
         //绘制渲染物体立方体
+        // glBindVertexArray(cubeVAO);
+        // glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        //绘制多个立方体，改变不同立方体的位置
         glBindVertexArray(cubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        for(unsigned int i = 0; i < 10; i++){
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, cubePositions[i]);        //平移
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            lightingShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0 , 36);
+        }
+
+
 
         //绘制光源立方体
         lightCubeShader.use();//激活对应着色器
