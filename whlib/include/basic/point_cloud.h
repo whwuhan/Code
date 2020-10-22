@@ -2,16 +2,14 @@
 #define POINT_CLOUD_H
 #include <iostream>
 #include <vector>
-#include "../../deps/eigen-3.3.7/Eigen/Dense"
-#include "point3d.h"
-namespace wh
-{
-    namespace basic
-    {
+#include <Eigen/Dense>
+#include <basic/point3d.h>
+#include <basic/cube.h>
+namespace wh{
+    namespace basic{
         const int POINT3D_SIZE = 3;
         //点云
-        typedef struct Point_cloud
-        {
+        typedef struct Point_cloud{
             //点云数据
             Eigen::MatrixXd points;
             //点云大小
@@ -41,14 +39,21 @@ namespace wh
             void get_centered_point_cloud();
 
             //归一化点云
-            void get_normalized_point_cloud();
+            wh::basic::Cube get_normalized_point_cloud();
 
             //点云转化为vector存储
             std::vector<Point3d> points_to_vector();
 
+            //点云体素化
+
         } POINT_CLOUD;
         //注意这里要声明友元函数，结构体里面不是声明这个函数，而是说明这个是友元函数
         std::ostream& operator<<(std::ostream& ost, const Point_cloud point_cloud);
+
+        //体素化点云
+        typedef struct Voxel_point_cloud{
+
+        } VOXEL_POINT_CLOUD;
     }
 }
 #endif

@@ -4,18 +4,16 @@
 #include <vector>
 #include <ctime>
 #include <iomanip>
-#include "../../../include/utils/io/io_obj.h"
-#include "../../../include/utils/string_lib.h"
+#include <utils/io/io_obj.h>
+#include <utils/string_lib.h>
 using namespace std;
 using namespace wh::utils::io;
 using namespace wh::basic;
 //读取obj点云文件
-void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_cloud* point_cloud_ptr)
-{   
+void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_cloud* point_cloud_ptr){   
     //打开文件
     ifstream data_source(file_name);
-    if(!data_source.is_open())
-    {
+    if(!data_source.is_open()){
         cout << "no data source." << endl;
         return;
     }
@@ -25,10 +23,8 @@ void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_clo
     vector<string> line_split;
     unsigned int count = 0;//obj文件点的数量
 
-    while(getline(data_source, line))
-    {   
-        if(line[0] == 'v')
-        {   
+    while(getline(data_source, line)){   
+        if(line[0] == 'v'){   
             //line_split = split(line, " ");
             count++;
             //cout << count << endl;
@@ -46,10 +42,8 @@ void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_clo
     point_cloud_ptr->resize(count, 3);
     count = 0;
 
-    while(getline(data_source, line))
-    {   
-        switch(line[0])
-        {   
+    while(getline(data_source, line)){   
+        switch(line[0]){   
             case 'v':
                 line_split = split(line, " ");
                 point_cloud_ptr->points(count, 0) = atof(line_split[1].c_str());
@@ -63,8 +57,7 @@ void wh::utils::io::load_point_cloud_obj(const string file_name,struct Point_clo
 }
 
 //点云存入obj文件
-void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Point_cloud* const point_cloud_ptr)
-{
+void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Point_cloud* const point_cloud_ptr){
     //打开文件
     ofstream data_destination(file_name);
     data_destination << "# whlib point cloud obj file" << endl;//文件头注释
@@ -79,14 +72,96 @@ void wh::utils::io::save_point_cloud_obj(const string file_name,const struct Poi
     //存储对象名
     std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
     int file_name_index = file_name_split.size() - 2;
-    data_destination << "o " << file_name_split[file_name_index];//obj对象
+    data_destination << "o " << file_name_split[file_name_index]<<endl;//obj对象
 
     //存入数据
-    for(int i = 0; i < point_cloud_ptr->size; i++)
-    {
+    for(int i = 0; i < point_cloud_ptr->size; i++){
         data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[0];
         data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[1];
         data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << point_cloud_ptr->points.row(i)[2] << endl;
     }
+    data_destination.close();
+}
+
+//cube mesh 写入obj文件
+void wh::utils::io::save_cube_mesh_obj(const std::string file_name,wh::basic::Cube* cube_ptr){
+    //打开文件
+    ofstream data_destination(file_name);
+    data_destination << "# whlib cube mesh obj file" << endl;//文件头注释
+
+    //获取当地时间
+    time_t now = time(0);
+    string date_time(ctime(&now));
+
+    //注意时间后面自带换行
+    data_destination << "# " << date_time;//写入存储时间
+
+    //存储对象名
+    std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
+    int file_name_index = file_name_split.size() - 2;
+    data_destination << "o " << file_name_split[file_name_index]<<endl;//obj对象
+
+    //存入点数据
+    for(int i = 0; i < cube_ptr->points.rows(); i++){
+        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[0];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[1];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[2] << endl;
+    }
+
+    //写入面数据（注意顺序首个索引从小到大）
+    data_destination << "f" << " " <<"1"<<" "<<"2"<<" "<<"3"<<endl;
+    data_destination << "f" << " " <<"1"<<" "<<"3"<<" "<<"4"<<endl;
+    data_destination << "f" << " " <<"1"<<" "<<"4"<<" "<<"5"<<endl;
+    data_destination << "f" << " " <<"1"<<" "<<"5"<<" "<<"8"<<endl;
+    data_destination << "f" << " " <<"1"<<" "<<"2"<<" "<<"7"<<endl;
+    data_destination << "f" << " " <<"1"<<" "<<"7"<<" "<<"8"<<endl;
+    data_destination << "f" << " " <<"2"<<" "<<"3"<<" "<<"6"<<endl;
+    data_destination << "f" << " " <<"2"<<" "<<"6"<<" "<<"7"<<endl;
+    data_destination << "f" << " " <<"3"<<" "<<"4"<<" "<<"6"<<endl;
+    data_destination << "f" << " " <<"4"<<" "<<"5"<<" "<<"6"<<endl;
+    data_destination << "f" << " " <<"5"<<" "<<"6"<<" "<<"7"<<endl;
+    data_destination << "f" << " " <<"5"<<" "<<"7"<<" "<<"8"<<endl;
+        
+    data_destination.close();
+}
+
+//cube wireframe（线框写入obj文件）
+void wh::utils::io::save_cube_wireframe_obj(const std::string file_name,wh::basic::Cube* cube_ptr){
+    //打开文件
+    ofstream data_destination(file_name);
+    data_destination << "# whlib cube mesh obj file" << endl;//文件头注释
+
+    //获取当地时间
+    time_t now = time(0);
+    string date_time(ctime(&now));
+
+    //注意时间后面自带换行
+    data_destination << "# " << date_time;//写入存储时间
+
+    //存储对象名
+    std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
+    int file_name_index = file_name_split.size() - 2;
+    data_destination << "o " << file_name_split[file_name_index]<<endl;//obj对象
+
+    //存入点数据
+    for(int i = 0; i < cube_ptr->points.rows(); i++){
+        data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[0];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[1];
+        data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube_ptr->points.row(i)[2] << endl;
+    }
+
+    //写入线框（注意顺序首个索引从小到大）
+    data_destination << "l" << " " <<"1"<<" "<<"2"<<endl;
+    data_destination << "l" << " " <<"2"<<" "<<"3"<<endl;
+    data_destination << "l" << " " <<"3"<<" "<<"4"<<endl;
+    data_destination << "l" << " " <<"4"<<" "<<"1"<<endl;
+    data_destination << "l" << " " <<"4"<<" "<<"5"<<endl;
+    data_destination << "l" << " " <<"5"<<" "<<"6"<<endl;
+    data_destination << "l" << " " <<"6"<<" "<<"3"<<endl;
+    data_destination << "l" << " " <<"6"<<" "<<"7"<<endl;
+    data_destination << "l" << " " <<"7"<<" "<<"2"<<endl;
+    data_destination << "l" << " " <<"7"<<" "<<"8"<<endl;
+    data_destination << "l" << " " <<"8"<<" "<<"1"<<endl;
+    data_destination << "l" << " " <<"8"<<" "<<"5"<<endl;
     data_destination.close();
 }

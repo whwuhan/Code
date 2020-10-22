@@ -1,14 +1,11 @@
 #ifndef POINT3D_H
 #define POINT3D_H
 #include <iostream>
-#include "../../deps/eigen-3.3.7/Eigen/Dense"
-namespace wh
-{
-    namespace basic
-    {   
+#include <Eigen/Dense>
+namespace wh{
+    namespace basic{   
         //三维点
-        typedef struct Point3d
-        {   
+        typedef struct Point3d{   
             //未来可能删除xyz
             double x;
             double y;
