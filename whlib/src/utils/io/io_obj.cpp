@@ -165,3 +165,98 @@ void wh::utils::io::save_cube_wireframe_obj(const std::string file_name,wh::basi
     data_destination << "l" << " " <<"8"<<" "<<"5"<<endl;
     data_destination.close();
 }
+
+void wh::utils::io::save_cube_meshes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes){
+    //打开文件
+    ofstream data_destination(file_name);
+    
+    data_destination << "# whlib cube mesh obj file" << endl;//文件头注释
+
+    //获取当地时间
+    time_t now = time(0);
+    string date_time(ctime(&now));
+
+    //注意时间后面自带换行
+    data_destination << "# " << date_time;//写入存储时间
+
+    //存储对象名
+    std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
+    int file_name_index = file_name_split.size() - 2;
+    data_destination << "o " << file_name_split[file_name_index]<<endl;//obj对象
+
+    //存入点数据
+    for(Cube cube : cubes){
+        for(int i = 0; i < cube.points.rows(); i++){
+            data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[0];
+            data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[1];
+            data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[2] << endl;
+        }
+    }
+
+    //存入面数据
+    for(int i=0;i<cubes.size();i++){
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+2<<" "<<8*i+3<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+3<<" "<<8*i+4<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+4<<" "<<8*i+5<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+5<<" "<<8*i+8<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+2<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+7<<" "<<8*i+8<<endl;
+        data_destination << "f" << " " <<8*i+2<<" "<<8*i+3<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+2<<" "<<8*i+6<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+3<<" "<<8*i+4<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+4<<" "<<8*i+5<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+5<<" "<<8*i+6<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+5<<" "<<8*i+7<<" "<<8*i+8<<endl;
+    }
+    
+    data_destination.close();
+}
+
+//重载保存cube
+void wh::utils::io::save_cube_meshes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes){
+    //打开文件
+    ofstream data_destination(file_name);
+    
+    data_destination << "# whlib cube mesh obj file" << endl;//文件头注释
+
+    //获取当地时间
+    time_t now = time(0);
+    string date_time(ctime(&now));
+
+    //注意时间后面自带换行
+    data_destination << "# " << date_time;//写入存储时间
+
+    //存储对象名
+    std::vector<std::string> file_name_split = wh::utils::split(file_name,"/.\\");
+    int file_name_index = file_name_split.size() - 2;
+    data_destination << "o " << file_name_split[file_name_index]<<endl;//obj对象
+
+    //存入点数据
+    int a=0;
+    for(Cube cube : cubes){
+        // cout<<cube.points.rows()<<endl;
+        for(int i = 0; i < cube.points.rows(); i++){
+            data_destination << "v" << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[0];
+            data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[1];
+            data_destination << " " << setiosflags(ios::fixed) << setprecision(10) << cube.points.row(i)[2] << endl;
+        }
+    }
+
+    //存入面数据
+    for(int i=0;i<cubes.size();i++){
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+2<<" "<<8*i+3<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+3<<" "<<8*i+4<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+4<<" "<<8*i+5<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+5<<" "<<8*i+8<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+2<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+1<<" "<<8*i+7<<" "<<8*i+8<<endl;
+        data_destination << "f" << " " <<8*i+2<<" "<<8*i+3<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+2<<" "<<8*i+6<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+3<<" "<<8*i+4<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+4<<" "<<8*i+5<<" "<<8*i+6<<endl;
+        data_destination << "f" << " " <<8*i+5<<" "<<8*i+6<<" "<<8*i+7<<endl;
+        data_destination << "f" << " " <<8*i+5<<" "<<8*i+7<<" "<<8*i+8<<endl;
+    }
+    
+    data_destination.close();
+}

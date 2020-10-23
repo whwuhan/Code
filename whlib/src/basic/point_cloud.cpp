@@ -100,7 +100,7 @@ Cube Point_cloud::get_normalized_point_cloud(){
 
     //包围盒中心
     RowVector3d boundingbox_center = (max_xyz + min_xyz) / 2.0;
-    //将包围盒中心放置到坐标原点
+    //将点云中心放置到坐标原点
     for(int i = 0; i < size; i++){
         points.row(i) = points.row(i) - boundingbox_center;
     }
@@ -131,5 +131,58 @@ vector<Point3d> Point_cloud::points_to_vector(){
     for(int i = 0; i < size; i++){
         res[i] = Point3d(points.row(i));
     }
+    return res;
+}
+
+//获取boundingbox
+Cube Point_cloud::get_boundingbox(){
+    RowVector3d max_xyz = points.colwise().maxCoeff();//xyz坐标的最大值
+    RowVector3d min_xyz = points.colwise().minCoeff();//xyz坐标的最小值
+
+    //包围盒中心
+    RowVector3d boundingbox_center = (max_xyz + min_xyz) / 2.0;
+    //boundingbox的xyz轴上的边长
+    RowVector3d boundingbox_side_length = max_xyz - min_xyz;
+
+    Cube boundingbox(boundingbox_center,boundingbox_side_length[0],boundingbox_side_length[1],boundingbox_side_length[2]);
+    return boundingbox;
+}
+
+//体素化点云
+set<Cube> Point_cloud::voxelization(wh::basic::Cube& boundingbox,double leaf_size){
+    set<Cube> res;
+    //先细分
+    vector<Cube> voxel=boundingbox.subdivision(leaf_size);
+
+    //获取xyz方向细分的个数
+    int x_amount = boundingbox.x / leaf_size;
+    int y_amount = boundingbox.y / leaf_size;
+    int z_amount = boundingbox.z / leaf_size;
+
+    if(x_amount < boundingbox.x/leaf_size) x_amount++;
+    if(y_amount < boundingbox.y/leaf_size) y_amount++;
+    if(z_amount < boundingbox.z/leaf_size) z_amount++;
+
+    //原点
+    RowVector3d origin = boundingbox.points.row(0);
+    //体素的位置
+    int x_index=0;
+    int y_index=0;
+    int z_index=0;
+
+    for(int i=0;i<points.rows();i++){
+        RowVector3d index=(points.row(i)-origin)/leaf_size;
+        x_index=index[0];
+        y_index=index[1];
+        z_index=index[2];
+        //计算体素在vector中的位置
+        
+        int vox_index = x_index * y_amount * z_amount + y_index * z_amount + z_index;
+        res.insert(voxel[vox_index]);
+
+    }
+    
+    //cout<<points<<endl;
+ 
     return res;
 }

@@ -6,6 +6,7 @@
 #include <ctime>
 #include <iomanip>
 #include <vector>
+#include <set>
 #include <basic/point_cloud.h>
 #include <basic/abstract_data_type/graph.h>
 #include <basic/abstract_data_type/curve.h>
@@ -31,6 +32,7 @@ namespace wh{
             void save_cube_mesh_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
             void save_cube_wireframe_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
             void save_cube_meshes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
+            void save_cube_meshes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
             void save_cube_wireframes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
 
 

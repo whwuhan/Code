@@ -5,6 +5,7 @@
 #include <Eigen/Dense>
 #include <basic/point3d.h>
 #include <basic/cube.h>
+#include <set>
 namespace wh{
     namespace basic{
         const int POINT3D_SIZE = 3;
@@ -29,6 +30,7 @@ namespace wh{
 
             //改变维度，注意resize()会改变矩阵内部数据
             void resize(const unsigned int rows, const unsigned int cols);
+
             //如果维度比原有的维度小，那么数据不改变，相当于裁剪矩阵，如果扩张了维度，数据会是随机值
             void conservative_resize (const unsigned int rows, const unsigned int cols);
 
@@ -45,6 +47,10 @@ namespace wh{
             std::vector<Point3d> points_to_vector();
 
             //点云体素化
+            std::set<wh::basic::Cube> voxelization(wh::basic::Cube& boundingbox,double leaf_size);
+
+            //获取Boundingbox
+            wh::basic::Cube get_boundingbox();
 
         } POINT_CLOUD;
         //注意这里要声明友元函数，结构体里面不是声明这个函数，而是说明这个是友元函数
