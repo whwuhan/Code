@@ -4,19 +4,19 @@ using namespace Eigen;
 using namespace wh::basic;
 
 //构造函数
-Cube::Cube():position(0.0,0.0,0.0),side_len(0.0),points(),x(0.0),y(0.0),z(0.0){}
+Cube::Cube():position(0.0,0.0,0.0),side_len(0.0),vertices(),x(0.0),y(0.0),z(0.0){}
 
-Cube::Cube(MatrixXd points):points(points){
-    RowVector3d center = points.colwise().sum();//colwise()按照矩阵每一列的方向上排列 这里相当于每一行相加
-    position = center / points.rows();
+Cube::Cube(MatrixXd vertices):vertices(vertices){
+    RowVector3d center = vertices.colwise().sum();//colwise()按照矩阵每一列的方向上排列 这里相当于每一行相加
+    position = center / vertices.rows();
 
-    RowVector3d temp = points.row(1) - points.row(0);
+    RowVector3d temp = vertices.row(1) - vertices.row(0);
     x=sqrt(temp.dot(temp));
 
-    temp = points.row(3) - points.row(0);
+    temp = vertices.row(3) - vertices.row(0);
     y=sqrt(temp.dot(temp));
 
-    temp = points.row(7) - points.row(0);
+    temp = vertices.row(7) - vertices.row(0);
     z=sqrt(temp.dot(temp));
 
     if( (x-y<0.00000001) && (y-z<0.00000001) ){
@@ -26,17 +26,17 @@ Cube::Cube(MatrixXd points):points(points){
 
 Cube::Cube(RowVector3d position,double side_len):position(position),side_len(side_len){
     double half_size = side_len / 2.0;
-    points.resize(8,3);
+    vertices.resize(8,3);
 
-    points.row(0)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]-half_size);
-    points.row(1)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]-half_size);
-    points.row(2)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]-half_size);
-    points.row(3)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]-half_size);
-    points.row(4)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]+half_size);
-    points.row(5)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]+half_size);
-    points.row(6)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]+half_size);
-    points.row(7)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]+half_size);
-    // position_side_len_to_points();
+    vertices.row(0)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]-half_size);
+    vertices.row(1)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]-half_size);
+    vertices.row(2)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]-half_size);
+    vertices.row(3)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]-half_size);
+    vertices.row(4)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]+half_size);
+    vertices.row(5)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]+half_size);
+    vertices.row(6)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]+half_size);
+    vertices.row(7)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]+half_size);
+    // position_side_len_to_vertices();
 
     x=side_len;
     y=side_len;
@@ -45,7 +45,7 @@ Cube::Cube(RowVector3d position,double side_len):position(position),side_len(sid
 
 Cube::Cube(Eigen::RowVector3d position,double x,double y,double z):position(position),x(x),y(y),z(z){
     side_len=0.0;
-    position_side_len_to_points_cuboid();
+    position_side_len_to_vertices_cuboid();
 }
 
 
@@ -71,30 +71,30 @@ void Cube::show_inf()const{
     cout<<"x:"<<x<<" y:"<<y<<" z:"<<z<<endl;
 }
 //将position side_len转化成顶点表达式
-void Cube::position_side_len_to_points(){
-    points.resize(8,3);
+void Cube::position_side_len_to_vertices(){
+    vertices.resize(8,3);
     double half_size=side_len/2.0;
-    points.row(0)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]-half_size);
-    points.row(1)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]-half_size);
-    points.row(2)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]-half_size);
-    points.row(3)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]-half_size);
-    points.row(4)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]+half_size);
-    points.row(5)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]+half_size);
-    points.row(6)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]+half_size);
-    points.row(7)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]+half_size);
+    vertices.row(0)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]-half_size);
+    vertices.row(1)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]-half_size);
+    vertices.row(2)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]-half_size);
+    vertices.row(3)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]-half_size);
+    vertices.row(4)=RowVector3d(position[0]-half_size,position[1]+half_size,position[2]+half_size);
+    vertices.row(5)=RowVector3d(position[0]+half_size,position[1]+half_size,position[2]+half_size);
+    vertices.row(6)=RowVector3d(position[0]+half_size,position[1]-half_size,position[2]+half_size);
+    vertices.row(7)=RowVector3d(position[0]-half_size,position[1]-half_size,position[2]+half_size);
 }
 
 //将position side_len转化成顶点表达式
-void Cube::position_side_len_to_points_cuboid(){
-    points.resize(8,3);
-    points.row(0)=position+RowVector3d(-x/2.0,-y/2.0,-z/2.0);
-    points.row(1)=position+RowVector3d(x/2.0,-y/2.0,-z/2.0);
-    points.row(2)=position+RowVector3d(x/2.0,y/2.0,-z/2.0);
-    points.row(3)=position+RowVector3d(-x/2.0,y/2.0,-z/2.0);
-    points.row(4)=position+RowVector3d(-x/2.0,y/2.0,z/2.0);
-    points.row(5)=position+RowVector3d(x/2.0,y/2.0,z/2.0);
-    points.row(6)=position+RowVector3d(x/2.0,-y/2.0,z/2.0);
-    points.row(7)=position+RowVector3d(-x/2.0,-y/2.0,z/2.0);
+void Cube::position_side_len_to_vertices_cuboid(){
+    vertices.resize(8,3);
+    vertices.row(0)=position+RowVector3d(-x/2.0,-y/2.0,-z/2.0);
+    vertices.row(1)=position+RowVector3d(x/2.0,-y/2.0,-z/2.0);
+    vertices.row(2)=position+RowVector3d(x/2.0,y/2.0,-z/2.0);
+    vertices.row(3)=position+RowVector3d(-x/2.0,y/2.0,-z/2.0);
+    vertices.row(4)=position+RowVector3d(-x/2.0,y/2.0,z/2.0);
+    vertices.row(5)=position+RowVector3d(x/2.0,y/2.0,z/2.0);
+    vertices.row(6)=position+RowVector3d(x/2.0,-y/2.0,z/2.0);
+    vertices.row(7)=position+RowVector3d(-x/2.0,-y/2.0,z/2.0);
 }
 
 //细分
@@ -115,7 +115,13 @@ vector<Cube> Cube::subdivision(double leaf_size){
     int x_amount = x / leaf_size;
     int y_amount = y / leaf_size;
     int z_amount = z / leaf_size;
+    
+    // 边界位置再增加一个cube
+    // x_amount++;
+    // y_amount++;
+    // z_amount++;
 
+    //边界位置不增加cube
     if(x_amount < x/leaf_size) x_amount++;
     if(y_amount < y/leaf_size) y_amount++;
     if(z_amount < z/leaf_size) z_amount++;
@@ -127,12 +133,11 @@ vector<Cube> Cube::subdivision(double leaf_size){
         for(int j=0;j<y_amount;j++){
             for(int k=0;k<z_amount;k++){
                 RowVector3d pos((2*i+1)*half_size,(2*j+1)*half_size,(2*k+1)*half_size);
-                pos += points.row(0);
+                pos += vertices.row(0);
                 res.push_back(Cube(pos,leaf_size));
             }
         }
     }
-    
     return res;
 }
 

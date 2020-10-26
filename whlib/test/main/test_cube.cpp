@@ -85,15 +85,22 @@ int main(){
     // auto cubes=cube.subdivision(0.3);
     // save_cube_meshes_obj("./test_cube_meshes.obj",cubes);
 
-    Point_cloud pc;
-    // load_point_cloud_obj("/Users/wuhan/wuhan/研究生/研一/研一下/CSCD论文/CSCD/CSCD/experimental_data/point_cloud/realdata/obj/tree1_6678.obj",&pc);
-    load_point_cloud_obj("/Users/wuhan/wuhan/研究生/研一/研一下/CSCD论文/CSCD/CSCD/experimental_data/point_cloud/realdata/obj/tree2_16959.obj",&pc);
-    
-    auto boundingbox=pc.get_boundingbox();
-    save_cube_wireframe_obj("./boundingbox.obj",&boundingbox);
-    
-    auto voxel=pc.voxelization(boundingbox,0.2);
-    auto boudindbox_div = boundingbox.subdivision(0.2);
-    boudindbox_div[boudindbox_div.size()-1].show_inf();
-    save_cube_meshes_obj("./test_cube_meshes.obj",voxel);
+    vector<string> file_pathes={"Dinosaur.obj","Horse.obj","Couple.obj"};
+    for(string file_path:file_pathes){
+        //读入点云
+        Point_cloud pc;
+        load_point_cloud_obj(file_path,&pc);
+
+        //获取boundingbox
+        auto boundingbox=pc.get_boundingbox();
+        boundingbox.show_inf();
+        //体素化
+        auto voxel=pc.voxelization(boundingbox,0.1);
+
+        //保存信息
+        save_cube_wireframe_obj("boundingbox_"+file_path,&boundingbox);
+        save_cube_wireframes_obj("test_cube_wireframes_all_"+file_path,boundingbox.subdivision(0.1));
+        save_tri_cube_meshes_obj("test_cube_meshes_"+file_path,voxel);
+        save_cube_wireframes_obj("test_cube_wireframes_"+file_path,voxel);
+    }
 }

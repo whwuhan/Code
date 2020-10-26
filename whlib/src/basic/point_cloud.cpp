@@ -121,7 +121,7 @@ Cube Point_cloud::get_normalized_point_cloud(){
 
     boundingbox_side_length=boundingbox_side_length / scale;//同时缩放boudingbox的大小（归一化boundingbox）
     Cube boundingbox(RowVector3d(0.0,0.0,0.0),boundingbox_side_length[0],boundingbox_side_length[1],boundingbox_side_length[2]);
-    boundingbox.position_side_len_to_points_cuboid();//将位置边长表达形式表示成顶点形式
+    boundingbox.position_side_len_to_vertices_cuboid();//将位置边长表达形式表示成顶点形式
     return boundingbox;
 }
 
@@ -151,7 +151,7 @@ Cube Point_cloud::get_boundingbox(){
 //体素化点云
 set<Cube> Point_cloud::voxelization(wh::basic::Cube& boundingbox,double leaf_size){
     set<Cube> res;
-    //先细分
+    //先细分boundingbox，
     vector<Cube> voxel=boundingbox.subdivision(leaf_size);
 
     //获取xyz方向细分的个数
@@ -159,30 +159,46 @@ set<Cube> Point_cloud::voxelization(wh::basic::Cube& boundingbox,double leaf_siz
     int y_amount = boundingbox.y / leaf_size;
     int z_amount = boundingbox.z / leaf_size;
 
+    // 边界位置增加一个cube
+    // x_amount++;
+    // y_amount++;
+    // z_amount++;
+
+    // 边界位置不增加cube，即一个点恰好在boundingbox的一个面上，不在增加细分cube的个数
     if(x_amount < boundingbox.x/leaf_size) x_amount++;
     if(y_amount < boundingbox.y/leaf_size) y_amount++;
     if(z_amount < boundingbox.z/leaf_size) z_amount++;
-
+    
     //原点
-    RowVector3d origin = boundingbox.points.row(0);
+    RowVector3d origin = boundingbox.vertices.row(0);
     //体素的位置
     int x_index=0;
     int y_index=0;
     int z_index=0;
 
     for(int i=0;i<points.rows();i++){
-        RowVector3d index=(points.row(i)-origin)/leaf_size;
+        RowVector3d index=(points.row(i)-origin)/leaf_size;//获取体素位置
         x_index=index[0];
         y_index=index[1];
         z_index=index[2];
         //计算体素在vector中的位置
-        
+        //边界位置处理（恰好在boundingbox的一个面上）
+        if(x_index==x_amount) x_index--;
+        if(y_index==y_amount) y_index--;
+        if(z_index==z_amount) z_index--;
         int vox_index = x_index * y_amount * z_amount + y_index * z_amount + z_index;
-        res.insert(voxel[vox_index]);
 
+        // index越界检验
+        // if(voxel[vox_index].vertices.rows()!=8){
+        //     cout<<"index[0]:"<<index[0]<<endl;
+        //     cout<<"index[1]:"<<index[1]<<endl;
+        //     cout<<"index[2]:"<<index[2]<<endl;
+        //     cout<<"x_amount:"<<x_amount<<" y_amount:"<<y_amount<<" z_amount:"<<z_amount<<endl;
+        //     cout<<"x_index:"<<x_index<<" y_index:"<<y_index<<" z_index:"<<z_index<<endl;
+        //     cout<<"index wrong:"<<vox_index<<endl;
+        // }
+        
+        res.insert(voxel[vox_index]);
     }
-    
-    //cout<<points<<endl;
- 
     return res;
 }

@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "../../include/utils/string_lib.h"
+#include <utils/string_lib.h>
 using namespace std;
 //using namespace wh::utils;  //这里还是要指定命名空间
 vector<string> wh::utils::split(const string &s, const string &seperator){

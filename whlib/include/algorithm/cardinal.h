@@ -3,10 +3,8 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
-namespace wh
-{
-    namespace alg
-    {   
+namespace wh{
+    namespace alg{   
         //==============声明===============
         /**
          * Cardinal样条插值函数
@@ -21,18 +19,15 @@ namespace wh
 
         //==============算法实现===============
         template <typename T>
-        std::vector<T> cardinal(std::vector<T> points, int inter_amount, double tightness)
-        {
-            if(points.size() != 4)
-            {
+        std::vector<T> cardinal(std::vector<T> points, int inter_amount, double tightness){
+            if(points.size() != 4){
                 std::cout << "wrong points" << std::endl;
                 return std::vector<T> (); 
             }
             //Cardinal样条插值
             std::vector<T> res;//返回的结果
             double delta = (1.0 - tightness) / 2.0;//用tightness控制松紧程度
-            for(int i = 0; i < inter_amount; i++)
-            {
+            for(int i = 0; i < inter_amount; i++){
                 double u = (i + 1) * 1.0 / (1.0 + inter_amount);
                 //计算插入点
                 T inter_point= \

@@ -28,12 +28,14 @@ namespace wh{
             template <typename T>
             void save_curves_obj(const std::string file_name,const std::vector< wh::basic::adt::Curve<T> >* const curves_ptr);
 
-            //立方体cube mesh
-            void save_cube_mesh_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
+            //存储立方体cube mesh
+            //存储为三角面片
+            void save_tri_cube_mesh_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
+            void save_tri_cube_meshes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
+            void save_tri_cube_meshes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
             void save_cube_wireframe_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
-            void save_cube_meshes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
-            void save_cube_meshes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
             void save_cube_wireframes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
+            void save_cube_wireframes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
 
 
             //=========模板方法实现=========
