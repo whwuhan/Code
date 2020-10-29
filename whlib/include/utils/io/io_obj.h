@@ -10,6 +10,7 @@
 #include <basic/point_cloud.h>
 #include <basic/abstract_data_type/graph.h>
 #include <basic/abstract_data_type/curve.h>
+#include <basic/polygon_mesh.h>
 namespace wh{
     namespace utils{   
         namespace io{
@@ -29,7 +30,7 @@ namespace wh{
             void save_curves_obj(const std::string file_name,const std::vector< wh::basic::adt::Curve<T> >* const curves_ptr);
 
             //存储立方体cube mesh
-            //存储为三角面片
+            //存储为三角网格模型
             void save_tri_cube_mesh_obj(const std::string file_name,wh::basic::Cube* cube_ptr);
             void save_tri_cube_meshes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
             void save_tri_cube_meshes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
@@ -37,7 +38,9 @@ namespace wh{
             void save_cube_wireframes_obj(const std::string file_name,const std::vector<wh::basic::Cube>& cubes);
             void save_cube_wireframes_obj(const std::string file_name,const std::set<wh::basic::Cube>& cubes);
 
-
+            //polygon mesh
+            void load_polygon_mesh_obj(const std::string file_name,wh::basic::Polygon_mesh *polygon_mesh_ptr);
+            void save_polygon_mesh_obj(const std::string file_name,wh::basic::Polygon_mesh *polygon_mesh_ptr);
             //=========模板方法实现=========
             template <typename T>
             void save_curves_obj(const std::string file_name, std::vector< wh::basic::adt::Curve<T> >* const curves_ptr){

@@ -18,6 +18,8 @@ namespace wh{
             Point3d(const Eigen::RowVector3d data);
             Point3d operator+(const Point3d& point);
             Point3d operator-(const Point3d& point);
+            bool operator<(const Point3d& point)const;
+            bool operator==(const Point3d& point)const;
             double operator[](int i);
             friend std::ostream& operator<<(std::ostream& ost, const Point3d point3d);
             friend Point3d operator*(Point3d& point3d, double coefficient);

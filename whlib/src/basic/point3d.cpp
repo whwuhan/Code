@@ -45,6 +45,31 @@ Point3d wh::basic::operator*(double coefficient, Point3d& point3d){
     return Point3d(point3d.data * coefficient);
 }
 
+//重载<
+bool wh::basic::Point3d::operator<(const Point3d& point)const{
+    if(data[0]<point.data[0]){
+        return true;
+    }else if(data[0]>point.data[0]){
+        return false;
+    }
+
+    if(data[1]<point.data[1]){
+        return true;
+    }else if(data[1]>point.data[1]){
+        return false;
+    }
+
+    if(data[2]<point.data[2]){
+        return true;
+    }else if(data[2]>point.data[2]){
+        return false;
+    }
+    return false;
+}
+
+bool wh::basic::Point3d::operator==(const Point3d& point)const{
+    return data==point.data;
+}
 //xyz和data同步
 void wh::basic::Point3d::syn_xyz_to_data(){
     if(x != data[0] || y != data[1] || z != data[2]){

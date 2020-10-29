@@ -4,6 +4,9 @@
 POINT3D_SRC := $(BASIC_DIR)/point3d.cpp
 POINT_CLOUD_SRC := $(BASIC_DIR)/point_cloud.cpp
 CUBE_SRC:=$(BASIC_DIR)/cube.cpp
+POLYGON_MESH_SRC:=$(BASIC_DIR)/polygon_mesh.cpp
+EDGE_SRC:=$(BASIC_DIR)/edge.cpp
+FACE_SRC:=$(BASIC_DIR)/face.cpp
 # 功能源文件
 IO_OBJ_SRC := $(UTILS_DIR)/io/io_obj.cpp
 STRING_LIB_SRC := $(UTILS_DIR)/string_lib.cpp

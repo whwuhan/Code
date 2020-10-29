@@ -95,11 +95,11 @@ int main(){
         auto boundingbox=pc.get_boundingbox();
         boundingbox.show_inf();
         //体素化
-        auto voxel=pc.voxelization(boundingbox,0.1);
+        auto voxel=pc.voxelization(boundingbox,0.05);
 
         //保存信息
         save_cube_wireframe_obj("boundingbox_"+file_path,&boundingbox);
-        save_cube_wireframes_obj("test_cube_wireframes_all_"+file_path,boundingbox.subdivision(0.1));
+        //save_cube_wireframes_obj("test_cube_wireframes_all_"+file_path,boundingbox.subdivision(0.1));
         save_tri_cube_meshes_obj("test_cube_meshes_"+file_path,voxel);
         save_cube_wireframes_obj("test_cube_wireframes_"+file_path,voxel);
     }

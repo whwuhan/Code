@@ -1,0 +1,10 @@
+include config/*.mk
+FLAGS := -std=c++11
+
+EXC_NAME:=test_polygon_mesh
+
+
+SRC := $(TEST_MAIN_DIR)/$(EXC_NAME).cpp $(STRING_LIB_SRC) $(IO_OBJ_SRC) $(POINT3D_SRC) $(POINT_CLOUD_SRC) $(CUBE_SRC) $(EDGE_SRC) $(FACE_SRC)\
+$(POLYGON_MESH_SRC)
+$(EXC_NAME):
+	$(CC) -o $(TEST_DES_DIR)/$@  $(FLAGS) $(SRC) -I$(DEPS_EIGEN_INCLUDE_DIR) -I$(INCLUDE_DIR)
