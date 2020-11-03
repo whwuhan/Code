@@ -11,3 +11,4 @@ MAIN_DIR := ../../src/main#主函数目录
 TEST_MAIN_DIR := ../main#测试主函数目录
 BASIC_DIR := ../../src/basic#basic目录
 UTILS_DIR := ../../src/utils#utils目录
+ALG_DIR := ../../src/algorithm#algorithm目录

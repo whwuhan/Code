@@ -7,6 +7,7 @@ CUBE_SRC:=$(BASIC_DIR)/cube.cpp
 POLYGON_MESH_SRC:=$(BASIC_DIR)/polygon_mesh.cpp
 EDGE_SRC:=$(BASIC_DIR)/edge.cpp
 FACE_SRC:=$(BASIC_DIR)/face.cpp
+LOP_SRC:=$(ALG_DIR)/LOP.cpp
 # 功能源文件
 IO_OBJ_SRC := $(UTILS_DIR)/io/io_obj.cpp
 STRING_LIB_SRC := $(UTILS_DIR)/string_lib.cpp

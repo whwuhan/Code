@@ -67,23 +67,23 @@ namespace wh{
                     unsigned int level,             //节点层数
                     unsigned int maxLevel           //最大层数
                 );
+
+                //创建polygon_mesh的八叉树
+                void createOctree(int level,Eigen::MatrixXd& vertices);
+
+                //数据插入八叉树
+                OctreeNode<T>* insert(T& data);
+
+                //获取某个节点(范围)中的数据
+                T getDataAt(const Eigen::RowVector3d& position,
+                double x,double y, double z,
+                Eigen::MatrixXd& vertices);
+
+                //判断面片是否在包含在节点内
+                bool isContained(T& data);
             };
 
-            //创建八叉树
-            template<typename T>
-            OctreeNode<T>* createOctree(int level,Eigen::MatrixXd& vertices);
-
-            //数据插入八叉树
-            template<typename T>
-            OctreeNode<T>* insert(T& data);
-
-            //获取某个节点(范围)中的数据
-            template<typename T>
-            T getDataAt(const Eigen::RowVector3d& position);
-
-            //判断面片是否在包含在节点内
-            template<typename T>
-            bool isContained(T& data);
+            
 
             //============实现
             //无参构造函数
@@ -139,7 +139,7 @@ namespace wh{
             // bottom_right_back(bottom_right_back),
             level(level),
             maxLevel(maxLevel){
-
+                
             }
             
             //判断面片是否在包含在节点内
@@ -154,9 +154,10 @@ namespace wh{
                 double zMax=position[2]+z/2.0;
             }
 
-            //获取某个节点(范围)中的数据
+            //获取某个节点(范围)中的mesh数据
             template<typename T>
-            T OctreeNode<T>::getDataAt(const Eigen::RowVector3d& position){
+            T OctreeNode<T>::getDataAt(const Eigen::RowVector3d& position,
+            double x,double y, double z,Eigen::MatrixXd& vertices){
                 //获取限制
                 double xMin=position[0]-x/2.0;
                 double xMax=position[0]+x/2.0;
@@ -164,6 +165,43 @@ namespace wh{
                 double yMax=position[1]+y/2.0;
                 double zMin=position[2]-z/2.0;
                 double zMax=position[2]+z/2.0;
+
+                std::set<wh::basic::Face> faces;
+                for(int i=0;i<data.rows();i++){
+                    if(
+                        (
+                            vertices(data.row(i)[0],0)>xMin && vertices(data.row(i)[0],0)<xMax &&
+                            vertices(data.row(i)[0],1)>yMin && vertices(data.row(i)[0],1)<yMax &&
+                            vertices(data.row(i)[0],2)>zMin && vertices(data.row(i)[0],2)<zMax
+                        ) 
+                        ||
+                        (
+                            vertices(data.row(i)[1],0)>xMin && vertices(data.row(i)[1],0)<xMax &&
+                            vertices(data.row(i)[1],1)>yMin && vertices(data.row(i)[1],1)<yMax &&
+                            vertices(data.row(i)[1],2)>zMin && vertices(data.row(i)[1],2)<zMax
+                        )
+                        ||
+                        (
+                            vertices(data.row(i)[2],0)>xMin && vertices(data.row(i)[2],0)<xMax &&
+                            vertices(data.row(i)[2],1)>yMin && vertices(data.row(i)[2],1)<yMax &&
+                            vertices(data.row(i)[2],2)>zMin && vertices(data.row(i)[2],2)<zMax
+                        )
+
+                    ){
+                            faces.insert(wh::basic::Face(data.row(i)));
+                    }//end if
+                }
+                //返回某个节点的面片数据
+                int size=faces.size();
+                T data(size,3);
+                for(auto iter=faces.begin();iter!=faces.end();iter++){
+                    for(int i=0;i<size;i++){
+                        data(i,0)=iter->fir_ver_index;
+                        data(i,1)=iter->sec_ver_index;
+                        data(i,2)=iter->thd_ver_index;
+                    }
+                }
+                return data;
             }
 
 
@@ -171,20 +209,41 @@ namespace wh{
 
             //创建polygon_mesh八叉树
             template<typename T>
-            OctreeNode<T>* OctreeNode<T>::createOctree(int level,Eigen::MatrixXd& vertices){
+            void OctreeNode<T>::createOctree(int level,Eigen::MatrixXd& vertices){
                 //递归地进行八叉树空间划分，直到最大深度
                 if(level==maxLevel){
                     return;
                 }
                 //创建子节点
-                bottom_left_front_node=new OctreeNode<T>(,BOTTOM_LEFT_FRONT,level+1,maxLevel);
-                bottom_right_front_node=new OctreeNode<T>(,BOTTOM_RIGHT_FRONT,level+1,maxLevel);
-                bottom_left_back_node=new OctreeNode<T>(,BOTTOM_LEFT_BACK,level+1,maxLevel);
-                bottom_right_back_node=new OctreeNode<T>(,BOTTOM_RIGHT_BACK,level+1,maxLevel);
-                top_left_front_node=new OctreeNode<T>(,TOP_LEFT_FRONT,level+1,maxLevel);
-                top_right_front_node=new OctreeNode<T>(,TOP_RIGHT_FRONT,level+1,maxLevel);
-                top_left_back_node=new OctreeNode<T>(,TOP_LEFT_BACK,level+1,maxLevel);
-                top_right_back_node=new OctreeNode<T>(,TOP_RIGHT_BACK,level+1,maxLevel);
+                //获取子节点的位置
+                Eigen::RowVector3d BLFPos(position[0]-x/4.0,position[1]-y/4.0,position[2]+z/4.0);
+                Eigen::RowVector3d BRFPos(position[0]+x/4.0,position[1]-y/4.0,position[2]+z/4.0);
+                Eigen::RowVector3d BLBPos(position[0]-x/4.0,position[1]-y/4.0,position[2]-z/4.0);
+                Eigen::RowVector3d BRBPos(position[0]+x/4.0,position[1]-y/4.0,position[2]-z/4.0);
+
+                Eigen::RowVector3d TLFPos(position[0]-x/4.0,position[1]+y/4.0,position[2]+z/4.0);
+                Eigen::RowVector3d TRFPos(position[0]+x/4.0,position[1]+y/4.0,position[2]+z/4.0);
+                Eigen::RowVector3d TLBPos(position[0]-x/4.0,position[1]+y/4.0,position[2]-z/4.0);
+                Eigen::RowVector3d TRBPos(position[0]+x/4.0,position[1]+y/4.0,position[2]-z/4.0);
+
+                //获取子节点数据
+                T BLFData=getDataAt(BLFPos,x/2.0,y/2.0,z/2.0,vertices);
+                T BRFData=getDataAt(BRFPos,x/2.0,y/2.0,z/2.0,vertices);
+                T BLBData=getDataAt(BLBPos,x/2.0,y/2.0,z/2.0,vertices);
+                T BRBData=getDataAt(BRBPos,x/2.0,y/2.0,z/2.0,vertices);
+                T TLFData=getDataAt(TLFPos,x/2.0,y/2.0,z/2.0,vertices);
+                T TRFData=getDataAt(TRFPos,x/2.0,y/2.0,z/2.0,vertices);
+                T TLBData=getDataAt(TLBPos,x/2.0,y/2.0,z/2.0,vertices);
+                T TRBData=getDataAt(TRBPos,x/2.0,y/2.0,z/2.0,vertices);
+                OctreeNode<T>* bottom_left_front_node=new OctreeNode<T>(BLFData,BOTTOM_LEFT_FRONT,BLFPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* bottom_right_front_node=new OctreeNode<T>(BRFData,BOTTOM_RIGHT_FRONT,BRFPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* bottom_left_back_node=new OctreeNode<T>(BLBData,BOTTOM_LEFT_BACK,BLBData,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* bottom_right_back_node=new OctreeNode<T>(BRBData,BOTTOM_RIGHT_BACK,BRBPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* top_left_front_node=new OctreeNode<T>(TLFData,TOP_LEFT_FRONT,TLFPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* top_right_front_node=new OctreeNode<T>(TRFData,TOP_RIGHT_FRONT,TRFPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* top_left_back_node=new OctreeNode<T>(TLBData,TOP_LEFT_BACK,TLBPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+                OctreeNode<T>* top_right_back_node=new OctreeNode<T>(TRBData,TOP_RIGHT_BACK,TRBPos,x/2.0,y/2.0,z/2.0,level+1,maxLevel);
+
                 //递归构造
                 bottom_left_front_node->createOctree(level+1);
                 bottom_right_front_node->createOctree(level+1);
