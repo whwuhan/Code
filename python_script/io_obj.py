@@ -2,7 +2,6 @@
 import numpy as np
 import datetime
 
-# 读入点云
 def load_point_cloud_obj(file_name):
     point_cloud = []
     # 打开文件
@@ -24,7 +23,6 @@ def load_point_cloud_obj(file_name):
                 line = file.readline()
     return np.array(point_cloud)
 
-# 读入曲线
 def load_curves_obj(file_name):
     nodes = []
     edges = []

@@ -36,6 +36,8 @@ def add_skeleton(nodes, edges, \
     skeleton_points = add_point_cloud(nodes, name + "_points", point_color, point_radius)
     skeleton_line = add_net_work(nodes, edges, name + "_line", line_color, line_radius)
     return skeleton_points,skeleton_line
+def screenshot():
+    ps.screenshot("test.tga",True)
 
 if __name__ == "__main__":
     # 初始化
