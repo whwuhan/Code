@@ -113,13 +113,10 @@ int main()
     std::string texture1_path = 
     "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
     unsigned char *data = stbi_load(texture1_path.c_str(), &width, &height, &nrChannels, 0);
-    if (data)
-    {
+    if (data){
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
+    }else{
         std::cout << "Failed to load texture" << std::endl;
     }
     stbi_image_free(data);
@@ -137,14 +134,11 @@ int main()
     std::string texture2_path = 
     "/Users/wuhan/wuhan/coding_space/Code/opengl/img/awesomeface.png";
     data = stbi_load(texture2_path.c_str(), &width, &height, &nrChannels, 0);
-    if (data)
-    {
+    if (data){
         // note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
+    }else{
         std::cout << "Failed to load texture" << std::endl;
     }
     stbi_image_free(data);
@@ -154,7 +148,8 @@ int main()
     ourShader.use(); // 先激活
     // don't forget to activate/use the shader before setting uniforms!
     // either set it manually like so:
-    glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
+    // 给纹理分配一个位置值   也叫做纹理单元 Texture Unit
+    glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);//这是正常的设置方法，后面的是封装在Shader类里面的方法
     // or set it via the texture class
     ourShader.setInt("texture2", 1);// 或者使用着色器类设置
 
