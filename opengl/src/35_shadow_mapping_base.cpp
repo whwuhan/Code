@@ -28,7 +28,7 @@ unsigned int loadTexture(const char* path);
 unsigned int loadCubemap(vector<std::string> faces);
 void renderScene(const Shader &shader);
 void renderCube();
-void renderQuad();
+void renderQuad();// 渲染从光源视角看去的深度图
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -106,6 +106,7 @@ int main()
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.shadow_mapping_depth.fs.glsl"
     );
 
+    //绘制（显示）所绘制的depth map
     Shader debugDepthQuad(
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.debug_quad.vs.glsl",
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.debug_quad.fs.glsl"
@@ -141,11 +142,11 @@ int main()
     // load textures
     unsigned int woodTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/wood.png");
 
-    // configure depth map FBO
+    // configure depth map FBO FrameBuffer Object
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;// depth map的分辨率
     // 创建 depth map framebuffer object
     unsigned int depthMapFBO;
-    glGenRenderbuffers(1, &depthMapFBO);
+    glGenFramebuffers(1, &depthMapFBO);
     // create depth texture 将深度信息放在纹理上
     unsigned int depthMap;
     glGenTextures(1, &depthMap);
@@ -159,7 +160,7 @@ int main()
     // attach depth texture as FBO's depth buffer 将纹理绑定在帧缓冲上
     glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
-    glDrawBuffer(GL_NONE);//
+    glDrawBuffer(GL_NONE);//表示只需要深度信息
     glReadBuffer(GL_NONE);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

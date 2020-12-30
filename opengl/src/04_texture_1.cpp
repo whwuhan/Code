@@ -148,7 +148,7 @@ int main()
     ourShader.use(); // 先激活
     // don't forget to activate/use the shader before setting uniforms!
     // either set it manually like so:
-    // 给纹理分配一个位置值   也叫做纹理单元 Texture Unit
+    // 使用glUniform1i设置每个采样器的方式告诉OpenGL每个着色器采样器属于哪个纹理单元
     glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);//这是正常的设置方法，后面的是封装在Shader类里面的方法
     // or set it via the texture class
     ourShader.setInt("texture2", 1);// 或者使用着色器类设置
