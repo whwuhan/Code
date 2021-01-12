@@ -29,6 +29,7 @@ void main()
     // then calculate lighting as usual
     vec3 lighting = Diffuse * 0.1;
     vec3 viewDir = normalize(viewPos - FragPos);
+    // 每一个不同的光源计算每个fragment的光照效果
     for(int i = 0; i < NR_LIGHTS; i++)
     {
         //diffuse 
