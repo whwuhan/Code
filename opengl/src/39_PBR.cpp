@@ -83,9 +83,11 @@ int main()
 
     // =====================================分割线=====================================================
     //着色器
-    Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.g_buffer.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.g_buffer.fs.glsl");
+    Shader shader
+    (
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/39/39.PBR.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/39/39.PBR.fs.glsl"
+    );
 
     shader.use();
     shader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
@@ -128,20 +130,25 @@ int main()
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // 激活着色器
         shader.use();
         glm::mat4 view = camera.GetViewMatrix();
         shader.setMat4("view", view);
         shader.setVec3("camPos", camera.Position);
 
+        // 渲染球面
         // render rows*column number of spheres with varying metallic/roughness values scaled by rows and columns respectively
         glm::mat4 model(1.0f);
+        std::cout << "开始渲染球面" << std::endl;
         for (int row = 0; row < nrRows; ++row)
         { //每一行 每一行的含金属量不一样
             shader.setFloat("metallic", (float)row / (float)nrRows);
+            std::cout << "row = " << row << std::endl; 
             for (int col = 0; col < nrColumns; ++col)
             { // 每一列 每一列粗糙程度不一样
                 // we clamp the roughness to 0.05 - 1.0 as perfectly smooth surfaces (roughness of 0.0) tend to look a bit off
                 // on direct lighting.
+                std::cout << "col = " << col << std::endl; 
                 shader.setFloat("roughness", glm::clamp((float)col / (float)nrColumns, 0.05f, 1.0f));
 
                 model = glm::mat4(1.0f);
@@ -155,6 +162,7 @@ int main()
                 renderSphere();
             }
         }
+        std::cout << "渲染球面结束" << std::endl;
 
         // render light source (simply re-render sphere at light positions)
         // this looks a bit off as we use the same shader, but it'll make their positions obvious and
@@ -265,7 +273,7 @@ void renderSphere()
         const unsigned int Y_SEGMENTS = 64;
         const float PI = 3.14159265359;
         for (unsigned int y = 0; y <= Y_SEGMENTS; ++y)
-        {
+        {   
             for (unsigned int x = 0; x <= X_SEGMENTS; ++x)
             {
                 // 绘制球面上的点
@@ -295,7 +303,7 @@ void renderSphere()
             }
             else
             {
-                for(unsigned int x = X_SEGMENTS; x >= 0; --x)
+                for(int x = X_SEGMENTS; x >= 0; --x) // 注意这里是int类型而不是unsigned int 如果是unsigned int会陷入死循环，因为无符号数不会小于0
                 {
                     indices.push_back((y + 1) * (X_SEGMENTS + 1) + x);
                     indices.push_back(y * (X_SEGMENTS + 1) + x);
@@ -305,16 +313,42 @@ void renderSphere()
         }
         indexCount = indices.size();
 
-        /**
-         * 
-         * 2021 1.11
-         * 
-        */
-
-
-
-
+        // 将点的坐标 法线 uv坐标放到一起（放入data内）
+        std::vector<float> data;
+        for(unsigned int i = 0; i < positions.size(); ++i)
+        {
+            data.push_back(positions[i].x);
+            data.push_back(positions[i].y);
+            data.push_back(positions[i].z);
+            if (uv.size() > 0)
+            {
+                data.push_back(uv[i].x);
+                data.push_back(uv[i].y);
+            }
+            if (normals.size() > 0)
+            {
+                data.push_back(normals[i].x);
+                data.push_back(normals[i].y);
+                data.push_back(normals[i].z);
+            }
+        }
+        // VAO VBO EBO 传输球的顶点数据
+        glBindVertexArray(sphereVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), &data[0], GL_STATIC_DRAW);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
+        float stride = (3 + 2 + 3) * sizeof(float); // 第一个3 position.xyz 第二个2 uv.xy 第三个3 normal.xyz
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stride, (void*)(5 * sizeof(float)));
     }
+    //绘制组成球面的三角形
+    glBindVertexArray(sphereVAO);
+    glDrawElements(GL_TRIANGLE_STRIP, indexCount, GL_UNSIGNED_INT, 0);
 }
 
 // utility function for loading a 2D texture from file
