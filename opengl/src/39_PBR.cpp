@@ -94,17 +94,20 @@ int main()
     shader.setFloat("ao", 1.0f);
 
     //lights
-    glm::vec3 lightPositions[] = {
+    glm::vec3 lightPositions[] = 
+    {
         glm::vec3(-10.0f, 10.0f, 10.0f),
         glm::vec3(10.0f, 10.0f, 10.0f),
         glm::vec3(-10.0f, -10.0f, 10.0f),
         glm::vec3(10.0f, -10.0f, 10.0f),
     };
-    glm::vec3 lightColors[] = {
+    glm::vec3 lightColors[] = 
+    {
         glm::vec3(300.0f, 300.0f, 300.0f),
         glm::vec3(300.0f, 300.0f, 300.0f),
         glm::vec3(300.0f, 300.0f, 300.0f),
-        glm::vec3(300.0f, 300.0f, 300.0f)};
+        glm::vec3(300.0f, 300.0f, 300.0f)
+    };
     int nrRows = 7;      //球的行数
     int nrColumns = 7;   //球的列数
     float spacing = 2.5; //计算model矩阵用到
@@ -139,30 +142,32 @@ int main()
         // 渲染球面
         // render rows*column number of spheres with varying metallic/roughness values scaled by rows and columns respectively
         glm::mat4 model(1.0f);
-        std::cout << "开始渲染球面" << std::endl;
         for (int row = 0; row < nrRows; ++row)
-        { //每一行 每一行的含金属量不一样
+        { 
+            //每一行 每一行的含金属量不一样
             shader.setFloat("metallic", (float)row / (float)nrRows);
-            std::cout << "row = " << row << std::endl; 
             for (int col = 0; col < nrColumns; ++col)
-            { // 每一列 每一列粗糙程度不一样
+            { 
+                // 每一列 每一列粗糙程度不一样
                 // we clamp the roughness to 0.05 - 1.0 as perfectly smooth surfaces (roughness of 0.0) tend to look a bit off
                 // on direct lighting.
-                std::cout << "col = " << col << std::endl; 
                 shader.setFloat("roughness", glm::clamp((float)col / (float)nrColumns, 0.05f, 1.0f));
 
                 model = glm::mat4(1.0f);
-                model = glm::translate(
+                model = glm::translate
+                (
                     model,
-                    glm::vec3(
+                    glm::vec3
+                    (
                         (col - (nrColumns / 2)) * spacing,
                         (row - (nrRows / 2)) * spacing,
-                        0.0f));
+                        0.0f
+                    )
+                );
                 shader.setMat4("model", model);
                 renderSphere();
             }
         }
-        std::cout << "渲染球面结束" << std::endl;
 
         // render light source (simply re-render sphere at light positions)
         // this looks a bit off as we use the same shader, but it'll make their positions obvious and
