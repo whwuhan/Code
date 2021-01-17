@@ -103,6 +103,10 @@ void main()
     FragColor = vec4(color, 1.0);
 }
 
+// Easy trick to get tangent-normals to world-space to keep PBR code simplified.
+// Don't worry if you don't get what's going on; you generally want to do normal 
+// mapping the usual way for performance anways; I do plan make a note of this 
+// technique somewhere later in the normal mapping tutorial.
 // 将tangent space中的法线转换到 world space 中
 vec3 getNormalFromMap()
 {   
@@ -111,13 +115,17 @@ vec3 getNormalFromMap()
 
     // 求TBN矩阵（忘了就去看normal mapping那一章）
     // 求变化快慢（近似求斜率）
-    vec3 Q1 = dFdx(WorldPos);
-    vec3 Q2 = dFdy(WorldPos);
-    vec2 st1 = dFdx(TexCoords);
-    vec2 st2 = dFdy(TexCoords);
+    // 相邻两个fragment的世界坐标的变化率（x和y方向的，注意y方向是朝下的）
+    // 参考资料：https://www.cnblogs.com/flyfox1982/p/11141638.html
+    vec3 dwp_dx = dFdx(WorldPos); // dwp = d(WorldPos)
+    vec3 dwp_dy = dFdy(WorldPos);
+    // 相邻两个fragment的uv坐标的变化率（x和y方向的，注意y方向是朝下的）
+    vec2 dtc_dx = dFdx(TexCoords); // dtc = d(TexCoords)
+    vec2 dtc_dy = dFdy(TexCoords);
 
     vec3 N = normalize(Normal);
-    vec3 T = normalize(Q1 * st2.t - Q2 * st1.t);
+    // 贴图拉伸
+    vec3 T = normalize(dwp_dx * dtc_dy.t - dwp_dy * dtc_dx.t);
     // 从坐标系A转变到坐标系B，
     // 需要B的基在坐标系A下的表示矩阵的逆，而正交阵，逆=转置
     // 添加负号，可能是因为stb_image读取图片时y轴是向下的

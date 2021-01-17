@@ -158,17 +158,8 @@ int main()
         // std::cout << "开始渲染球面" << std::endl;
         for (int row = 0; row < nrRows; ++row)
         { 
-            //每一行 每一行的含金属量不一样
-            shader.setFloat("metallic", (float)row / (float)nrRows);
-            // std::cout << "row = " << row << std::endl; 
             for (int col = 0; col < nrColumns; ++col)
             { 
-                // 每一列 每一列粗糙程度不一样
-                // we clamp the roughness to 0.05 - 1.0 as perfectly smooth surfaces (roughness of 0.0) tend to look a bit off
-                // on direct lighting.
-                // std::cout << "col = " << col << std::endl; 
-                shader.setFloat("roughness", glm::clamp((float)col / (float)nrColumns, 0.05f, 1.0f));
-
                 model = glm::mat4(1.0f);
                 model = glm::translate
                 (
