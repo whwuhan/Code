@@ -85,21 +85,28 @@ int main()
 
     // =====================================分割线=====================================================
     //着色器
-    Shader pbrShader(
+    Shader pbrShader
+    (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.PBR3.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.PBR3.fs.glsl");
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.PBR3.fs.glsl"
+    );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去
-    Shader equirectangularToCubemapShader(
+    Shader equirectangularToCubemapShader
+    (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.equirectangular_to_cubemap.fs.glsl");
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.equirectangular_to_cubemap.fs.glsl"
+    );
 
-    Shader backgroundShader(
+    // 从上equirectangularToCubemapShader中渲染的cubemap采样（equirectangularToCubemapShader做的是离线渲染）
+    Shader backgroundShader
+    (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.background.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.background.fs.glsl");
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.background.fs.glsl"
+    );
 
     pbrShader.use();
-    pbrShader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
+
     pbrShader.setFloat("ao", 1.0f);
 
     backgroundShader.use();
@@ -204,6 +211,7 @@ int main()
         glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f))
     };
 
+    // 将HDR的等矩形贴图转化成cubemap
     // pbr: convert HDR equirectangular environment map to cubemap equivalent
     // ----------------------------------------------------------------------
     equirectangularToCubemapShader.use();
@@ -223,6 +231,7 @@ int main()
 
         renderCube();
     }
+    // 绑定回原来的framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     // initialize static shader uniforms before rendering
@@ -284,11 +293,13 @@ int main()
                         (row - (nrRows / 2)) * spacing,
                         0.0f));
                 pbrShader.setMat4("model", model);
+                pbrShader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
                 renderSphere();
             }
         }
         // std::cout << "渲染球面结束" << std::endl;
 
+        // 渲染光源（在光源位置渲染一个球）
         // render light source (simply re-render sphere at light positions)
         // this looks a bit off as we use the same shader, but it'll make their positions obvious and
         // keeps the codeprint small.
@@ -303,6 +314,7 @@ int main()
             model = glm::translate(model, newPos);
             model = glm::scale(model, glm::vec3(0.5f));
             pbrShader.setMat4("model", model);
+            pbrShader.setVec3("albedo", glm::vec3(300.0f, 300.0f, 300.f));
             renderSphere();
         }
 
@@ -343,15 +355,15 @@ void processInput(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        camera.ProcessKeyboard(FORWARD, deltaTime);
+        camera.ProcessKeyboard(FORWARD, 10 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
+        camera.ProcessKeyboard(BACKWARD, 10 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        camera.ProcessKeyboard(LEFT, deltaTime);
+        camera.ProcessKeyboard(LEFT, 10 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        camera.ProcessKeyboard(RIGHT, deltaTime);
+        camera.ProcessKeyboard(RIGHT, 10 * deltaTime);
     if (glfwGetKey(window, GLFW_KEY_SPACE))
-        camera.ProcessKeyboard(UPWARD, deltaTime);
+        camera.ProcessKeyboard(UPWARD, 10 * deltaTime);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
