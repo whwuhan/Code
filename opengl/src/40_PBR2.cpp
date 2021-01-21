@@ -1,6 +1,6 @@
 /**
  * PBR Physically Based Rendering2
- * 把贴图也加上
+ * 把物体上的贴图也加上
 */
 
 #include <glad/glad.h>
