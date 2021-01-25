@@ -1,4 +1,7 @@
 #version 330 core
+/*
+    渲染一个立方体的顶点着色器
+**/
 layout (location = 0) in vec3 aPos;
 
 out vec3 WorldPos;

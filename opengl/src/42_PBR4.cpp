@@ -86,6 +86,7 @@ int main()
 
     // =====================================分割线=====================================================
     //着色器
+    // 使用PBR渲染球面的shader
     Shader pbrShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.PBR3.vs.glsl",
@@ -99,14 +100,14 @@ int main()
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.equirectangular_to_cubemap.fs.glsl"
     );
 
-    // 对环境贴图进行 convolution 操作 获取irradiance cubemap
+    // 对环境贴图进行 convolution 操作 获取irradiance cubemap （注意这里使用的离屏渲染）
     Shader irradianceShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.cubemap.vs.glsl",
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.irradiance_convolution.fs.glsl"
     );
     
-    // 从上equirectangularToCubemapShader中渲染的cubemap采样（equirectangularToCubemapShader做的是离线渲染）
+    // 渲染skybox的shader
     Shader backgroundShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.background.vs.glsl",
@@ -234,7 +235,7 @@ int main()
     for (unsigned int i = 0; i < 6; ++i)
     {
         equirectangularToCubemapShader.setMat4("view", captureViews[i]);
-        //attaches a texture object to framebuffer target as the color buffer or the depth buffer or stencil buffer
+        //attaches a texture object to framebuffer target as the color buffer or the depth buffer or stencil buffer  重要
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, envCubemap, 0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -312,11 +313,15 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // 激活着色器
+        // 激活着色器 渲染球面
         pbrShader.use();
         glm::mat4 view = camera.GetViewMatrix();
         pbrShader.setMat4("view", view);
         pbrShader.setVec3("camPos", camera.Position);
+
+        // bind pre-computed IBL data  重要
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, irradianceMap);
 
         // 渲染球面
         // render rows*column number of spheres with varying metallic/roughness values scaled by rows and columns respectively
@@ -336,12 +341,16 @@ int main()
                 pbrShader.setFloat("roughness", glm::clamp((float)col / (float)nrColumns, 0.05f, 1.0f));
 
                 model = glm::mat4(1.0f);
-                model = glm::translate(
+                model = glm::translate
+                (
                     model,
-                    glm::vec3(
+                    glm::vec3
+                    (
                         (col - (nrColumns / 2)) * spacing,
                         (row - (nrRows / 2)) * spacing,
-                        0.0f));
+                        0.0f
+                    )
+                );
                 pbrShader.setMat4("model", model);
                 pbrShader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
                 renderSphere();

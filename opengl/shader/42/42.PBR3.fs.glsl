@@ -1,14 +1,17 @@
 #version 330 core
+/*
+    使用PBR渲染球面的片段着色器
+**/
 out vec4 FragColor;
 in vec2 TexCoords;
 in vec3 WorldPos;
 in vec3 Normal;
 
 // material parameters
-uniform vec3 albedo;
-uniform float metallic;
-uniform float roughness;
-uniform float ao;
+uniform vec3 albedo;            //反射率
+uniform float metallic;         //金属属性
+uniform float roughness;        //粗糙属性
+uniform float ao;               //环境光遮蔽
 
 
 // lights

@@ -1,4 +1,7 @@
 #version 330 core
+/*
+    渲染球面的顶点着色器
+*/
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec2 aTexCoords;
 layout (location = 2) in vec3 aNormal;
