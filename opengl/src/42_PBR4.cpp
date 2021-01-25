@@ -115,6 +115,7 @@ int main()
 
     pbrShader.use();
     pbrShader.setInt("irradianceMap", 0);
+    pbrShader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
     pbrShader.setFloat("ao", 1.0f);
 
     backgroundShader.use();
@@ -168,6 +169,7 @@ int main()
         &nrComponents,
         0
     );
+    // hdr纹理
     unsigned int hdrTexture;
     if (data)
     {
