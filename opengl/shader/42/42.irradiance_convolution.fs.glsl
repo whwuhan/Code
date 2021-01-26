@@ -3,8 +3,8 @@
     预运算 pre-compute
     将环境贴图(cubemap)进行卷积操作保存起来，作为渲染是的irradiance
 */
-out vec4 FragColor
-in vec3 WorldPos
+out vec4 FragColor;
+in vec3 WorldPos;
 
 uniform samplerCube environmentMap;
 
@@ -27,18 +27,18 @@ void main()
     up            = cross(N, right);
 
     float sampleDelta = 0.025;
-    float nrSample = 0.0;// 采样数量
+    float nrSamples = 0.0;// 采样数量
     for(float phi = 0.0; phi < 2.0 * PI; phi += sampleDelta)
     {
         for(float theta = 0.0; theta < 0.5 * PI; theta += sampleDelta)
         {
-            // spherical to cartesian (in tangent space) 在平行空间中，将求坐标转换成直角坐标
+            // spherical to cartesian (in tangent space) 在平行空间中，将球坐标转换成直角坐标
             vec3 tangentSample = vec3(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta));
             // tangent space to world space
             vec3 sampleVec = tangentSample.x * right + tangentSample.y * up + tangentSample.z * N; 
             
             irradiance += texture(environmentMap, sampleVec).rgb * cos(theta) * sin(theta);
-            nrSample++;
+            nrSamples++;
         }
     }
 
