@@ -89,33 +89,50 @@ int main()
     glDepthFunc(GL_LEQUAL);  // set depth function to less than AND equal for skybox depth trick.
     glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);// enable seamless cubemap sampling for lower mip levels in the pre-filter map.
     // =====================================分割线=====================================================
+    
+    
     //着色器
     // 使用PBR渲染球面的shader
     Shader pbrShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.PBR3.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.PBR3.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.PBR3.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.PBR3.fs.glsl"
     );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去
     Shader equirectangularToCubemapShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.equirectangular_to_cubemap.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.equirectangular_to_cubemap.fs.glsl"
     );
 
     // 对环境贴图进行 convolution 操作 获取irradiance cubemap （注意这里使用的离屏渲染）
     Shader irradianceShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.irradiance_convolution.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.irradiance_convolution.fs.glsl"
     );
     
+    // 计算环境光specular 的第一部分
+    Shader prefilterShader
+    (
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.prefilter.fs.glsl"
+    );
+
+
+    // 
+    Shader brdfShader
+    (
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.brdf.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.brdf.fs.glsl"
+    );
+
     // 渲染skybox的shader
     Shader backgroundShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.background.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.background.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.background.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.background.fs.glsl"
     );
 
     pbrShader.use();
