@@ -5,7 +5,7 @@
 out vec4 FragColor;
 in vec3 WorldPos;
 
-uniform sampler2D equirectangularMap;  //hdr环境贴图
+uniform sampler2D equirectangularMap;  //hdr环境贴图（还没有贴到cubemap上的贴图）
 
 const vec2 invAtan = vec2(0.1591, 0.3183);
 

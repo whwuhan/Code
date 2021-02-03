@@ -117,7 +117,7 @@ float GeometrySchlickGGX(float NdotV, float roughness)
     return nom / denom;
 }
 
-// geometry function 这个综合了直接光照和IBL
+// geometry function 综合计算了射入射出时候遮蔽后剩下的光线
 float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
 {
     float NdotV = max(dot(N, V), 0.0);
