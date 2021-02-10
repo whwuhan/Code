@@ -99,7 +99,7 @@ int main()
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.PBR3.fs.glsl"
     );
 
-    // 将等矩形的环境贴图，贴到一个cubemap上面去
+    // 将等矩形的环境贴图，贴到一个cubemap上面去（注意这里也是使用了离屏渲染）
     Shader equirectangularToCubemapShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
@@ -113,7 +113,7 @@ int main()
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.irradiance_convolution.fs.glsl"
     );
     
-    // 计算环境光specular 的第一部分
+    // 计算环境光specular的第一部分
     Shader prefilterShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
@@ -143,7 +143,7 @@ int main()
     backgroundShader.use();
     backgroundShader.setInt("environmentMap", 0);
 
-    // lights
+    // lights 设置光源位置和光源的颜色
     // ------
     glm::vec3 lightPositions[] =
     {
@@ -159,11 +159,16 @@ int main()
         glm::vec3(300.0f, 300.0f, 300.0f),
         glm::vec3(300.0f, 300.0f, 300.0f)
     };
+
+
+
     int nrRows = 7;      //球的行数
     int nrColumns = 7;   //球的列数
-    float spacing = 2.5; //计算model矩阵用到
+    float spacing = 2.5; //间隔，计算model矩阵用到
 
-    // pbr: setup framebuffer
+
+
+    // pbr: setup framebuffer 设置FBO和RBO（RBO存储用于深度测试的深度图（或者叫深度缓冲））
     // ----------------------
     unsigned int captureFBO;
     unsigned int captureRBO;
@@ -178,7 +183,20 @@ int main()
     //  将renderbuffer 和当前绑定的framebuffer链接到一起
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
 
-    // pbr: load the HDR environment map
+
+
+
+    /**
+     * 
+     * 
+     * 
+     * 环境光漫反射部分
+     * 
+     * 
+     * 
+    */
+
+    // pbr: load the HDR environment map 将HDR图片加载到一张2D的texture上，注意还没有加载到cubemap上
     // ---------------------------------
     stbi_set_flip_vertically_on_load(true); // stb_image的y轴是朝下的，现在把他反过来，朝上
     int width, height, nrComponents;
@@ -197,8 +215,8 @@ int main()
     {
         glGenTextures(1, &hdrTexture);
         glBindTexture(GL_TEXTURE_2D, hdrTexture);
-        // note how we specify the texture's data value to be float
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, data);
+        // note how we specify the texture's data value to be float 注意因为是HDR图片指定data的类型是float
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, data);//将图像数据传输到当前绑定的texture中
 
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -212,9 +230,13 @@ int main()
         std::cout << "Failed to load HDR image." << std::endl;
     }
 
-    // pbr: setup cubemap to render to and attach to framebuffer
+
+
+
+
+    // pbr: setup cubemap to render to and attach to framebuffer 将hdrTexture（2D image）转换成cubemap
     // ---------------------------------------------------------
-    unsigned int envCubemap;
+    unsigned int envCubemap; //环境贴图 是个cubemap
     glGenTextures(1, &envCubemap);
     glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);
     // cubemap的六个面图像的指针（暂时设置为nullptr）
@@ -242,21 +264,23 @@ int main()
         glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, -1.0f, 0.0f))
     };
 
-    // 将HDR的等矩形贴图转化成cubemap
+    // 开始将HDR的等矩形贴图转化成cubemap
     // pbr: convert HDR equirectangular environment map to cubemap equivalent
     // ----------------------------------------------------------------------
     equirectangularToCubemapShader.use();
-    equirectangularToCubemapShader.setInt("equirectangularMap", 0);
+    equirectangularToCubemapShader.setInt("equirectangularMap", 0);//hdr环境贴图（2D image texture 还没有贴到cubemap上的贴图）
     equirectangularToCubemapShader.setMat4("projection", captureProjection);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, hdrTexture);
 
+    // 开始渲染cubemap的6个面
     glViewport(0, 0, 512, 512); // don't forget to configure the viewport to the capture dimensions.
     glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
     for (unsigned int i = 0; i < 6; ++i)
     {
         equirectangularToCubemapShader.setMat4("view", captureViews[i]);
         //attaches a texture object to framebuffer target as the color buffer or the depth buffer or stencil buffer  重要
+        //将纹理(envCubemap的某一个面)绑定到当前的framebuffer上
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, envCubemap, 0); //最后一个参数是mipmap level
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -266,15 +290,23 @@ int main()
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     // then let OpenGL generate mipmaps from first mip face (combatting visible dots artifact)
-    // 生成mipmap
+    // 给envCube生成mipmap
     glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);
     glGenerateMipmap(GL_TEXTURE_CUBE_MAP);
 
+
+
+
+
+
+
+
     // pbr: create an irradiance cubemap, and re-scale capture FBO to irradiance scale.
+    // 环境光的漫反射部分 以法线为中心的半球积一次分，放到cubemap中，之后去采样就完事了
     // --------------------------------------------------------------------------------
     unsigned int irradianceMap;
     glGenTextures(1, &irradianceMap);
-    glBindTexture(GL_TEXTURE_CUBE_MAP, irradianceMap);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, irradianceMap);//注意是cubemap
     for(unsigned int i = 0; i < 6; ++i)
     {
         // 还没有填充数据
@@ -296,9 +328,9 @@ int main()
     irradianceShader.setInt("environmentMap", 0);
     irradianceShader.setMat4("projection", captureProjection);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);//采样上面渲染的环境立方体贴图 envCubemap
 
-    glViewport(0, 0, 32, 32);
+    glViewport(0, 0, 32, 32);//注意更改视口大小
     glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
     for(unsigned int i = 0; i < 6; ++i)
     {
@@ -310,6 +342,23 @@ int main()
     }
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+
+
+
+
+
+    /**
+     * 
+     * 
+     * 
+     * 环境光镜面反射部分
+     * 
+     * 
+     * 
+    */
+
+
+    
     // pbr: create a pre-filter cubemap, and re-scale capture FBO to pre-filter scale.
     // --------------------------------------------------------------------------------
     // 计算环境光镜面反射中(split sum approximation中的第一部分)的第一部分
