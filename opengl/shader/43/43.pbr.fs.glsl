@@ -123,7 +123,7 @@ void main()
         Lo += ((kD * albedo / PI) + specular) * radiance * NdotL;
     }
     //=============直接光照部分结束==============
-
+    
     //=============间接光照部分==============
     // ambient lighting (we now use IBL as the ambient term)
     // 

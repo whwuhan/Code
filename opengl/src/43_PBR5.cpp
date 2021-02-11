@@ -358,7 +358,7 @@ int main()
     */
 
 
-    
+    // Epic Games' split sum approximation的第一部分
     // pbr: create a pre-filter cubemap, and re-scale capture FBO to pre-filter scale.
     // --------------------------------------------------------------------------------
     // 计算环境光镜面反射中(split sum approximation中的第一部分)的第一部分
@@ -389,6 +389,8 @@ int main()
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);
     
+    //下面是在生成预过滤的mipmap，mipmap的等级越高越模糊，用于粗糙程度越高的物体镜面反射
+    //实际上这里是在手动创建mipmap
     glBindFramebuffer(GL_FRAMEBUFFER, captureFBO);
     unsigned int maxMipLevels = 5;
     for(unsigned int mip = 0; mip < maxMipLevels; ++mip)
@@ -414,6 +416,11 @@ int main()
         }
     }
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
+
+
+
 
 
     // pbr: generate a 2D LUT from the BRDF equations used.
