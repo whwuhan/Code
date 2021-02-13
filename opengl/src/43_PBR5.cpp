@@ -95,8 +95,8 @@ int main()
     // 使用PBR渲染球面的shader
     Shader pbrShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.PBR3.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.PBR3.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.pbr.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.pbr.fs.glsl"
     );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去（注意这里也是使用了离屏渲染）
@@ -121,7 +121,7 @@ int main()
     );
 
 
-    // 
+    // 渲染出LUT(lookup texture)
     Shader brdfShader
     (
         "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.brdf.vs.glsl",
@@ -137,6 +137,8 @@ int main()
 
     pbrShader.use();
     pbrShader.setInt("irradianceMap", 0);
+    pbrShader.setInt("prefilterMap", 1);
+    pbrShader.setInt("brdfLUT", 2);
     pbrShader.setVec3("albedo", 0.5f, 0.0f, 0.0f);
     pbrShader.setFloat("ao", 1.0f);
 
@@ -182,7 +184,7 @@ int main()
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, 512, 512);
     //  将renderbuffer 和当前绑定的framebuffer链接到一起
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);
-
+    
 
 
 
@@ -448,6 +450,20 @@ int main()
     renderQuad();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+
+
+
+
+
+
+
+    /**
+     * 
+     * 
+     * 渲染前的准备工作
+     * 
+     * 
+    */
     // initialize static shader uniforms before rendering
     // --------------------------------------------------
     glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -461,6 +477,13 @@ int main()
     glfwGetFramebufferSize(window, &scrWidth, &scrHeight);
     glViewport(0, 0, scrWidth, scrHeight);
 
+
+
+
+
+
+
+    
     // render loop
     while (!glfwWindowShouldClose(window))
     {
@@ -477,15 +500,22 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // 激活着色器 渲染球面
+        // render scene, supplying the convoluted irradiance map to the final shader.
+        // ------------------------------------------------------------------------------------------
         pbrShader.use();
         glm::mat4 view = camera.GetViewMatrix();
         pbrShader.setMat4("view", view);
         pbrShader.setVec3("camPos", camera.Position);
 
-        // bind pre-computed IBL data  重要
+        // bind pre-computed IBL data
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, irradianceMap);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, prefilterMap);
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, brdfLUTTexture);
 
+        
         // 渲染球面
         // render rows*column number of spheres with varying metallic/roughness values scaled by rows and columns respectively
         glm::mat4 model(1.0f);
@@ -545,16 +575,9 @@ int main()
         backgroundShader.setMat4("view", view);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, envCubemap);
+        //glBindTexture(GL_TEXTURE_CUBE_MAP, irradianceMap); // display irradiance map
+        //glBindTexture(GL_TEXTURE_CUBE_MAP, prefilterMap); // display prefilter map
         renderCube();
-
-        /**
-         * 渲染场景的cube
-         * equirectangularToCubemapShader.use();
-         * equirectangularToCubemapShader.setMat4("view", view);
-         * glActiveTexture(GL_TEXTURE0);
-         * glBindTexture(GL_TEXTURE_2D, envCubemap);
-         * renderCube();
-        */
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #version 330 core
 /*
     包含了PBR的直接光照部分
-    也包含了PBR的简介光照部分（环境光ambient）
+    也包含了PBR的间接光照部分（环境光ambient）
 */
 out vec4 FragColor;
 in vec2 TexCoords;
@@ -26,7 +26,7 @@ uniform vec3 lightColors[4];
 // 相机位置
 uniform vec3 camPos;
 
-const float PI = 3.14159265359
+const float PI = 3.14159265359;
 
 // NDF 法线分布方程
 float DistributionGGX(vec3 N, vec3 H, float roughness)
@@ -37,7 +37,7 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
     float NdotH2 = NdotH * NdotH;
 
     float nom = a2;// 分子
-    float denom = NdotH2 * (a2 - 1.0) + 1.0 //分母
+    float denom = NdotH2 * (a2 - 1.0) + 1.0; //分母
     denom = PI * denom * denom;
 
     return nom / denom;
@@ -94,11 +94,11 @@ void main()
     // reflectance equation 渲染方程
     //=============直接光照部分==============
     vec3 Lo = vec3(0.0);
-    for(int i = 0; i < lightPositions.lengh(); ++i)
+    for(int i = 0; i < lightPositions.length(); ++i)
     {
         // calculate per-light radiance 对每一个光源计算直接光照的radiance
         vec3 L = normalize(lightPositions[i] - WorldPos);
-        vec3 H = normalize(H + V);
+        vec3 H = normalize(V + L);
         float distance = length(lightPositions[i] - WorldPos); // 点到摄像机的距离
         float attenuation = 1.0 / (distance * distance);// 这里只用了简单的二次衰减
         vec3 radiance = lightColors[i] * attenuation; // 初始radiance
@@ -127,6 +127,32 @@ void main()
     //=============间接光照部分==============
     // ambient lighting (we now use IBL as the ambient term)
     // 
+    vec3 F = fresnelSchlickRoughness(max(dot(N, V), 0.0), F0, roughness);
+    
+    vec3 kS = F;
+    vec3 kD = 1.0 - kS;
+    kD *= 1.0 - metallic;	  
+    
+    vec3 irradiance = texture(irradianceMap, N).rgb;
+    vec3 diffuse      = irradiance * albedo;
+    
+    // sample both the pre-filter map and the BRDF lut and combine them together as per the Split-Sum approximation to get the IBL specular part.
+    const float MAX_REFLECTION_LOD = 4.0;
+    vec3 prefilteredColor = textureLod(prefilterMap, R,  roughness * MAX_REFLECTION_LOD).rgb;    
+    vec2 brdf  = texture(brdfLUT, vec2(max(dot(N, V), 0.0), roughness)).rg;
+    vec3 specular = prefilteredColor * (F * brdf.x + brdf.y);
 
+    vec3 ambient = (kD * diffuse + specular) * ao;
+    
+    vec3 color = ambient + Lo;
     //=============间接光照部分结束==============
+
+    
+    // HDR tonemapping
+    color = color / (color + vec3(1.0));
+    // gamma correct
+    color = pow(color, vec3(1.0/2.2)); 
+
+    FragColor = vec4(color , 1.0);
+    
 }

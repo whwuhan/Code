@@ -32,7 +32,7 @@ void main()
             //从tangent space 转变到世界坐标系中
             vec3 sampleVec = tangentSample.x * right + tangentSample.y * up + tangentSample.z * N;
 
-            irradianceMap += texture(environmentMap, sampleVec).rgb * cos(theta) * sin(theta);
+            irradiance += texture(environmentMap, sampleVec).rgb * cos(theta) * sin(theta);
             nrSamples ++;
         }
     }
