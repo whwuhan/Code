@@ -1,6 +1,7 @@
 /**
  * 绘制行星和他的行星带
  * 使用instancing(效率高)
+ * instancing一次性把所有render call需要绘制的数据都传输给GPU
 */
 
 #include <glad/glad.h>
@@ -152,7 +153,7 @@ int main()
         glEnableVertexAttribArray(6);
         glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(3 * sizeof(glm::vec4)));
 
-        glVertexAttribDivisor(3, 1);
+        glVertexAttribDivisor(3, 1);//参数1：设置vertex attribute的index 参数2：设置每几个instance更新一次数据
         glVertexAttribDivisor(4, 1);
         glVertexAttribDivisor(5, 1);
         glVertexAttribDivisor(6, 1);
