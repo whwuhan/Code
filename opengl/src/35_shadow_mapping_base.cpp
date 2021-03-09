@@ -208,8 +208,8 @@ int main()
         glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, woodTexture);
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, woodTexture);
         renderScene(simpleDepthShader);// 使用simpleDepthShader渲染
         glBindFramebuffer(GL_FRAMEBUFFER, 0);// 解绑帧缓冲
 
@@ -218,7 +218,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // 2. render scene as normal using the generated depth/shadow map
-        glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
+        glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT); 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         shader.use();
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -261,7 +261,7 @@ int main()
 }
 
 // renders the 3D scene
-void renderScene(const Shader& shader){
+void  renderScene(const Shader& shader){
     // floor
     glm::mat4 model = glm::mat4(1.0f);
     shader.setMat4("model", model);

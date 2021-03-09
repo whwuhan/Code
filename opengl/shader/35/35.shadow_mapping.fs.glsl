@@ -30,7 +30,7 @@ float ShadowCalculation(vec4 fragPosLightSpace){
     // 或者通过视角与fragment的法线计算bias
     vec3 lightDir = normalize(lightPos - fs_in.FragPos);
     vec3 normal = normalize(fs_in.Normal);
-    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005) 
+    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005); 
     float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
     return shadow;
 }
