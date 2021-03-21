@@ -1,7 +1,7 @@
 #version 330 core
 /**
     注意这里fragment shader有多个输出，表示在一个render pass中渲染出多个图像
-    这个叫MTR Multiple Render Targets
+    这个叫MRT Multiple Render Targets
 */
 layout (location = 0) out vec3 gPosition;
 layout (location = 1) out vec3 gNormal;
