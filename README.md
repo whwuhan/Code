@@ -12,6 +12,7 @@
   * lib:存放编译好的动态/静态库
   * makefile:存放makefile文件，文件编号与shader和src中的编号一一对应
   * model:存放模型文件(PBR模型，立方体贴图等)
+  * shader:shader存放文件夹，文件夹编号与src和makefile中的编号一一对应
   * src:opengl C++文件，文件编号与shader和makefile中的编号一一对应
   * temp:暂存文件夹
   * trash:垃圾桶
