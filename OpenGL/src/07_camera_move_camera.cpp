@@ -79,12 +79,12 @@ int main()
     }
     // 创建着色器程序
     std::string vertex_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.vs.glsl";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/07/7.3.camera.vs.glsl";
     std::string fragment_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/07/7.3.camera.fs.glsl";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/07/7.3.camera.fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
-     //开始配置全局opengl
+    //开始配置全局opengl
     //glEnable和glDisable函数允许我们启用或禁用某个OpenGL功能。
     //这个功能会一直保持启用/禁用状态，直到另一个调用来禁用/启用它。
     glEnable(GL_DEPTH_TEST); //开启深度测试，保证在后面被遮挡的物体不会显示到前面
@@ -181,7 +181,7 @@ int main()
     stbi_set_flip_vertically_on_load(true); //翻转图片
     //读取图片信息
     std::string texture1_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
     unsigned char *data =
         stbi_load(texture1_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
@@ -218,7 +218,7 @@ int main()
     //加载图片，创建纹理图像，生成多级渐远纹理
     //读取图片信息
     std::string texture2_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/img/awesomeface.png";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/awesomeface.png";
 
     data =
         stbi_load(texture2_path.c_str(), &width, &height, &nrChannels, 0);

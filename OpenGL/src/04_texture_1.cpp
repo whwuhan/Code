@@ -50,9 +50,9 @@ int main()
     // ------------------------------------
     // 使用着色器工具
     std::string vertex_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/04/4.2.texture.vs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/04/4.2.texture.vs";
     std::string fragment_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/04/4.2.texture.fs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/04/4.2.texture.fs";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -111,7 +111,7 @@ int main()
     stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
     std::string texture1_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
     unsigned char *data = stbi_load(texture1_path.c_str(), &width, &height, &nrChannels, 0);
     if (data){
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -132,7 +132,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load image, create texture and generate mipmaps
     std::string texture2_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/awesomeface.png";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/awesomeface.png";
     data = stbi_load(texture2_path.c_str(), &width, &height, &nrChannels, 0);
     if (data){
         // note that the awesomeface.png has transparency and thus an alpha channel, so make sure to tell OpenGL the data type is of GL_RGBA

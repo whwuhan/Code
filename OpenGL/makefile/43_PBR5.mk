@@ -18,4 +18,4 @@ $(EXC_NAME) :
 
 .PHONY : clean
 clean : 
-	-rm -rf $(DES_MAC_DIR)/$@
+	rm -rf $(DES_MAC_DIR)/$(EXC_NAME)
