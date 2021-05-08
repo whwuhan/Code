@@ -2,10 +2,10 @@
 ## 研究生期间的代码积累
 
 * 目录结构
-  * OpenGL:（存放学习opengl Demo代码）
+  * opengl:（存放学习opengl Demo代码）
   * PythonScript:（常用python脚本）
   * Cpp:（存放C++练习代码和可用软件）
-* OpenGL
+* opengl
   * bin:存放可执行文件(mac/win)
   * dep:存放opengl依赖库源代码
   * img:存放贴图
