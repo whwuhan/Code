@@ -86,15 +86,15 @@ int main(){
     //着色器路径
     //光照场景物体着色器
     std::string colors_vertex_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/13/13.light_casters.vs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/13/13.light_casters.vs.glsl";
     std::string colors_fragment_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/13/13.light_casters.fs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/13/13.light_casters.fs.glsl";
 
     //光源着色器
     std::string light_cube_vertex_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/13/13.light_cube.vs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/13/13.light_cube.vs.glsl";
     std::string light_cube_fragment_path
-    ="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/13/13.light_cube.fs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/13/13.light_cube.fs.glsl";
 
     Shader lightingShader(colors_vertex_path.c_str(),colors_fragment_path.c_str());
     Shader lightCubeShader(light_cube_vertex_path.c_str(),light_cube_fragment_path.c_str());
@@ -194,9 +194,9 @@ int main(){
 
     //加载纹理图片
     std::string diffuse_map_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container2.png";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container2.png";
     std::string specular_map_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container2_specular.png";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container2_specular.png";
     unsigned int diffuseMap = loadTexture(diffuse_map_path.c_str());
     unsigned int specularMap = loadTexture(specular_map_path.c_str());
 

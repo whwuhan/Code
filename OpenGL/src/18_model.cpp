@@ -78,13 +78,13 @@ int main()
 
     // build and compile shaders
     // -------------------------
-    std::string vertex_path = "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/18/18.model.vs.glsl";
-    std::string fragment_path = "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/18/18.model.fs.glsl";
+    std::string vertex_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/18/18.model.vs.glsl";
+    std::string fragment_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/18/18.model.fs.glsl";
     Shader ourShader(vertex_path.c_str(), fragment_path.c_str());
 
     // load models
     // -----------
-    std::string model_path = "/Users/wuhan/wuhan/coding_space/Code/opengl/model/nanosuit/nanosuit.obj";
+    std::string model_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/nanosuit/nanosuit.obj";
     Model ourModel(model_path.c_str());
 
     

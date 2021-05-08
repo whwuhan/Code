@@ -104,12 +104,12 @@ int main()
     // GL_INVERT	按位翻转当前的模板缓冲值
 
     //着色器
-    std::string vertex_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/20/20.stencil_testing.vs.glsl";
-    std::string fragment_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/20/20.stencil_testing.fs.glsl";
+    std::string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/20/20.stencil_testing.vs.glsl";
+    std::string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/20/20.stencil_testing.fs.glsl";
 
     Shader shader(vertex_path.c_str(), fragment_path.c_str());
     
-    std::string single_color_fragment_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/20/20.stencil_single_color.fs.glsl";
+    std::string single_color_fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/20/20.stencil_single_color.fs.glsl";
     Shader shaderSingleColor(vertex_path.c_str(),single_color_fragment_path.c_str());
     
     
@@ -198,8 +198,8 @@ int main()
     glBindVertexArray(0);
 
     //加载纹理
-    std::string tex_marble_path="/Users/wuhan/wuhan/coding_space/Code/opengl/img/marble.jpg";
-    std::string tex_metal_path="/Users/wuhan/wuhan/coding_space/Code/opengl/img/metal.png";
+    std::string tex_marble_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/marble.jpg";
+    std::string tex_metal_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/metal.png";
     unsigned int cubeTexture  = loadTexture(tex_marble_path.c_str());
     unsigned int floorTexture = loadTexture(tex_metal_path.c_str());
 

@@ -52,9 +52,9 @@ int main()
     // build and compile our shader zprogram
     // ------------------------------------
     std::string vertex_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/05/5.1.transform.vs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/05/5.1.transform.vs";
     std::string fragment_shader_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/05/5.1.transform.fs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/05/5.1.transform.fs";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -108,7 +108,7 @@ int main()
     int width, height, nrChannels;
     // 翻转图片
     std::string texture1_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
     unsigned char *data = stbi_load(texture1_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
     {
@@ -132,7 +132,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load image, create texture and generate mipmaps
     std::string texture2_path = 
-    "/Users/wuhan/wuhan/coding_space/Code/opengl/img/awesomeface.png";
+    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/awesomeface.png";
     data = stbi_load(texture2_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
     {

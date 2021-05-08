@@ -78,11 +78,11 @@ int main()
     glEnable(GL_DEPTH_TEST);
 
     //着色器
-    std::string vertex_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/23/23.framebuffers.vs.glsl";
-    std::string fragment_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/23/23.framebuffers.fs.glsl";
+    std::string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/23/23.framebuffers.vs.glsl";
+    std::string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/23/23.framebuffers.fs.glsl";
 
-    std::string screen_vertex_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/23/23.framebuffers_screen.fs.glsl";
-    std::string screen_fragment_path="/Users/wuhan/wuhan/coding_space/Code/opengl/shader/23/23.framebuffers_screen.vs.glsl";
+    std::string screen_vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/23/23.framebuffers_screen.fs.glsl";
+    std::string screen_fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/23/23.framebuffers_screen.vs.glsl";
 
     Shader shader(vertex_path.c_str(), fragment_path.c_str());
     Shader screenShader(screen_vertex_path.c_str(), screen_fragment_path.c_str());
@@ -193,8 +193,8 @@ int main()
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 
     //加载纹理
-    std::string tex_container_path="/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
-    std::string tex_metal_path="/Users/wuhan/wuhan/coding_space/Code/opengl/img/metal.png";
+    std::string tex_container_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
+    std::string tex_metal_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/metal.png";
     unsigned int cubeTexture  = loadTexture(tex_container_path.c_str());
     unsigned int floorTexture = loadTexture(tex_metal_path.c_str());
 

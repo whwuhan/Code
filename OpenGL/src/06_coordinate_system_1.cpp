@@ -50,9 +50,9 @@ int main()
     }
     // 创建着色器程序
     std::string vertex_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_vs.glsl";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/06/6.3.coordinate_system_vs.glsl";
     std::string fragment_shader_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/shader/06/6.3.coordinate_system_fs.glsl";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/06/6.3.coordinate_system_fs.glsl";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str());
 
     //开始配置全局opengl
@@ -152,7 +152,7 @@ int main()
     stbi_set_flip_vertically_on_load(true); //翻转图片
     //读取图片信息
     std::string texture1_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/img/container.jpg";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
     unsigned char *data =
         stbi_load(texture1_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
@@ -189,7 +189,7 @@ int main()
     //加载图片，创建纹理图像，生成多级渐远纹理
     //读取图片信息
     std::string texture2_path =
-        "/Users/wuhan/wuhan/coding_space/Code/opengl/img/awesomeface.png";
+        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/awesomeface.png";
 
     data =
         stbi_load(texture2_path.c_str(), &width, &height, &nrChannels, 0);
