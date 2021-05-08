@@ -90,24 +90,24 @@ int main()
     //着色器
     Shader shaderGeometryPass
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.g_buffer.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.g_buffer.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.g_buffer.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.g_buffer.fs.glsl"
     );
 
     Shader shaderLightingPass
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.deferred_shading.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.deferred_shading.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.deferred_shading.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.deferred_shading.fs.glsl"
     );
 
     Shader shaderLightBox
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.deferred_light_box.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/37/37.deferred_light_box.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.deferred_light_box.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/37/37.deferred_light_box.fs.glsl"
     );
 
     //load models 背包模型
-    Model backpack("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/backpack/backpack.obj");
+    Model backpack("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/backpack/backpack.obj");
     std::vector<glm::vec3> objectPositions;
     objectPositions.push_back(glm::vec3(-3.0, -0.5, -3.0));
     objectPositions.push_back(glm::vec3(0.0, -0.5, -3.0));

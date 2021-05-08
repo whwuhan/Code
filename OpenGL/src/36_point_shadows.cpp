@@ -95,17 +95,17 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/36/36.point_shadows.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/36/36.point_shadows.fs.glsl");
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/36/36.point_shadows.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/36/36.point_shadows.fs.glsl");
 
     //绘制depth map的shader
     Shader simpleDepthShader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/36/36.point_shadows_depth.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/36/36.point_shadows_depth.fs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/36/36.point_shadows_depth.gs.glsl");
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/36/36.point_shadows_depth.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/36/36.point_shadows_depth.fs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/36/36.point_shadows_depth.gs.glsl");
 
     // load textures
-    unsigned int woodTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/wood.png");
+    unsigned int woodTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/wood.png");
 
     // configure depth map FBO
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;

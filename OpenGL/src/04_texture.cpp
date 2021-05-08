@@ -50,9 +50,9 @@ int main()
     // ------------------------------------
     // 使用着色器工具
     std::string vertex_shader_path = 
-    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/04/4.1.texture.vs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/04/4.1.texture.vs";
     std::string fragment_shader_path = 
-    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/04/4.1.texture.fs";
+    "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/04/4.1.texture.fs";
     Shader ourShader(vertex_shader_path.c_str(), fragment_shader_path.c_str()); 
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -125,7 +125,7 @@ int main()
     int width, height, nrChannels;
     // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
     std::string img_path = // 图片地址
-    "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
+    "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/container.jpg";
     unsigned char *data = stbi_load(img_path.c_str(), &width, &height, &nrChannels, 0);
     if (data)
     {   

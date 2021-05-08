@@ -96,20 +96,20 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.shadow_mapping.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.shadow_mapping.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.shadow_mapping.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.shadow_mapping.fs.glsl"
     );
 
     //绘制depth map的shader
     Shader simpleDepthShader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.shadow_mapping_depth.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.shadow_mapping_depth.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.shadow_mapping_depth.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.shadow_mapping_depth.fs.glsl"
     );
 
     //绘制（显示）所绘制的depth map
     Shader debugDepthQuad(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.debug_quad.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/35/35.debug_quad.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.debug_quad.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/35/35.debug_quad.fs.glsl"
     );
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -140,7 +140,7 @@ int main()
     glBindVertexArray(0);
 
     // load textures
-    unsigned int woodTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/wood.png");
+    unsigned int woodTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/wood.png");
 
     // configure depth map FBO FrameBuffer Object
     const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;// depth map的分辨率

@@ -79,15 +79,15 @@ int main(){
     //着色器路径
     //颜色着色器
     std::string colors_vertex_path
-    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/08/08.colors.vs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/08/08.colors.vs.glsl";
     std::string colors_fragment_path
-    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/08/08.colors.fs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/08/08.colors.fs.glsl";
 
     //光源着色器
     std::string light_cube_vertex_path
-    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/08/08.light_cube.vs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/08/08.light_cube.vs.glsl";
     std::string light_cube_fragment_path
-    ="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/08/08.light_cube.fs.glsl";
+    ="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/08/08.light_cube.fs.glsl";
 
     Shader lightingShader(colors_vertex_path.c_str(),colors_fragment_path.c_str());
     Shader lightCubeShader(light_cube_vertex_path.c_str(),light_cube_fragment_path.c_str());

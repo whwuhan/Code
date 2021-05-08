@@ -100,8 +100,8 @@ int main()
     
 
     //着色器
-    std::string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/22/22.blending.vs.glsl";
-    std::string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/22/22.blending.fs.glsl";
+    std::string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/22/22.blending.vs.glsl";
+    std::string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/22/22.blending.fs.glsl";
 
     Shader shader(vertex_path.c_str(), fragment_path.c_str());
     
@@ -213,9 +213,9 @@ int main()
 
 
     //加载纹理
-    std::string tex_marble_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/marble.jpg";
-    std::string tex_metal_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/metal.png";
-    std::string tex_window_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/blending_transparent_window.png";
+    std::string tex_marble_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/marble.jpg";
+    std::string tex_metal_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/metal.png";
+    std::string tex_window_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/blending_transparent_window.png";
     unsigned int cubeTexture  = loadTexture(tex_marble_path.c_str());
     unsigned int floorTexture = loadTexture(tex_metal_path.c_str());
     unsigned int transparentTexture = loadTexture(tex_window_path.c_str());

@@ -72,19 +72,19 @@ int main()
     // tell stb_image.h to flip loaded texture's on the y-axis (before loading model).
     stbi_set_flip_vertically_on_load(true);
 
-    // configure global opengl state
+    // configure global OpenGL state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
     // build and compile shaders
     // -------------------------
-    std::string vertex_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/18/18.model.vs.glsl";
-    std::string fragment_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/18/18.model.fs.glsl";
+    std::string vertex_path = "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/18/18.model.vs.glsl";
+    std::string fragment_path = "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/18/18.model.fs.glsl";
     Shader ourShader(vertex_path.c_str(), fragment_path.c_str());
 
     // load models
     // -----------
-    std::string model_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/nanosuit/nanosuit.obj";
+    std::string model_path = "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/nanosuit/nanosuit.obj";
     Model ourModel(model_path.c_str());
 
     

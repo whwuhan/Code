@@ -79,10 +79,10 @@ int main()
     glEnable(GL_DEPTH_TEST);
     
     //着色器
-    string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/24/24.cubemaps.vs.glsl";
-    string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/24/24.cubemaps.fs.glsl";
-    string skybox_vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/24/24.skybox.vs.glsl";
-    string skybox_fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/24/24.skybox.fs.glsl";
+    string vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/24/24.cubemaps.vs.glsl";
+    string fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/24/24.cubemaps.fs.glsl";
+    string skybox_vertex_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/24/24.skybox.vs.glsl";
+    string skybox_fragment_path="/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/24/24.skybox.fs.glsl";
 
     Shader shader(vertex_path.c_str(), fragment_path.c_str());
     Shader skyboxShader(skybox_vertex_path.c_str(),skybox_fragment_path.c_str());
@@ -206,15 +206,15 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
     // load textures
-    string cube_texture_path = "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/container.jpg";
+    string cube_texture_path = "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/container.jpg";
     unsigned int cubeTexture = loadTexture(cube_texture_path.c_str());
     vector<string> faces {
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/right.jpg",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/left.jpg",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/top.jpg",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/bottom.jpg",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/front.jpg",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/skybox/back.jpg"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/right.jpg",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/left.jpg",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/top.jpg",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/bottom.jpg",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/front.jpg",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/skybox/back.jpg"
     };
     unsigned int cubemapTexture = loadCubemap(faces);
 

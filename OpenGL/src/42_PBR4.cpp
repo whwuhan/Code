@@ -89,29 +89,29 @@ int main()
     // 使用PBR渲染球面的shader
     Shader pbrShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.PBR3.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.PBR3.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.PBR3.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.PBR3.fs.glsl"
     );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去
     Shader equirectangularToCubemapShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.equirectangular_to_cubemap.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.equirectangular_to_cubemap.fs.glsl"
     );
 
     // 对环境贴图进行 convolution 操作 获取irradiance cubemap （注意这里使用的离屏渲染）
     Shader irradianceShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.irradiance_convolution.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.irradiance_convolution.fs.glsl"
     );
     
     // 渲染skybox的shader
     Shader backgroundShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.background.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/42/42.background.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.background.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/42/42.background.fs.glsl"
     );
 
     pbrShader.use();
@@ -164,7 +164,7 @@ int main()
     // 读取HDR图片数据
     float *data = stbi_loadf
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
         &width,
         &height,
         &nrComponents,

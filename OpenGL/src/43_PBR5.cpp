@@ -95,44 +95,44 @@ int main()
     // 使用PBR渲染球面的shader
     Shader pbrShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.pbr.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.pbr.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.pbr.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.pbr.fs.glsl"
     );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去（注意这里也是使用了离屏渲染）
     Shader equirectangularToCubemapShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.equirectangular_to_cubemap.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.equirectangular_to_cubemap.fs.glsl"
     );
 
     // 对环境贴图进行 convolution 操作 获取irradiance cubemap （注意这里使用的离屏渲染）
     Shader irradianceShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.irradiance_convolution.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.irradiance_convolution.fs.glsl"
     );
     
     // 计算环境光specular的第一部分
     Shader prefilterShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.prefilter.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.prefilter.fs.glsl"
     );
 
 
     // 渲染出LUT(lookup texture)
     Shader brdfShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.brdf.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.brdf.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.brdf.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.brdf.fs.glsl"
     );
 
     // 渲染skybox的shader
     Shader backgroundShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.background.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/43/43.background.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.background.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/43/43.background.fs.glsl"
     );
 
     pbrShader.use();
@@ -205,7 +205,7 @@ int main()
     // 读取HDR图片数据
     float *data = stbi_loadf
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
         &width,
         &height,
         &nrComponents,

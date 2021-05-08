@@ -87,22 +87,22 @@ int main()
     //着色器
     Shader pbrShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.PBR3.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.PBR3.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.PBR3.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.PBR3.fs.glsl"
     );
 
     // 将等矩形的环境贴图，贴到一个cubemap上面去
     Shader equirectangularToCubemapShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.cubemap.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.equirectangular_to_cubemap.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.cubemap.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.equirectangular_to_cubemap.fs.glsl"
     );
 
     // 从上equirectangularToCubemapShader中渲染的cubemap采样（equirectangularToCubemapShader做的是离线渲染）
     Shader backgroundShader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.background.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/41/41.background.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.background.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/41/41.background.fs.glsl"
     );
 
     pbrShader.use();
@@ -154,7 +154,7 @@ int main()
     // 读取HDR图片数据
     float *data = stbi_loadf
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/EtniesPark_Center/Etnies_Park_Center_3k.hdr",
         &width,
         &height,
         &nrComponents,

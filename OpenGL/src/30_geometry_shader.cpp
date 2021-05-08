@@ -81,20 +81,20 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/30/30.default.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/30/30.default.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/30/30.default.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/30/30.default.fs.glsl"
     );
 
     Shader normalShader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/30/30.normal_visualization.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/30/30.normal_visualization.fs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/30/30.normal_visualization.gs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/30/30.normal_visualization.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/30/30.normal_visualization.fs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/30/30.normal_visualization.gs.glsl"
     );
 
 
     // load models
     stbi_set_flip_vertically_on_load(true);
-    Model backpack("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/backpack/backpack.obj");
+    Model backpack("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/backpack/backpack.obj");
 
 
    

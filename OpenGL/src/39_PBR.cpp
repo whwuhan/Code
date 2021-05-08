@@ -85,8 +85,8 @@ int main()
     //着色器
     Shader shader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/39/39.PBR.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/39/39.PBR.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/39/39.PBR.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/39/39.PBR.fs.glsl"
     );
 
     shader.use();

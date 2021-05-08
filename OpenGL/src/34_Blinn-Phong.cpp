@@ -86,8 +86,8 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/34/34.Blin-Phong.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/34/34.Blin-Phong.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/34/34.Blin-Phong.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/34/34.Blin-Phong.fs.glsl"
     );
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -118,7 +118,7 @@ int main()
     glBindVertexArray(0);
 
     // load textures
-    unsigned int floorTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/img/wood.png");
+    unsigned int floorTexture = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/img/wood.png");
     // shader configuration
     shader.use();
     shader.setInt("texture1", 0);

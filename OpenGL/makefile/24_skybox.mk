@@ -5,8 +5,8 @@ EXC_NAME := 24_skybox
 $(EXC_NAME) : 
 	$(CC) $(CXX_FLAGS) \
 	$(SRC_DIR)/$(EXC_NAME).cpp \
-	/Users/wuhan/wuhan/CodingSpace/Code/opengl/utils/src/Mesh_wh.cpp \
-	/Users/wuhan/wuhan/CodingSpace/Code/opengl/utils/src/stb_image.cpp \
+	/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/utils/src/Mesh_wh.cpp \
+	/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/utils/src/stb_image.cpp \
 	-I$(INCLUDE_DIR) \
 	-I$(UTILS_INCLUDE_DIR) \
 	-L$(LIB_MAC_DIR) -lglad -lglfw3 -lassimp \

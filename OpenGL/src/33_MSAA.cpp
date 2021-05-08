@@ -89,8 +89,8 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader shader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/33/33_anti_aliasing.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/33/33_anti_aliasing.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/33/33_anti_aliasing.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/33/33_anti_aliasing.fs.glsl"
     );
 
 

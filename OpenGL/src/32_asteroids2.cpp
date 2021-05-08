@@ -82,19 +82,19 @@ int main()
     // =====================================分割线=====================================================
     //着色器
     Shader asteroidShader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/32/32.asteroids.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/32/32.asteroids.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/32/32.asteroids.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/32/32.asteroids.fs.glsl"
     );
 
     Shader planetShader(
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/32/32.planet.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/32/32.planet.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/32/32.planet.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/32/32.planet.fs.glsl"
     );
 
     // load models
     stbi_set_flip_vertically_on_load(true);
-    Model rock("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/rock/rock.obj");
-    Model planet("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/planet/planet.obj");
+    Model rock("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/rock/rock.obj");
+    Model planet("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/planet/planet.obj");
 
     //generate a large list of semi-random model transformation matrices 生成半随机的旋转位移矩阵
     unsigned int amount = 10000;

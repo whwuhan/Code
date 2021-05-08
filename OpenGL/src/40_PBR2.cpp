@@ -87,8 +87,8 @@ int main()
     //着色器
     Shader shader
     (
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/40/40.PBR2.vs.glsl",
-        "/Users/wuhan/wuhan/CodingSpace/Code/opengl/shader/40/40.PBR2.fs.glsl"
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/40/40.PBR2.vs.glsl",
+        "/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/shader/40/40.PBR2.fs.glsl"
     );
 
     shader.use();
@@ -98,10 +98,10 @@ int main()
     shader.setInt("metallicMap", 2);
     shader.setInt("roughnessMap", 3);
     // load PRB material textures
-    unsigned int albedo = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/rustediron1-alt2-bl/rustediron2_basecolor.png");
-    unsigned int normal = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/rustediron1-alt2-bl/rustediron2_normal.png");
-    unsigned int metallic = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/rustediron1-alt2-bl/rustediron2_metallic.png");
-    unsigned int roughness = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/opengl/model/rustediron1-alt2-bl/rustediron2_roughness.png");
+    unsigned int albedo = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/rustediron1-alt2-bl/rustediron2_basecolor.png");
+    unsigned int normal = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/rustediron1-alt2-bl/rustediron2_normal.png");
+    unsigned int metallic = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/rustediron1-alt2-bl/rustediron2_metallic.png");
+    unsigned int roughness = loadTexture("/Users/wuhan/wuhan/CodingSpace/Code/OpenGL/model/rustediron1-alt2-bl/rustediron2_roughness.png");
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, albedo);
     glActiveTexture(GL_TEXTURE1);
