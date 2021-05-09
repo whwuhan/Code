@@ -104,7 +104,8 @@ public: \
     } \
 }; \
 /* 利用构造函数注册生产工厂到 reflector 对象当中 */ \
-Register_##className register_##className;
+Register_##className register_##className; \
+/* 这里之所以使用构造函数来完成类的注册，是因为保证可以 */
 //宏定义完成
 
 //添加通过类名获取对象实例的模板方法
