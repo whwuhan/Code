@@ -6,7 +6,7 @@
 #include <cstdarg> //支持可变参数的头文件 包含va_arg va_start va_end va_list
 using namespace std;
 
-// 求和函数
+// 求和函数 通常可变参数第一个参数要包含可变参数的个数信息
 int add(int paramNumber, ...) // paramNumber 可变参数的数量
 {
     va_list argPtr; // 用于接收可变参数，现在还没有接收
