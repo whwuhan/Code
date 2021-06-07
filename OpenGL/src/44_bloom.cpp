@@ -87,11 +87,11 @@ int main()
         return -1;
     }
     //openGL全局配置
-    glEnable(GL_DEPTH_TEST);                           //开启深度测试
+    glEnable(GL_DEPTH_TEST);                           // 开启深度测试
     glEnable(GL_MULTISAMPLE);                          // 开启MSAA通常都是默认开启的
-    glEnable(GL_BLEND);                                //开启融合
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //允许使用融合方程
-    glEnable(GL_CULL_FACE);                            //面剔除
+    glEnable(GL_BLEND);                                // 开启融合
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // 允许使用融合方程
+    glEnable(GL_CULL_FACE);                            // 面剔除
     // =====================================分割线=====================================================
     //着色器
     Shader shader
